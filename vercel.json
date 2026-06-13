@@ -11,6 +11,7 @@
         {
             "src": "/(css|js|images|fonts|build)/(.*)",
             "dest": "/public/$1/$2"
+            
         },
         {
             "src": "/favicon.ico",
