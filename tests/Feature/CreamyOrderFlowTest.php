@@ -217,9 +217,9 @@ class CreamyOrderFlowTest extends TestCase
             'quantity_per_unit' => 2.5,
         ]);
 
-        // Create user with cashier/owner role to complete order
+        // Create user with owner role to complete order
         $admin = \App\Models\User::factory()->create();
-        $admin->assignRole('cashier');
+        $admin->assignRole('owner');
 
         // Create pending order
         $order = \App\Models\Order::create([
@@ -240,7 +240,7 @@ class CreamyOrderFlowTest extends TestCase
             'line_total' => $product->price * 4,
         ]);
 
-        // 2. Complete order as admin cashier
+        // 2. Complete order as admin owner
         $this->actingAs($admin)
             ->post(route('admin.orders.update-status', $order), [
                 'status' => 'paid',
@@ -279,7 +279,7 @@ class CreamyOrderFlowTest extends TestCase
     {
         // 1. Setup admin and ingredient
         $admin = \App\Models\User::factory()->create();
-        $admin->assignRole('cashier');
+        $admin->assignRole('owner');
 
         $ingredient = \App\Models\Ingredient::create([
             'name' => 'Daun Teh Premium',
@@ -313,7 +313,7 @@ class CreamyOrderFlowTest extends TestCase
     {
         // 1. Setup admin and ingredient
         $admin = \App\Models\User::factory()->create();
-        $admin->assignRole('cashier');
+        $admin->assignRole('owner');
 
         $ingredient = \App\Models\Ingredient::create([
             'name' => 'Gula Pasir Premium',
@@ -342,7 +342,7 @@ class CreamyOrderFlowTest extends TestCase
     {
         // 1. Setup admin and product
         $admin = \App\Models\User::factory()->create();
-        $admin->assignRole('cashier');
+        $admin->assignRole('owner');
 
         $product = Product::first();
 
