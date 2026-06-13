@@ -16,6 +16,7 @@
         {
             "src": "/favicon.ico",
             "dest": "/public/favicon.ico"
+            
         },
         {
             "src": "/robots.txt",
