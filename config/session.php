@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Str;
 
+// Auto-detect Vercel serverless: use cookie driver (no DB/filesystem needed)
+$isVercel = isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL']) || getenv('VERCEL');
+$defaultSessionDriver = $isVercel ? 'cookie' : 'database';
+
 return [
 
     /*
@@ -18,7 +22,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'database'),
+    'driver' => env('SESSION_DRIVER', $defaultSessionDriver),
 
     /*
     |--------------------------------------------------------------------------
@@ -169,7 +173,7 @@ return [
     |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE'),
+    'secure' => env('SESSION_SECURE_COOKIE', $isVercel ? true : null),
 
     /*
     |--------------------------------------------------------------------------
