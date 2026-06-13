@@ -12,10 +12,14 @@
     $heroLemonImg  = $heroLemon  ? $heroLemon->image_path  : 'images/lemon-tea-new';
     $heroCoklatImg = $heroCoklat ? $heroCoklat->image_path : 'images/es-coklat';
 
+    // Build a lookup map so we don't trigger N+1 queries on $p->category
+    $catSortMap = $categories->pluck('sort_order', 'id');
+
     $featuredProducts = $allProducts
-        ->sortBy(fn($p) => $p->category->sort_order ?? 99)
+        ->sortBy(fn($p) => $catSortMap[$p->category_id] ?? 99)
         ->take(8);
 @endphp
+
 
 @section('content')
 <div class="bg-app text-slate-600">

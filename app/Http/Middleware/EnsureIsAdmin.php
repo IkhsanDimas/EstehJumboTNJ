@@ -17,7 +17,7 @@ class EnsureIsAdmin
     {
         $user = Auth::user();
 
-        if (!$user || !$user->hasAnyRole(['owner', 'cashier'])) {
+        if (!$user || !$user->hasRole('owner')) {
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();

@@ -17,12 +17,12 @@ class EsTehJumboSeeder extends Seeder
     public function run(): void
     {
         // 1. Roles
-        $roles = ['owner', 'cashier', 'customer'];
+        $roles = ['owner', 'customer'];
         foreach ($roles as $role) {
             Role::firstOrCreate(['name' => $role, 'guard_name' => 'web']);
         }
 
-        // 2. Users
+        // 2. Users — Admin only
         $owner = User::updateOrCreate(
             ['email' => 'owner@esthejumbo.test'],
             [
@@ -32,16 +32,6 @@ class EsTehJumboSeeder extends Seeder
             ],
         );
         $owner->syncRoles(['owner']);
-
-        $cashier = User::updateOrCreate(
-            ['email' => 'kasir@esthejumbo.test'],
-            [
-                'name'     => 'Kasir Satu',
-                'phone'    => '081200000002',
-                'password' => Hash::make('password'),
-            ],
-        );
-        $cashier->syncRoles(['cashier']);
 
         // 3. Store settings
         StoreSetting::updateOrCreate(
