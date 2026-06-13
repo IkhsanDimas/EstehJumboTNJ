@@ -380,7 +380,7 @@ class CheckoutController extends Controller
         $allowed = false;
         if (session('last_order_id') == $order->id) {
             $allowed = true;
-        } elseif (auth()->check() && auth()->user()->hasAnyRole(['owner', 'cashier'])) {
+        } elseif (auth()->check() && auth()->user()->hasRole('owner')) {
             $allowed = true;
         }
 

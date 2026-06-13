@@ -14,7 +14,7 @@ class AdminController extends Controller
     public function showLoginForm()
     {
         // Redirect to dashboard if already logged in as admin
-        if (Auth::check() && Auth::user()->hasAnyRole(['owner', 'cashier'])) {
+        if (Auth::check() && Auth::user()->hasRole('owner')) {
             return redirect()->route('admin.dashboard');
         }
 
@@ -38,8 +38,8 @@ class AdminController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $user = Auth::user();
 
-            // Verify if user is authorized as admin (owner or cashier)
-            if ($user->hasAnyRole(['owner', 'cashier'])) {
+            // Verify if user is authorized as admin (owner)
+            if ($user->hasRole('owner')) {
                 $request->session()->regenerate();
                 return redirect()->intended(route('admin.dashboard'));
             }
