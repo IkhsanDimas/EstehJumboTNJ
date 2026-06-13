@@ -14,7 +14,7 @@ class MenuController extends Controller
     public function index(): View
     {
         $categories = Category::query()
-            ->with(['products' => fn ($q) => $q->where('is_available', true)->orderBy('name')])
+            ->with(['products' => fn ($q) => $q->whereRaw('is_available = true')->orderBy('name')])
             ->orderBy('sort_order')
             ->get();
 
@@ -29,7 +29,7 @@ class MenuController extends Controller
 
         $categoriesQuery = Category::query()
             ->with(['products' => function ($q) use ($query) {
-                $q->where('is_available', true);
+                $q->whereRaw('is_available = true');
                 if ($query !== '') {
                     $q->where('name', 'like', '%' . $query . '%');
                 }
@@ -56,7 +56,7 @@ class MenuController extends Controller
         // Available toppings (live from DB)
         $toppings = Product::with('category')
             ->whereHas('category', fn ($q) => $q->where('name', 'Ekstra Topping'))
-            ->where('is_available', true)
+            ->whereRaw('is_available = true')
             ->orderBy('price')
             ->get();
 
@@ -64,7 +64,7 @@ class MenuController extends Controller
         $related = Product::with('category')
             ->where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
-            ->where('is_available', true)
+            ->whereRaw('is_available = true')
             ->inRandomOrder()
             ->take(4)
             ->get();
@@ -83,7 +83,7 @@ class MenuController extends Controller
     {
         $product->load('category');
         $toppings = Product::whereHas('category', fn ($q) => $q->where('name', 'Ekstra Topping'))
-            ->where('is_available', true)
+            ->whereRaw('is_available = true')
             ->orderBy('price')
             ->get();
         

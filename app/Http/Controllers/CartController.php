@@ -59,7 +59,7 @@ class CartController extends Controller
         $toppings = $requestedToppingIds->isNotEmpty()
             ? Product::whereIn('id', $requestedToppingIds)
                 ->whereHas('category', fn ($q) => $q->where('name', 'Ekstra Topping'))
-                ->where('is_available', true)
+                ->whereRaw('is_available = true')
                 ->get()
                 ->map(fn ($t) => [
                     'id'    => (int) $t->id,
