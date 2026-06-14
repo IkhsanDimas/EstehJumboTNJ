@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alur Pemesanan — Es Teh Jumbo TNJ</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e;
+            --primary-light: #14b8a6;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --accent: #f0fdfa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .page-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .header .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .header .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+
+        .header .meta {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Actions bar */
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.5rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 2px 8px rgba(15, 118, 110, 0.3);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 4px 16px rgba(15, 118, 110, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+        }
+
+        /* Diagram section */
+        .diagram-section {
+            background: var(--card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .diagram-section h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .diagram-section h2 .badge {
+            background: var(--accent);
+            color: var(--primary);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+        }
+
+        .mermaid svg {
+            max-width: 100%;
+        }
+
+        /* Info cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: var(--card);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .info-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card .step-num {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .info-card p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .info-card .tech {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 6px;
+            margin-top: 0.5rem;
+        }
+
+        /* Storage explanation */
+        .storage-section {
+            background: var(--card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .storage-section h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .storage-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.88rem;
+        }
+
+        .storage-table thead th {
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: 700;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .storage-table thead th:first-child { border-radius: 10px 0 0 0; }
+        .storage-table thead th:last-child { border-radius: 0 10px 0 0; }
+
+        .storage-table tbody td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .storage-table tbody tr:last-child td { border-bottom: none; }
+        .storage-table tbody tr:hover { background: #f1f5f9; }
+
+        .tag {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .tag-session { background: #fef3c7; color: #92400e; }
+        .tag-db { background: #dbeafe; color: #1e40af; }
+
+        /* Footer */
+        .doc-footer {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: white; }
+            .actions { display: none !important; }
+            .page-container { padding: 0; }
+            .diagram-section, .info-card, .storage-section {
+                box-shadow: none;
+                break-inside: avoid;
+            }
+            .header { border-bottom-color: #ccc; }
+        }
+
+        @media (max-width: 640px) {
+            .page-container { padding: 1rem; }
+            .header h1 { font-size: 1.35rem; }
+            .diagram-section, .storage-section { padding: 1rem; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">🧋</div>
+                <div>
+                    <h1>Alur Pemesanan</h1>
+                    <p>Es Teh Jumbo TNJ — Dokumentasi Sistem</p>
+                </div>
+            </div>
+            <div class="meta">
+                Dibuat: 14 Juni 2026 &nbsp;·&nbsp; Versi 1.0 &nbsp;·&nbsp; Laravel 13 + PostgreSQL (Supabase)
+            </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="actions">
+            <button class="btn btn-primary" onclick="window.print()">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                Cetak / Simpan PDF
+            </button>
+            <a href="/" class="btn btn-outline">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Kembali ke Website
+            </a>
+        </div>
+
+        <!-- Main Flow Diagram -->
+        <div class="diagram-section">
+            <h2>
+                📊 Diagram Alur Pemesanan
+                <span class="badge">Flowchart</span>
+            </h2>
+            <div class="mermaid">
+flowchart TD
+    A["🧋 User buka halaman Menu"]:::user --> B["👀 Pilih produk, ukuran, topping, level es & gula"]:::user
+    B --> C["➕ Klik tombol 'Tambah ke Keranjang'"]:::user
+    C --> D["📡 AJAX POST ke /cart/add"]:::tech
+    D --> E{"✅ Stok tersedia?"}:::decision
+    E -- Ya --> F["💾 Simpan ke SESSION\n(driver: database → tabel sessions)"]:::session
+    E -- Tidak --> G["❌ Tampilkan pesan error\n'Stok tidak mencukupi'"]:::error
+    F --> H["🔔 Badge keranjang update"]:::ui
+    H --> I["🛒 User buka halaman Keranjang"]:::user
+    I --> J["📝 Review item, ubah quantity"]:::user
+    J --> K["📋 Klik 'Checkout'"]:::user
+    K --> L["📝 Isi formulir checkout:\n• Nama\n• Tipe: Delivery / Pickup\n• Alamat + Pinpoint Maps\n• Jadwal: Sekarang / Nanti\n• Metode bayar: COD / Transfer"]:::user
+    L --> M["📡 POST ke /checkout/process"]:::tech
+    M --> N["💾 SIMPAN KE DATABASE\n→ Tabel: orders\n→ Tabel: order_items"]:::database
+    N --> O["📨 Generate pesan WhatsApp\notomatis dengan rincian lengkap"]:::tech
+    O --> P["🔗 Buat URL:\nwa.me/nomor?text=pesan"]:::tech
+    P --> Q["🧹 Kosongkan keranjang dari session"]:::tech
+    Q --> R["✨ Redirect ke halaman Sukses"]:::ui
+    R --> S["📱 WhatsApp terbuka otomatis\ndengan pesan pesanan terformat"]:::wa
+    S --> T["👨‍💼 Admin terima pesan\ndi WhatsApp"]:::admin
+
+    classDef user fill:#f0fdfa,stroke:#0f766e,stroke-width:2px,color:#134e4a
+    classDef tech fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#1e40af
+    classDef session fill:#fefce8,stroke:#ca8a04,stroke-width:2px,color:#854d0e
+    classDef database fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e40af
+    classDef decision fill:#faf5ff,stroke:#9333ea,stroke-width:2px,color:#6b21a8
+    classDef error fill:#fef2f2,stroke:#ef4444,stroke-width:2px,color:#991b1b
+    classDef ui fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#166534
+    classDef wa fill:#dcfce7,stroke:#22c55e,stroke-width:3px,color:#166534
+    classDef admin fill:#fce7f3,stroke:#ec4899,stroke-width:2px,color:#9d174d
+            </div>
+        </div>
+
+        <!-- Step-by-step detail cards -->
+        <div class="info-grid">
+            <div class="info-card">
+                <h3><span class="step-num">1</span> Tambah ke Keranjang</h3>
+                <p>
+                    User memilih produk, ukuran (Reguler/Jumbo), level es, level gula, dan topping opsional.
+                    Data dikirim via <strong>AJAX POST</strong> ke <code>/cart/add</code>.
+                    Sistem menghitung harga: <strong>harga dasar + modifier ukuran + topping</strong>.
+                    Item disimpan di session dengan key unik berdasarkan kombinasi opsi.
+                </p>
+                <span class="tech">CartController.php → Session</span>
+            </div>
+
+            <div class="info-card">
+                <h3><span class="step-num">2</span> Review Keranjang</h3>
+                <p>
+                    User bisa menambah/mengurangi quantity, menghapus item, dan melihat subtotal.
+                    Data keranjang dibaca dari session dan ditampilkan di halaman <code>/cart</code>.
+                    Badge di navbar menunjukkan jumlah item secara real-time.
+                </p>
+                <span class="tech">cart/index.blade.php → Session</span>
+            </div>
+
+            <div class="info-card">
+                <h3><span class="step-num">3</span> Isi Form Checkout</h3>
+                <p>
+                    User mengisi: nama, tipe pengiriman (delivery/pickup), alamat + pinpoint Google Maps,
+                    jadwal (sekarang/nanti), dan metode pembayaran (COD/transfer).
+                    Semua data divalidasi di server sebelum diproses.
+                </p>
+                <span class="tech">checkout/index.blade.php → Validasi Server</span>
+            </div>
+
+            <div class="info-card">
+                <h3><span class="step-num">4</span> Simpan ke Database</h3>
+                <p>
+                    Data pesanan disimpan secara permanen ke <strong>tabel <code>orders</code></strong>
+                    dan <strong>tabel <code>order_items</code></strong> dalam satu database transaction.
+                    Setiap pesanan mendapat nomor unik format <strong>ETJ-XXXXXXXX</strong>.
+                </p>
+                <span class="tech">CheckoutController.php → PostgreSQL (Supabase)</span>
+            </div>
+
+            <div class="info-card">
+                <h3><span class="step-num">5</span> Generate Pesan WhatsApp</h3>
+                <p>
+                    Sistem otomatis membuat pesan WhatsApp berisi: daftar item, opsi, quantity, 
+                    alamat + link Maps, subtotal, ongkir, total, order ID, dan link tracking pesanan.
+                    URL dibuat dalam format <code>wa.me/nomor?text=pesan</code>.
+                </p>
+                <span class="tech">CheckoutController.php → wa.me API</span>
+            </div>
+
+            <div class="info-card">
+                <h3><span class="step-num">6</span> Konfirmasi & WhatsApp</h3>
+                <p>
+                    Keranjang dikosongkan, user diarahkan ke halaman sukses.
+                    WhatsApp <strong>otomatis terbuka</strong> setelah 2 detik dengan pesan yang sudah terformat.
+                    Tersedia tombol manual dan link tracking pesanan.
+                </p>
+                <span class="tech">checkout/success.blade.php → WhatsApp</span>
+            </div>
+        </div>
+
+        <!-- Storage explanation -->
+        <div class="storage-section">
+            <h2>💾 Di Mana Data Disimpan?</h2>
+            <table class="storage-table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Penyimpanan</th>
+                        <th>Tabel Database</th>
+                        <th>Sifat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Keranjang (Cart)</strong></td>
+                        <td><span class="tag tag-session">Session</span> → <span class="tag tag-db">Database</span></td>
+                        <td><code>sessions</code></td>
+                        <td>Sementara — hilang saat session expired atau checkout selesai</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pesanan (Order)</strong></td>
+                        <td><span class="tag tag-db">Database</span></td>
+                        <td><code>orders</code></td>
+                        <td>Permanen — tersimpan selamanya, bisa dilihat di admin panel</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Detail Item Pesanan</strong></td>
+                        <td><span class="tag tag-db">Database</span></td>
+                        <td><code>order_items</code></td>
+                        <td>Permanen — setiap item dalam pesanan disimpan terpisah</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Produk & Menu</strong></td>
+                        <td><span class="tag tag-db">Database</span></td>
+                        <td><code>products</code></td>
+                        <td>Permanen — dikelola melalui admin panel</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kategori</strong></td>
+                        <td><span class="tag tag-db">Database</span></td>
+                        <td><code>categories</code></td>
+                        <td>Permanen — Teh, Kopi, Ekstra Topping, dll</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Akun Admin</strong></td>
+                        <td><span class="tag tag-db">Database</span></td>
+                        <td><code>users</code></td>
+                        <td>Permanen — login admin panel</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pengaturan Toko</strong></td>
+                        <td><span class="tag tag-db">Database</span></td>
+                        <td><code>store_settings</code></td>
+                        <td>Permanen — jam buka, ongkir, nomor WA</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="margin-top: 1.5rem; padding: 1rem; background: var(--accent); border-radius: 10px; border-left: 4px solid var(--primary);">
+                <p style="font-size: 0.88rem; color: var(--text);">
+                    <strong>ℹ️ Catatan Penting:</strong> Meskipun keranjang menggunakan mekanisme "session", 
+                    session driver diset ke <code>database</code> (bukan file/cookie). Artinya data session juga 
+                    <strong>tersimpan di database PostgreSQL</strong> pada tabel <code>sessions</code>. 
+                    Jadi semua data — termasuk keranjang sementara — sudah ada di database.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="doc-footer">
+            <p>Dokumen ini dibuat secara otomatis untuk proyek <strong>Es Teh Jumbo TNJ</strong></p>
+            <p style="margin-top: 0.25rem;">
+                Laravel 13 · PHP 8.3 · PostgreSQL (Supabase) · Tailwind CSS v4 · Alpine.js · Livewire v4
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#f0fdfa',
+                primaryTextColor: '#134e4a',
+                primaryBorderColor: '#0f766e',
+                lineColor: '#94a3b8',
+                fontSize: '13px',
+                fontFamily: 'Inter, system-ui, sans-serif'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 15,
+                nodeSpacing: 30,
+                rankSpacing: 40
+            }
+        });
+    </script>
+</body>
+</html>
