@@ -20,6 +20,10 @@
             "dest": "/public/robots.txt"
         },
         {
+            "src": "/alur-pemesanan\\.html",
+            "dest": "/public/alur-pemesanan.html"
+        },
+        {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
