@@ -8,12 +8,11 @@ use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
-        //
+        if (class_exists(\App\Models\StoreSetting::class)) {
+            \App\Models\StoreSetting::clearCache();
+        }
     }
 
     /**

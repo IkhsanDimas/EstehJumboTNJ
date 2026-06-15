@@ -499,48 +499,22 @@
                                 </span>
                                 <div>
                                     <p class="font-display font-semibold text-ink">Metode Pembayaran</p>
-                                    <p class="text-xs text-slate-500">Pilih metode pembayaran yang paling nyaman.</p>
+                                    <p class="text-xs text-slate-500">Pembayaran dilakukan secara tunai saat pesanan diterima.</p>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-4">
-                                <label class="cursor-pointer">
-                                    <input type="radio" name="payment_method" value="cash" x-model="paymentMethod" class="sr-only">
-                                    <div class="relative rounded-2xl border-2 px-4 py-4 transition-all duration-300"
-                                         :class="paymentMethod === 'cash' ? 'border-sky-500 bg-sky-50/60 ring-1 ring-sky-500' : 'border-slate-200 bg-white/70 hover:border-slate-350'">
-                                        <div class="flex items-center justify-between">
-                                            <div>
-                                                <p class="font-display font-bold text-slate-900 text-sm">Bayar di Tempat (COD)</p>
-                                                <p class="text-[10px] text-slate-500 mt-1">Bayar tunai saat pesanan diterima</p>
-                                            </div>
-                                        </div>
-                                        <span class="absolute top-2.5 right-2.5 w-4.5 h-4.5 rounded-full border border-slate-300 flex items-center justify-center transition-colors"
-                                              :class="paymentMethod === 'cash' ? 'border-sky-500 bg-sky-500 text-white' : ''">
-                                            <template x-if="paymentMethod === 'cash'">
-                                                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                            </template>
-                                        </span>
+                            {{-- COD only — auto-selected --}}
+                            <input type="hidden" name="payment_method" value="cash">
+                            <div class="rounded-2xl border-2 border-sky-500 bg-sky-50/60 ring-1 ring-sky-500 px-4 py-4">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-display font-bold text-slate-900 text-sm">Bayar di Tempat (COD)</p>
+                                        <p class="text-[10px] text-slate-500 mt-1">Bayar tunai saat pesanan diterima</p>
                                     </div>
-                                </label>
-
-                                <label class="cursor-pointer">
-                                    <input type="radio" name="payment_method" value="online" x-model="paymentMethod" class="sr-only">
-                                    <div class="relative rounded-2xl border-2 px-4 py-4 transition-all duration-300"
-                                         :class="paymentMethod === 'online' ? 'border-sky-500 bg-sky-50/60 ring-1 ring-sky-500' : 'border-slate-200 bg-white/70 hover:border-slate-350'">
-                                        <div class="flex items-center justify-between">
-                                            <div>
-                                                <p class="font-display font-bold text-slate-900 text-sm">Transfer Bank / QRIS</p>
-                                                <p class="text-[10px] text-slate-500 mt-1">Transfer bank atau QRIS instan</p>
-                                            </div>
-                                        </div>
-                                        <span class="absolute top-2.5 right-2.5 w-4.5 h-4.5 rounded-full border border-slate-300 flex items-center justify-center transition-colors"
-                                              :class="paymentMethod === 'online' ? 'border-sky-500 bg-sky-500 text-white' : ''">
-                                            <template x-if="paymentMethod === 'online'">
-                                                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                            </template>
-                                        </span>
-                                    </div>
-                                </label>
+                                    <span class="w-4.5 h-4.5 rounded-full border border-sky-500 bg-sky-500 text-white flex items-center justify-center">
+                                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    </span>
+                                </div>
                             </div>
                         </div>
 

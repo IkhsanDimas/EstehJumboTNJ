@@ -76,8 +76,15 @@ class AdminController extends Controller
     {
         $store = StoreSetting::current();
         
-        // 1. Total Sales (completed orders)
-        $totalSales = \App\Models\Order::where('status', 'completed')->sum('grand_total');
+        // 1. Today's Sales (completed orders from today)
+        $todaySales = \App\Models\Order::where('status', 'completed')
+            ->whereDate('created_at', now()->toDateString())
+            ->sum('grand_total');
+        
+        // 1b. Previous Sales (completed orders before today)
+        $previousSales = \App\Models\Order::where('status', 'completed')
+            ->whereDate('created_at', '<', now()->toDateString())
+            ->sum('grand_total');
         
         // 2. Total Orders (not cancelled)
         $totalOrdersCount = \App\Models\Order::where('status', '!=', 'cancelled')->count();
@@ -145,7 +152,8 @@ class AdminController extends Controller
         return view('admin.dashboard', [
             'store'            => $store,
             'user'             => Auth::user(),
-            'totalSales'       => $totalSales,
+            'todaySales'       => $todaySales,
+            'previousSales'    => $previousSales,
             'totalOrdersCount' => $totalOrdersCount,
             'teaStock'         => $teaStock,
             'teaMinStock'      => $teaMinStock,

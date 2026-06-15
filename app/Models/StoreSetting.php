@@ -25,8 +25,14 @@ class StoreSetting extends Model
         'busy_mode'              => 'boolean',
     ];
 
+    protected static ?self $instance = null;
+
     public static function current(): self
     {
+        if (self::$instance !== null) {
+            return self::$instance;
+        }
+
         $setting = self::query()->firstOrCreate([], [
             'store_name'             => 'Es Teh Jumbo',
             'store_lat'              => -6.2434,
@@ -57,6 +63,22 @@ class StoreSetting extends Model
             $setting->save();
         }
 
+        self::$instance = $setting;
+
         return $setting;
+    }
+
+    public function save(array $options = [])
+    {
+        $saved = parent::save($options);
+        if ($saved) {
+            self::$instance = null;
+        }
+        return $saved;
+    }
+
+    public static function clearCache(): void
+    {
+        self::$instance = null;
     }
 }

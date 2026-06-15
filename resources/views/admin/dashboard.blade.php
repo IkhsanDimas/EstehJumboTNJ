@@ -7,15 +7,32 @@
     {{-- ════════════════════════════════════════════════════
          OVERVIEW STATS CARDS GRID (Sleek SaaS Style)
          ════════════════════════════════════════════════════ --}}
-    <div x-show="currentMenu !== 'settings'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-        {{-- Card 1: Total Pendapatan --}}
+    <div x-show="currentMenu !== 'settings'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mb-8">
+        {{-- Card 1: Pendapatan Hari Ini --}}
         <div class="bg-white rounded-2xl border border-slate-150 p-5 flex items-center justify-between shadow-xs hover:shadow-md hover:-translate-y-0.5 transition duration-200">
             <div class="space-y-1.5">
-                <span class="text-[10px] font-bold text-slate-450 uppercase tracking-wider">Total Pendapatan</span>
-                <h3 class="font-display font-extrabold text-lg text-slate-900 leading-none">Rp {{ number_format($totalSales, 0, ',', '.') }}</h3>
+                <span class="text-[10px] font-bold text-slate-450 uppercase tracking-wider">Pendapatan Hari Ini</span>
+                <h3 class="font-display font-extrabold text-lg text-slate-900 leading-none">Rp {{ number_format($todaySales, 0, ',', '.') }}</h3>
+                <span class="text-[10px] text-slate-400 font-medium flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Pesanan selesai hari ini
+                </span>
+            </div>
+            <span class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 shadow-xs">
+                <svg class="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </span>
+        </div>
+
+        {{-- Card 2: Pendapatan Sebelumnya --}}
+        <div class="bg-white rounded-2xl border border-slate-150 p-5 flex items-center justify-between shadow-xs hover:shadow-md hover:-translate-y-0.5 transition duration-200">
+            <div class="space-y-1.5">
+                <span class="text-[10px] font-bold text-slate-450 uppercase tracking-wider">Pendapatan Sebelumnya</span>
+                <h3 class="font-display font-extrabold text-lg text-slate-900 leading-none">Rp {{ number_format($previousSales, 0, ',', '.') }}</h3>
                 <span class="text-[10px] text-slate-400 font-medium flex items-center gap-1">
                     <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                    Dari pesanan selesai
+                    Total sebelum hari ini
                 </span>
             </div>
             <span class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shadow-xs">
@@ -25,7 +42,7 @@
             </span>
         </div>
 
-        {{-- Card 2: Total Pesanan --}}
+        {{-- Card 3: Total Pesanan --}}
         <div class="bg-white rounded-2xl border border-slate-150 p-5 flex items-center justify-between shadow-xs hover:shadow-md hover:-translate-y-0.5 transition duration-200">
             <div class="space-y-1.5">
                 <span class="text-[10px] font-bold text-slate-450 uppercase tracking-wider">Total Pesanan</span>
@@ -42,7 +59,7 @@
             </span>
         </div>
 
-        {{-- Card 3: Stok Daun Teh --}}
+        {{-- Card 4: Stok Daun Teh --}}
         @php
             $isTeaLow = $teaStock <= $teaMinStock;
             $teaPercent = min(100, max(0, ($teaStock / 15000) * 100)); // assume 15kg max stock for reference gauge
@@ -62,7 +79,7 @@
             </span>
         </div>
 
-        {{-- Card 4: Bahan Baku Kritis --}}
+        {{-- Card 5: Bahan Baku Kritis --}}
         @php
             $lowIngredientsCount = $ingredients->filter(fn($i) => $i->isLowStock())->count();
         @endphp
@@ -188,7 +205,7 @@
                             <div class="lg:w-[12%] text-left">
                                 <span class="text-[9px] text-slate-400 block uppercase font-bold tracking-wider leading-none mb-1">Metode</span>
                                 <span class="text-xs font-semibold text-slate-700 capitalize">
-                                    {{ $order->payment_method === 'online' ? 'Transfer / QRIS' : 'Tunai (COD)' }}
+                                    {{ $order->payment_method === 'online' ? 'Transfer' : 'Tunai (COD)' }}
                                 </span>
                             </div>
 
@@ -417,7 +434,7 @@
                                 <div class="lg:w-[12%] text-left">
                                     <span class="text-[9px] text-slate-400 block uppercase font-bold tracking-wider leading-none mb-1">Metode</span>
                                     <span class="text-xs font-semibold text-slate-700 capitalize">
-                                    {{ $order->payment_method === 'online' ? 'Transfer / QRIS' : 'Tunai (COD)' }}
+                                    {{ $order->payment_method === 'online' ? 'Transfer' : 'Tunai (COD)' }}
                                     </span>
                                 </div>
 

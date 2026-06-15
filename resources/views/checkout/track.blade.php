@@ -248,7 +248,7 @@
 
                                 <h4 class="font-bold text-slate-900 uppercase tracking-wider mb-1 mt-4">Metode Pembayaran</h4>
                                 <p class="font-semibold text-slate-700">
-                                    {{ $order->payment_method === 'online' ? 'Transfer Bank / QRIS' : 'Bayar di Tempat (COD)' }}
+                                    {{ $order->payment_method === 'online' ? 'Transfer' : 'Bayar di Tempat (COD)' }}
                                 </p>
                             </div>
                         </div>

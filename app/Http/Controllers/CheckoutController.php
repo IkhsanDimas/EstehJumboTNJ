@@ -95,7 +95,7 @@ class CheckoutController extends Controller
             'payment_method' => [
                 'required',
                 'string',
-                'in:cash,online',
+                'in:cash',
             ],
             'schedule_type' => [
                 'required',
@@ -323,7 +323,7 @@ class CheckoutController extends Controller
             }
         }
         
-        $msgText .= "- Pembayaran: " . ($validated['payment_method'] === 'online' ? 'Transfer Bank / QRIS' : 'Bayar di Tempat (COD)') . "\n";
+        $msgText .= "- Pembayaran: Bayar di Tempat (COD)\n";
         $msgText .= "\n";
 
         $msgText .= "Subtotal: Rp " . number_format($subtotal, 0, ',', '.') . "\n";
