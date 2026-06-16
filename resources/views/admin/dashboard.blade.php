@@ -276,8 +276,8 @@
                                         @if ($order->status === 'pending')
                                             <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="w-full">
                                                 @csrf
-                                                <input type="hidden" name="status" value="paid">
-                                                <button type="submit" class="w-full text-left text-xs font-bold px-4 py-2.5 hover:bg-white/10 text-sky-400 transition">Terima Pesanan</button>
+                                                <input type="hidden" name="status" value="preparing">
+                                                <button type="submit" class="w-full text-left text-xs font-bold px-4 py-2.5 hover:bg-white/10 text-sky-400 transition">Terima & Siapkan</button>
                                             </form>
                                             <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="w-full" onsubmit="return confirm('Apakah Anda yakin ingin membatalkan pesanan ini?')">
                                                 @csrf
@@ -301,11 +301,21 @@
                                                 <input type="hidden" name="status" value="ready">
                                                 <button type="submit" class="w-full text-left text-xs font-bold px-4 py-2.5 hover:bg-white/10 text-purple-400 transition">Siap Saji</button>
                                             </form>
+                                            <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="w-full" onsubmit="return confirm('Apakah Anda yakin ingin membatalkan pesanan ini?')">
+                                                @csrf
+                                                <input type="hidden" name="status" value="cancelled">
+                                                <button type="submit" class="w-full text-left text-xs font-bold px-4 py-2.5 hover:bg-white/10 text-rose-450 transition">Batalkan</button>
+                                            </form>
                                         @elseif ($order->status === 'ready')
                                             <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="w-full">
                                                 @csrf
                                                 <input type="hidden" name="status" value="completed">
                                                 <button type="submit" class="w-full text-left text-xs font-bold px-4 py-2.5 hover:bg-white/10 text-emerald-400 transition">Selesaikan</button>
+                                            </form>
+                                            <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="w-full" onsubmit="return confirm('Apakah Anda yakin ingin membatalkan pesanan ini?')">
+                                                @csrf
+                                                <input type="hidden" name="status" value="cancelled">
+                                                <button type="submit" class="w-full text-left text-xs font-bold px-4 py-2.5 hover:bg-white/10 text-rose-450 transition">Batalkan</button>
                                             </form>
                                         @endif
                                     </div>

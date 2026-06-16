@@ -196,13 +196,21 @@ class AdminController extends Controller
                 $order->paid_at = now();
             } elseif ($newStatus === 'completed') {
                 $order->completed_at = now();
+                if (is_null($order->paid_at)) {
+                    $order->paid_at = now();
+                }
 
-                // Deduct stock of ingredients based on recipes of the ordered products
+                // Deduct stock of ingredients based on recipes of the ordered products & toppings
                 foreach ($order->items()->get() as $item) {
                     $product = \App\Models\Product::find($item->product_id);
                     if ($product) {
+                        $metadata = $item->metadata ?? [];
+                        $sizeKey = $metadata['size'] ?? 'reguler';
+                        $sizeMultiplier = ($sizeKey === 'jumbo') ? 1.5 : 1.0;
+
+                        // Deduct product ingredients
                         foreach ($product->recipes()->with('ingredient')->get() as $recipe) {
-                            $totalQtyUsed = (float) $recipe->quantity_per_unit * (int) $item->quantity;
+                            $totalQtyUsed = (float) $recipe->quantity_per_unit * (int) $item->quantity * $sizeMultiplier;
                             
                             $ingredient = $recipe->ingredient;
                             if ($ingredient) {
@@ -214,10 +222,37 @@ class AdminController extends Controller
                                     'ingredient_id' => $ingredient->id,
                                     'type' => 'out',
                                     'quantity' => $totalQtyUsed,
-                                    'reason' => "Pesanan #{$order->order_number} selesai",
+                                    'reason' => "Pesanan #{$order->order_number} selesai (" . ucfirst($sizeKey) . ")",
                                     'reference_type' => \App\Models\Order::class,
                                     'reference_id' => $order->id,
                                 ]);
+                            }
+                        }
+
+                        // Deduct topping ingredients
+                        $toppingsIds = $metadata['toppings'] ?? [];
+                        foreach ($toppingsIds as $toppingId) {
+                            $toppingProduct = \App\Models\Product::find($toppingId);
+                            if ($toppingProduct) {
+                                foreach ($toppingProduct->recipes()->with('ingredient')->get() as $recipe) {
+                                    $toppingQtyUsed = (float) $recipe->quantity_per_unit * (int) $item->quantity;
+                                    
+                                    $ingredient = $recipe->ingredient;
+                                    if ($ingredient) {
+                                        // Deduct current stock
+                                        $ingredient->decrement('current_stock', $toppingQtyUsed);
+
+                                        // Log stock movement
+                                        \App\Models\StockMovement::create([
+                                            'ingredient_id' => $ingredient->id,
+                                            'type' => 'out',
+                                            'quantity' => $toppingQtyUsed,
+                                            'reason' => "Topping {$toppingProduct->name} untuk pesanan #{$order->order_number} selesai",
+                                            'reference_type' => \App\Models\Order::class,
+                                            'reference_id' => $order->id,
+                                        ]);
+                                    }
+                                }
                             }
                         }
                     }

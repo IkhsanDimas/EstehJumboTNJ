@@ -26,10 +26,10 @@ class Order extends Model
 
     /** Allowed transitions per state machine in design.md */
     public const TRANSITIONS = [
-        'pending'    => ['paid', 'cancelled'],
-        'paid'       => ['preparing', 'cancelled'],
-        'preparing'  => ['ready'],
-        'ready'      => ['completed'],
+        'pending'    => ['preparing', 'paid', 'cancelled'],
+        'preparing'  => ['ready', 'cancelled'],
+        'ready'      => ['completed', 'paid', 'cancelled'],
+        'paid'       => ['preparing', 'ready', 'completed', 'cancelled'],
         'completed'  => [],
         'cancelled'  => [],
     ];

@@ -85,6 +85,14 @@ class CartController extends Controller
             return $this->respondError($request, 'Stok tidak mencukupi');
         }
 
+        // Validate topping ingredient availability
+        foreach ($toppings as $topping) {
+            $toppingProduct = Product::find($topping['id']);
+            if (!$toppingProduct || !$toppingProduct->isAvailable($qty)) {
+                return $this->respondError($request, 'Stok topping "' . ($topping['name'] ?? 'Topping') . '" tidak mencukupi');
+            }
+        }
+
         // Compose key — include notes hash so different notes => different entry
         $toppingIdSig = collect($toppings)->pluck('id')->sort()->implode('-');
         $notesSig     = $notes !== '' ? substr(md5($notes), 0, 6) : '';

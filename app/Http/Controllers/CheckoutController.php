@@ -85,10 +85,12 @@ class CheckoutController extends Controller
                 'max:1000',
             ],
             'latitude' => [
+                'required_if:delivery_type,delivery',
                 'nullable',
                 'numeric',
             ],
             'longitude' => [
+                'required_if:delivery_type,delivery',
                 'nullable',
                 'numeric',
             ],
@@ -113,6 +115,15 @@ class CheckoutController extends Controller
                 'string',
             ],
         ]);
+
+        if ($validated['delivery_type'] === 'delivery') {
+            if (empty($validated['latitude']) || empty($validated['longitude'])) {
+                return redirect()
+                    ->back()
+                    ->withInput()
+                    ->withErrors(['delivery_type' => 'Lokasi pinpoint pada peta wajib ditandai untuk metode pengiriman ke alamat.']);
+            }
+        }
 
         // =========================
         // GET CART
@@ -157,10 +168,10 @@ class CheckoutController extends Controller
             if (!empty($item['toppings'])) {
                 foreach ($item['toppings'] as $topping) {
                     $toppingProduct = \App\Models\Product::find($topping['id']);
-                    if (!$toppingProduct || !$toppingProduct->is_available) {
+                    if (!$toppingProduct || !$toppingProduct->is_available || !$toppingProduct->isAvailable($item['quantity'])) {
                         return redirect()
                             ->route('cart.index')
-                            ->with('error', 'Topping "' . ($topping['name'] ?? '') . '" saat ini tidak tersedia.');
+                            ->with('error', 'Topping "' . ($topping['name'] ?? '') . '" saat ini tidak tersedia atau stok tidak mencukupi.');
                     }
                     $toppingsTotal += (int) $toppingProduct->price;
                 }
@@ -169,18 +180,56 @@ class CheckoutController extends Controller
             // Recalculate price based on current DB values
             $recalculatedUnitPrice = (int) $product->price + $sizeModifier + $toppingsTotal;
 
-            // Perform availability check based on recipe
-            if (!$product->isAvailable($item['quantity'])) {
-                return redirect()
-                    ->route('cart.index')
-                    ->with('error', 'Stok bahan baku untuk menu "' . $product->name . '" tidak mencukupi untuk jumlah yang dipesan.');
-            }
-
             $subtotal += $recalculatedUnitPrice * (int) $item['quantity'];
 
             // Update cart item price in session snapshot
             $cart[$key]['price'] = $recalculatedUnitPrice;
             $cart[$key]['unit_price'] = $recalculatedUnitPrice;
+        }
+
+        // =========================
+        // AGGREGATE INGREDIENT STOCK CHECK
+        // =========================
+        $aggregatedIngredients = [];
+        foreach ($cart as $key => $item) {
+            $product = \App\Models\Product::find($item['product_id'] ?? $item['id']);
+            if (!$product) continue;
+
+            $sizeKey = $item['size'] ?? 'reguler';
+            $sizeMultiplier = ($sizeKey === 'jumbo') ? 1.5 : 1.0;
+
+            // Calculate main product ingredients
+            foreach ($product->recipes()->with('ingredient')->get() as $recipe) {
+                if (!$recipe->ingredient) continue;
+                $needed = (float) $recipe->quantity_per_unit * (int) $item['quantity'] * $sizeMultiplier;
+                $ingId = $recipe->ingredient_id;
+                $aggregatedIngredients[$ingId] = ($aggregatedIngredients[$ingId] ?? 0) + $needed;
+            }
+
+            // Calculate topping ingredients
+            if (!empty($item['toppings'])) {
+                foreach ($item['toppings'] as $topping) {
+                    $toppingProduct = \App\Models\Product::find($topping['id']);
+                    if (!$toppingProduct) continue;
+
+                    foreach ($toppingProduct->recipes()->with('ingredient')->get() as $recipe) {
+                        if (!$recipe->ingredient) continue;
+                        $needed = (float) $recipe->quantity_per_unit * (int) $item['quantity'];
+                        $ingId = $recipe->ingredient_id;
+                        $aggregatedIngredients[$ingId] = ($aggregatedIngredients[$ingId] ?? 0) + $needed;
+                    }
+                }
+            }
+        }
+
+        // Validate aggregate stock levels
+        foreach ($aggregatedIngredients as $ingId => $totalNeeded) {
+            $ingredient = \App\Models\Ingredient::find($ingId);
+            if (!$ingredient || (float) $ingredient->current_stock < $totalNeeded) {
+                return redirect()
+                    ->route('cart.index')
+                    ->with('error', 'Stok bahan baku (' . ($ingredient ? $ingredient->name : 'Bahan') . ') tidak mencukupi untuk memenuhi seluruh isi keranjang Anda.');
+            }
         }
 
         // =========================
@@ -268,6 +317,11 @@ class CheckoutController extends Controller
                     $nameSnapshot .= " [Catatan: {$item['notes']}]";
                 }
 
+                $toppingsIds = [];
+                if (!empty($item['toppings'])) {
+                    $toppingsIds = collect($item['toppings'])->pluck('id')->all();
+                }
+
                 OrderItem::create([
                     'order_id' => $order->id,
                     'product_id' => $item['id'],
@@ -278,6 +332,10 @@ class CheckoutController extends Controller
                         (int) $item['price'] *
                         (int) $item['quantity']
                     ),
+                    'metadata' => [
+                        'size' => $item['size'] ?? 'reguler',
+                        'toppings' => $toppingsIds,
+                    ],
                 ]);
             }
 

@@ -150,7 +150,8 @@ class AdminProductCRUDTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertViewHasAll([
-            'totalSales',
+            'todaySales',
+            'previousSales',
             'totalOrdersCount',
             'teaStock',
             'teaMinStock',
@@ -209,6 +210,48 @@ class AdminProductCRUDTest extends TestCase
             ]);
         $response->assertRedirect();
         $this->assertEquals('completed', $order->fresh()->status);
+    }
+
+    public function test_admin_can_update_order_status_sequence_cod(): void
+    {
+        $order = \App\Models\Order::create([
+            'order_number' => 'ETJ-TEST-9999',
+            'type' => 'online_pickup',
+            'status' => 'pending',
+            'subtotal' => 15000,
+            'ongkir' => 0,
+            'grand_total' => 15000,
+            'payment_method' => 'cash',
+        ]);
+
+        // Sequence: pending -> preparing -> ready -> completed
+        
+        // 1. pending -> preparing
+        $response = $this->actingAs($this->owner)
+            ->post(route('admin.orders.update-status', $order), [
+                'status' => 'preparing'
+            ]);
+        $response->assertRedirect();
+        $this->assertEquals('preparing', $order->fresh()->status);
+
+        // 2. preparing -> ready
+        $response = $this->actingAs($this->owner)
+            ->post(route('admin.orders.update-status', $order), [
+                'status' => 'ready'
+            ]);
+        $response->assertRedirect();
+        $this->assertEquals('ready', $order->fresh()->status);
+
+        // 3. ready -> completed (should auto-fill paid_at)
+        $response = $this->actingAs($this->owner)
+            ->post(route('admin.orders.update-status', $order), [
+                'status' => 'completed'
+            ]);
+        $response->assertRedirect();
+        
+        $freshOrder = $order->fresh();
+        $this->assertEquals('completed', $freshOrder->status);
+        $this->assertNotNull($freshOrder->paid_at);
     }
 
     public function test_admin_cannot_transition_to_invalid_status(): void

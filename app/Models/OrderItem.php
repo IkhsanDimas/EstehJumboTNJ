@@ -9,13 +9,14 @@ class OrderItem extends Model
 {
     protected $fillable = [
         'order_id', 'product_id', 'product_name_snapshot',
-        'price_snapshot', 'quantity', 'line_total',
+        'price_snapshot', 'quantity', 'line_total', 'metadata',
     ];
 
     protected $casts = [
         'price_snapshot' => 'decimal:2',
         'line_total'     => 'decimal:2',
         'quantity'       => 'integer',
+        'metadata'       => 'array',
     ];
 
     public function order(): BelongsTo
