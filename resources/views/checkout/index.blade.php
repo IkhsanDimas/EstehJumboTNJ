@@ -297,10 +297,11 @@
                     <div class="flex items-center gap-3 mb-6">
                         <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-100 to-sky-50 text-sky-600 grid place-items-center">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="1" y="3" width="15" height="13" rx="2" ry="2"/>
-                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-                                <circle cx="5.5" cy="18.5" r="2.5"/>
-                                <circle cx="18.5" cy="18.5" r="2.5"/>
+                                <path d="m18 14-1-3" />
+                                <path d="m3 9 6 2a2 2 0 0 1 2-2h2a2 2 0 0 1 1.99 1.81" />
+                                <path d="M8 17h3a1 1 0 0 0 1-1 6 6 0 0 1 6-6 1 1 0 0 0 1-1v-.75A5 5 0 0 0 17 5" />
+                                <circle cx="19" cy="17" r="3" />
+                                <circle cx="5" cy="17" r="3" />
                             </svg>
                         </span>
                         <div>
