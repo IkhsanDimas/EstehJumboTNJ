@@ -70,7 +70,7 @@
             </span>
             <div class="flex flex-col">
                 <span class="font-display font-extrabold text-[15px] tracking-tight text-white leading-none">estehjumbo</span>
-                <span class="font-display font-bold text-[10px] text-blue-400 tracking-wider uppercase mt-1">TNJ Bekasi</span>
+                <span class="font-display font-bold text-[10px] text-blue-400 tracking-wider uppercase mt-1">TNJ</span>
             </div>
         </div>
 
