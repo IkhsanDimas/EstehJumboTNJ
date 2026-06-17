@@ -141,78 +141,56 @@
     {{-- ════════════════════════════════════════════════════
          CERITA  ·  Premium Minimalist Showcase (Clean & Modern Layout)
      ════════════════════════════════════════════════════ --}}
-    <section id="tentang" class="relative overflow-hidden bg-slate-50/50 py-20 md:py-24 border-y border-slate-100">
-        {{-- Decorative ambient background elements --}}
-        <div aria-hidden="true" class="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-amber-100/30 blur-3xl"></div>
-        <div aria-hidden="true" class="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-sky-100/40 blur-3xl"></div>
-        <div aria-hidden="true" class="absolute inset-0 opacity-[0.015]"
-             style="background-image: radial-gradient(circle at 1px 1px, #0f172a 1px, transparent 0); background-size: 32px 32px;"></div>
-
-        <div class="relative max-w-5xl mx-auto px-6 grid md:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <section id="tentang" class="relative overflow-hidden bg-white py-20 md:py-24 border-y border-slate-100">
+        <div class="relative max-w-5xl mx-auto px-6 grid md:grid-cols-12 gap-10 md:gap-12 items-center">
             
-            {{-- Image Column (with premium layered frame depth) --}}
-            <div class="md:col-span-5 relative">
-                {{-- Behind-card rotated background layer --}}
-                <div aria-hidden="true" class="absolute inset-0 bg-amber-100/60 rounded-[2rem] transform rotate-3 scale-102"></div>
-                
-                {{-- Main Image Card --}}
-                <div class="relative z-10 rounded-[2rem] overflow-hidden shadow-xl border border-slate-200/60 bg-white p-3 transition-transform duration-500 hover:rotate-0 hover:scale-[1.01]">
-                    <img src="{{ asset($store->about_image_path) }}" alt="Tentang Es Teh Jumbo" class="w-full h-auto object-cover rounded-[1.5rem]">
+            {{-- Image Column (Clean shadow, no rotated layers) --}}
+            <div class="md:col-span-5 flex justify-center">
+                <div class="relative w-full max-w-sm md:max-w-none rounded-2xl overflow-hidden shadow-md border border-slate-200/50 bg-white p-2">
+                    <img src="{{ asset($store->about_image_path) }}" alt="Tentang Es Teh Jumbo" class="w-full h-auto object-cover rounded-xl">
                     
-                    {{-- Floating badge overlay --}}
-                    <div class="absolute bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/10 flex items-center gap-2 shadow-lg">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                        <p class="text-[10px] font-bold text-white uppercase tracking-wider">📍 Booth Permata Galaxy, Bekasi</p>
+                    {{-- Clean overlay --}}
+                    <div class="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur px-3.5 py-2 rounded-lg border border-white/10 flex items-center gap-2 shadow animate-fade-in">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+                        <p class="text-[9px] font-bold text-white uppercase tracking-wider">Booth Permata Galaxy, Bekasi</p>
                     </div>
                 </div>
             </div>
 
             {{-- Content Column --}}
-            <div class="md:col-span-7 space-y-6">
+            <div class="md:col-span-7 space-y-5 text-left">
                 {{-- Tag Badge --}}
-                <div class="inline-flex items-center gap-2 bg-amber-100/80 border border-amber-200/50 text-amber-900 text-[10px] font-extrabold tracking-widest uppercase px-3.5 py-1.5 rounded-full shadow-sm">
-                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                <div class="inline-flex items-center gap-1.5 bg-sky-50 border border-sky-100 text-sky-700 text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
                     Kisah & Filosofi
                 </div>
 
-                {{-- Section Title --}}
+                {{-- Section Title & Clean Divider --}}
                 <div class="space-y-3">
-                    <h2 class="font-display font-extrabold text-slate-800 text-3xl md:text-4xl lg:text-[2.65rem] leading-[1.15] tracking-tight">
+                    <h2 class="font-display font-extrabold text-slate-800 text-3xl md:text-4xl leading-tight tracking-tight">
                         Mulai dari satu gelas<br class="hidden md:inline"> untuk tetangga sebelah.
                     </h2>
-                    <div class="w-16 h-1 bg-amber-500 rounded-full"></div>
+                    <div class="w-12 h-1 bg-sky-500 rounded-full"></div>
                 </div>
 
                 {{-- Description --}}
-                <p class="text-slate-500 text-sm md:text-[15px] leading-relaxed font-medium">
+                <p class="text-slate-500 text-sm md:text-base leading-relaxed font-medium">
                     {{ $store->about_text }}
                 </p>
 
-                {{-- Stats Grid (More clean and structured) --}}
-                <div class="grid grid-cols-3 gap-4 pt-4">
+                {{-- Stats Grid (Ultra Clean) --}}
+                <div class="grid grid-cols-3 gap-4 pt-2">
                     @php
                         $stats = [
-                            [
-                                'val' => '30+', 
-                                'label' => 'Varian menu', 
-                                'bg' => 'bg-amber-50/70 border-amber-100/80 text-amber-700',
-                            ],
-                            [
-                                'val' => '5K+', 
-                                'label' => 'Pelanggan setia', 
-                                'bg' => 'bg-sky-50/70 border-sky-100/80 text-sky-700',
-                            ],
-                            [
-                                'val' => '4.9★', 
-                                'label' => 'Rata-rata rating', 
-                                'bg' => 'bg-emerald-50/70 border-emerald-100/80 text-emerald-700',
-                            ],
+                            ['val' => '30+', 'label' => 'Varian menu', 'color' => 'text-sky-600', 'bg' => 'bg-sky-50 border-sky-100/60'],
+                            ['val' => '5K+', 'label' => 'Pelanggan setia', 'color' => 'text-sky-600', 'bg' => 'bg-sky-50 border-sky-100/60'],
+                            ['val' => '4.9★', 'label' => 'Rating ulasan', 'color' => 'text-emerald-600', 'bg' => 'bg-emerald-50 border-emerald-100/60'],
                         ];
                     @endphp
                     @foreach ($stats as $s)
-                        <div class="bg-white rounded-2xl p-4.5 border border-slate-200/60 text-center shadow-sm hover:shadow-md transition-all duration-300">
+                        <div class="bg-white rounded-xl p-4 border border-slate-100 text-center shadow-xs">
                             <p class="font-display font-extrabold text-slate-800 text-2xl md:text-3xl tracking-tight">{{ $s['val'] }}</p>
-                            <span class="inline-block mt-1.5 px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider {{ $s['bg'] }} border">
+                            <span class="inline-block mt-1.5 px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider {{ $s['bg'] }} {{ $s['color'] }} border">
                                 {{ $s['label'] }}
                             </span>
                         </div>
