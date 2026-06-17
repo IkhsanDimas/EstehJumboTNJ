@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\StoreSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -407,5 +408,39 @@ class AdminController extends Controller
         ]);
 
         return back()->with('success', 'Pengaturan bahan ' . $ingredient->name . ' berhasil diperbarui!');
+    }
+
+    /**
+     * CHANGE PASSWORD FOR ADMIN
+     */
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required|string',
+            'new_password'     => 'required|string|min:8|confirmed',
+        ], [
+            'current_password.required' => 'Password saat ini wajib diisi.',
+            'new_password.required'     => 'Password baru wajib diisi.',
+            'new_password.min'          => 'Password baru minimal harus 8 karakter.',
+            'new_password.confirmed'    => 'Konfirmasi password baru tidak cocok.',
+        ]);
+
+        $user = Auth::user();
+
+        // Check if current password matches
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors([
+                'current_password' => 'Password saat ini yang Anda masukkan salah.',
+            ]);
+        }
+
+        // Update password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        // Refresh session auth to keep user logged in
+        Auth::login($user);
+
+        return back()->with('success', 'Password administrator berhasil diperbarui!');
     }
 }

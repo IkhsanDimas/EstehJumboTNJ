@@ -661,6 +661,57 @@
                 </div>
             </form>
         </div>
+
+        <!-- Change Password Card (NEW) -->
+        <div class="bg-white rounded-3xl border border-slate-150 shadow-xs p-6 md:p-8 mt-6">
+            <div class="mb-6 pb-4 border-b border-slate-150">
+                <h3 class="font-display font-extrabold text-slate-900 text-lg">Keamanan Akun</h3>
+                <p class="text-xs text-slate-450 mt-1">Ubah kata sandi administrator akun pemilik toko Anda demi menjaga keamanan.</p>
+            </div>
+
+            <form action="{{ route('admin.change-password') }}" method="POST" class="space-y-6">
+                @csrf
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {{-- Current Password --}}
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Password Saat Ini</label>
+                        <input type="password" name="current_password" required 
+                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition"
+                               placeholder="••••••••">
+                        @error('current_password')
+                            <p class="text-[10px] text-rose-500 mt-1.5 font-semibold">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    {{-- New Password --}}
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Password Baru</label>
+                        <input type="password" name="new_password" required 
+                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition"
+                               placeholder="••••••••">
+                        @error('new_password')
+                            <p class="text-[10px] text-rose-500 mt-1.5 font-semibold">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    {{-- Confirm New Password --}}
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Konfirmasi Password Baru</label>
+                        <input type="password" name="new_password_confirmation" required 
+                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition"
+                               placeholder="••••••••">
+                    </div>
+                </div>
+
+                {{-- Submit --}}
+                <div class="pt-4 border-t border-slate-150 flex justify-end">
+                    <button type="submit" class="bg-slate-900 hover:bg-black text-white font-display font-bold text-xs tracking-wider uppercase px-8 py-3.5 rounded-xl transition shadow-md shadow-slate-900/10 hover:-translate-y-0.5 active:translate-y-0">
+                        Perbarui Password
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 
     {{-- ════════════════════════════════════════════════════

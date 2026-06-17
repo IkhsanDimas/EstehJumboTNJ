@@ -287,4 +287,72 @@ class AdminProductCRUDTest extends TestCase
             'count'
         ]);
     }
+
+    public function test_guest_cannot_change_admin_password(): void
+    {
+        $response = $this->post(route('admin.change-password'), [
+            'current_password' => 'password',
+            'new_password' => 'newpassword123',
+            'new_password_confirmation' => 'newpassword123',
+        ]);
+
+        $response->assertRedirect('/admin/login');
+    }
+
+    public function test_admin_cannot_change_password_with_incorrect_current_password(): void
+    {
+        $response = $this->actingAs($this->owner)
+            ->post(route('admin.change-password'), [
+                'current_password' => 'wrongpassword',
+                'new_password' => 'newpassword123',
+                'new_password_confirmation' => 'newpassword123',
+            ]);
+
+        $response->assertSessionHasErrors('current_password');
+        $this->assertTrue(\Illuminate\Support\Facades\Hash::check('password', $this->owner->fresh()->password));
+    }
+
+    public function test_admin_cannot_change_password_with_short_new_password(): void
+    {
+        $response = $this->actingAs($this->owner)
+            ->post(route('admin.change-password'), [
+                'current_password' => 'password',
+                'new_password' => 'short',
+                'new_password_confirmation' => 'short',
+            ]);
+
+        $response->assertSessionHasErrors('new_password');
+        $this->assertTrue(\Illuminate\Support\Facades\Hash::check('password', $this->owner->fresh()->password));
+    }
+
+    public function test_admin_cannot_change_password_with_mismatched_confirmation(): void
+    {
+        $response = $this->actingAs($this->owner)
+            ->post(route('admin.change-password'), [
+                'current_password' => 'password',
+                'new_password' => 'newpassword123',
+                'new_password_confirmation' => 'mismatched123',
+            ]);
+
+        $response->assertSessionHasErrors('new_password');
+        $this->assertTrue(\Illuminate\Support\Facades\Hash::check('password', $this->owner->fresh()->password));
+    }
+
+    public function test_admin_can_change_password_successfully(): void
+    {
+        $response = $this->actingAs($this->owner)
+            ->post(route('admin.change-password'), [
+                'current_password' => 'password',
+                'new_password' => 'newpassword123',
+                'new_password_confirmation' => 'newpassword123',
+            ]);
+
+        $response->assertRedirect();
+        $response->assertSessionHasNoErrors();
+        $response->assertSessionHas('success');
+
+        $this->assertTrue(\Illuminate\Support\Facades\Hash::check('newpassword123', $this->owner->fresh()->password));
+        $this->assertAuthenticatedAs($this->owner);
+    }
 }
+

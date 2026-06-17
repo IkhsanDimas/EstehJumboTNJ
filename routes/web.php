@@ -32,6 +32,7 @@ Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.lo
 Route::middleware(['auth', \App\Http\Middleware\EnsureIsAdmin::class])->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::post('/settings/visuals', [AdminController::class, 'updateVisualSettings'])->name('admin.settings.visuals');
+    Route::post('/change-password', [AdminController::class, 'changePassword'])->name('admin.change-password');
     
     // Product CRUD
     Route::resource('/products', AdminProductController::class)->names([
