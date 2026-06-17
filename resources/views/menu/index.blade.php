@@ -139,48 +139,82 @@
     </section>
 
     {{-- ════════════════════════════════════════════════════
-         CERITA  ·  Elegant Warm Sand/Cream Section (No curves, no bobbing)
+         CERITA  ·  Premium Minimalist Showcase (Clean & Modern Layout)
      ════════════════════════════════════════════════════ --}}
-    <section id="tentang" class="relative overflow-hidden bg-stone-50 border-y border-stone-200/60">
-        {{-- Soft subtle dot pattern --}}
-        <div aria-hidden="true" class="absolute inset-0 opacity-[0.03]"
-             style="background-image: radial-gradient(circle at 1px 1px, #1c1917 1px, transparent 0); background-size: 40px 40px;"></div>
+    <section id="tentang" class="relative overflow-hidden bg-slate-50/50 py-20 md:py-24 border-y border-slate-100">
+        {{-- Decorative ambient background elements --}}
+        <div aria-hidden="true" class="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-amber-100/30 blur-3xl"></div>
+        <div aria-hidden="true" class="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-sky-100/40 blur-3xl"></div>
+        <div aria-hidden="true" class="absolute inset-0 opacity-[0.015]"
+             style="background-image: radial-gradient(circle at 1px 1px, #0f172a 1px, transparent 0); background-size: 32px 32px;"></div>
 
-        <div class="relative max-w-5xl mx-auto px-6 py-20 md:py-24 grid md:grid-cols-12 gap-10 lg:gap-14 items-center">
-            {{-- Image Column --}}
-            <div class="md:col-span-5 relative flex items-center justify-center">
-                {{-- Clean image container with rounded corners and subtle shadow --}}
-                <div class="w-full max-w-sm md:max-w-none rounded-3xl overflow-hidden shadow-lg border border-stone-200 bg-white p-2">
-                    <img src="{{ asset($store->about_image_path) }}" alt="Tentang Es Teh Jumbo" class="w-full h-auto object-cover rounded-2xl">
+        <div class="relative max-w-5xl mx-auto px-6 grid md:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {{-- Image Column (with premium layered frame depth) --}}
+            <div class="md:col-span-5 relative">
+                {{-- Behind-card rotated background layer --}}
+                <div aria-hidden="true" class="absolute inset-0 bg-amber-100/60 rounded-[2rem] transform rotate-3 scale-102"></div>
+                
+                {{-- Main Image Card --}}
+                <div class="relative z-10 rounded-[2rem] overflow-hidden shadow-xl border border-slate-200/60 bg-white p-3 transition-transform duration-500 hover:rotate-0 hover:scale-[1.01]">
+                    <img src="{{ asset($store->about_image_path) }}" alt="Tentang Es Teh Jumbo" class="w-full h-auto object-cover rounded-[1.5rem]">
+                    
+                    {{-- Floating badge overlay --}}
+                    <div class="absolute bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/10 flex items-center gap-2 shadow-lg">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <p class="text-[10px] font-bold text-white uppercase tracking-wider">📍 Booth Permata Galaxy, Bekasi</p>
+                    </div>
                 </div>
             </div>
 
             {{-- Content Column --}}
-            <div class="md:col-span-7 text-left">
-                <span class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-800 text-[10px] font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full">
+            <div class="md:col-span-7 space-y-6">
+                {{-- Tag Badge --}}
+                <div class="inline-flex items-center gap-2 bg-amber-100/80 border border-amber-200/50 text-amber-900 text-[10px] font-extrabold tracking-widest uppercase px-3.5 py-1.5 rounded-full shadow-sm">
                     <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                    Cerita Kami
-                </span>
-                <h2 class="mt-4 font-display font-extrabold text-stone-900 text-3xl md:text-4xl leading-tight tracking-tight">
-                    Mulai dari satu gelas<br class="hidden md:inline"> untuk tetangga sebelah.
-                </h2>
-                <p class="mt-4 text-stone-600 text-sm md:text-base leading-relaxed">
+                    Kisah & Filosofi
+                </div>
+
+                {{-- Section Title --}}
+                <div class="space-y-3">
+                    <h2 class="font-display font-extrabold text-slate-800 text-3xl md:text-4xl lg:text-[2.65rem] leading-[1.15] tracking-tight">
+                        Mulai dari satu gelas<br class="hidden md:inline"> untuk tetangga sebelah.
+                    </h2>
+                    <div class="w-16 h-1 bg-amber-500 rounded-full"></div>
+                </div>
+
+                {{-- Description --}}
+                <p class="text-slate-500 text-sm md:text-[15px] leading-relaxed font-medium">
                     {{ $store->about_text }}
                 </p>
 
-                {{-- Stats --}}
-                <div class="mt-8 grid grid-cols-3 gap-4">
+                {{-- Stats Grid (More clean and structured) --}}
+                <div class="grid grid-cols-3 gap-4 pt-4">
                     @php
                         $stats = [
-                            ['val' => '30+', 'label' => 'Varian menu'],
-                            ['val' => '5K+', 'label' => 'Pelanggan setia'],
-                            ['val' => '4.9★','label' => 'Rata-rata rating'],
+                            [
+                                'val' => '30+', 
+                                'label' => 'Varian menu', 
+                                'bg' => 'bg-amber-50/70 border-amber-100/80 text-amber-700',
+                            ],
+                            [
+                                'val' => '5K+', 
+                                'label' => 'Pelanggan setia', 
+                                'bg' => 'bg-sky-50/70 border-sky-100/80 text-sky-700',
+                            ],
+                            [
+                                'val' => '4.9★', 
+                                'label' => 'Rata-rata rating', 
+                                'bg' => 'bg-emerald-50/70 border-emerald-100/80 text-emerald-700',
+                            ],
                         ];
                     @endphp
                     @foreach ($stats as $s)
-                        <div class="bg-white rounded-2xl p-4 border border-stone-200/80 text-center shadow-sm hover:shadow transition-shadow duration-300">
-                            <p class="font-display font-extrabold text-stone-900 text-2xl md:text-3xl tracking-tight">{{ $s['val'] }}</p>
-                            <p class="text-[10px] text-stone-500 font-bold mt-1 uppercase tracking-wider">{{ $s['label'] }}</p>
+                        <div class="bg-white rounded-2xl p-4.5 border border-slate-200/60 text-center shadow-sm hover:shadow-md transition-all duration-300">
+                            <p class="font-display font-extrabold text-slate-800 text-2xl md:text-3xl tracking-tight">{{ $s['val'] }}</p>
+                            <span class="inline-block mt-1.5 px-2.5 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider {{ $s['bg'] }} border">
+                                {{ $s['label'] }}
+                            </span>
                         </div>
                     @endforeach
                 </div>
