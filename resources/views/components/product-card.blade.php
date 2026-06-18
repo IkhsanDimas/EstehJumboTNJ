@@ -49,17 +49,17 @@
 
         {{-- ─── INFO ─── --}}
         <div class="flex flex-col flex-1 px-4 pb-4 pt-1">
-            <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-sky-600/80">{{ $catName }}</p>
+            <p class="text-[10px] font-medium uppercase tracking-wider text-slate-400">{{ $catName }}</p>
             <a href="{{ $detailUrl }}" class="block mt-1">
-                <h3 class="font-display font-bold text-slate-800 text-[16px] leading-snug truncate group-hover:text-sky-600 transition-colors">
+                <h3 class="font-display font-semibold text-slate-800 text-[15px] leading-snug truncate group-hover:text-sky-600 transition-colors">
                     {{ $product->name }}
                 </h3>
             </a>
 
             <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
                 <p class="font-display text-slate-900 leading-none">
-                    <span class="text-[10px] font-bold text-slate-400 align-middle mr-0.5">Rp</span>
-                    <span class="text-lg font-extrabold tracking-tight text-slate-900">{{ $priceFormatted }}</span>
+                    <span class="text-[10px] font-semibold text-slate-400 align-middle mr-0.5">Rp</span>
+                    <span class="text-lg font-bold tracking-tight text-slate-900">{{ $priceFormatted }}</span>
                 </p>
 
                 @if(\App\Models\StoreSetting::current()->is_open)
