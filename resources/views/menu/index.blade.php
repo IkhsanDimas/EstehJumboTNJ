@@ -141,15 +141,14 @@
     {{-- ════════════════════════════════════════════════════
          CERITA  ·  bright orange with creative curves
     ════════════════════════════════════════════════════ --}}
-    <section id="tentang" class="relative overflow-hidden bg-amber-50/40 py-20 md:py-24 border-y border-amber-100/50">
-        {{-- Very soft ambient background glow --}}
-        <div aria-hidden="true" class="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-amber-100/20 blur-3xl"></div>
-
-        <div class="relative max-w-5xl mx-auto px-6 grid md:grid-cols-12 gap-10 md:gap-12 lg:gap-16 items-center">
+    <section id="tentang" class="relative overflow-hidden"
+             style="background: linear-gradient(135deg, #ea580c 0%, #f97316 35%, #fb923c 70%, #fdba74 100%); border-y: 1px solid rgba(255, 255, 255, 0.08);">
+        
+        <div class="relative max-w-5xl mx-auto px-6 py-20 md:py-24 grid md:grid-cols-12 gap-10 md:gap-12 lg:gap-16 items-center">
             
             {{-- Image Column (Clean frame with standardized height for custom uploads) --}}
             <div class="md:col-span-5 flex justify-center w-full">
-                <div class="relative w-full max-w-sm md:max-w-none rounded-[2rem] border border-amber-100/80 bg-white p-3 shadow-md">
+                <div class="relative w-full max-w-sm md:max-w-none rounded-[2rem] border border-white/10 bg-white p-3 shadow-xl">
                     <img src="{{ asset($store->about_image_path) }}" 
                          alt="Tentang Es Teh Jumbo" 
                          class="w-full h-[280px] sm:h-[340px] md:h-[380px] object-cover rounded-[1.5rem]">
@@ -165,21 +164,21 @@
             {{-- Content Column --}}
             <div class="md:col-span-7 space-y-5 text-left">
                 {{-- Tag Badge --}}
-                <div class="inline-flex items-center gap-1.5 bg-amber-100/70 border border-amber-200/50 text-amber-800 text-[10px] font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full">
-                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                    Kisah & Filosofi
+                <div class="inline-flex items-center gap-1.5 bg-white/15 text-orange-100 text-[10px] font-bold tracking-wider uppercase px-4 py-1.5 rounded-full ring-1 ring-white/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-300"></span>
+                    Cerita Kami
                 </div>
 
                 {{-- Section Title & Divider --}}
                 <div class="space-y-3">
-                    <h2 class="font-display font-extrabold text-slate-800 text-3xl md:text-4xl leading-tight tracking-tight">
+                    <h2 class="font-display font-extrabold text-white text-3xl md:text-4xl leading-tight tracking-tight">
                         Mulai dari satu gelas<br class="hidden md:inline"> untuk tetangga sebelah.
                     </h2>
-                    <div class="w-12 h-1 bg-amber-500 rounded-full"></div>
+                    <div class="w-12 h-1 bg-white/30 rounded-full"></div>
                 </div>
 
                 {{-- Description --}}
-                <p class="text-slate-600 text-sm md:text-base leading-relaxed font-medium">
+                <p class="text-orange-100/80 text-sm md:text-base leading-relaxed font-medium">
                     {{ $store->about_text }}
                 </p>
 
@@ -187,17 +186,15 @@
                 <div class="grid grid-cols-3 gap-4 pt-2">
                     @php
                         $stats = [
-                            ['val' => '30+', 'label' => 'Varian menu', 'color' => 'text-amber-700', 'bg' => 'bg-amber-50 border-amber-100/50'],
-                            ['val' => '5K+', 'label' => 'Pelanggan setia', 'color' => 'text-amber-700', 'bg' => 'bg-amber-50 border-amber-100/50'],
-                            ['val' => '4.9★', 'label' => 'Rating ulasan', 'color' => 'text-emerald-700', 'bg' => 'bg-emerald-50 border-emerald-100/50'],
+                            ['val' => '30+', 'label' => 'Varian menu'],
+                            ['val' => '5K+', 'label' => 'Pelanggan setia'],
+                            ['val' => '4.9★', 'label' => 'Rating ulasan'],
                         ];
                     @endphp
                     @foreach ($stats as $s)
-                        <div class="bg-white rounded-2xl p-4 border border-amber-100/60 text-center shadow-xs">
-                            <p class="font-display font-extrabold text-slate-800 text-2xl md:text-3xl tracking-tight">{{ $s['val'] }}</p>
-                            <span class="inline-block mt-1.5 px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider {{ $s['bg'] }} {{ $s['color'] }} border">
-                                {{ $s['label'] }}
-                            </span>
+                        <div class="bg-white/10 rounded-2xl p-5 ring-1 ring-white/15 text-center">
+                            <p class="font-display font-extrabold text-white text-2xl md:text-3xl tracking-tight">{{ $s['val'] }}</p>
+                            <p class="text-[10px] text-orange-200/70 font-semibold mt-2 uppercase tracking-wider">{{ $s['label'] }}</p>
                         </div>
                     @endforeach
                 </div>
