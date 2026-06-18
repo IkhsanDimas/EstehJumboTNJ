@@ -139,60 +139,78 @@
     </section>
 
     {{-- ════════════════════════════════════════════════════
-         CERITA  ·  Premium Minimalist Showcase (Clean & Modern Layout)
-     ════════════════════════════════════════════════════ --}}
-    <section id="tentang" class="relative overflow-hidden bg-white py-20 md:py-24 border-y border-slate-100">
-        <div class="relative max-w-5xl mx-auto px-6 grid md:grid-cols-12 gap-10 md:gap-12 items-center">
-            
-            {{-- Image Column (Clean shadow, no rotated layers) --}}
-            <div class="md:col-span-5 flex justify-center">
-                <div class="relative w-full max-w-sm md:max-w-none rounded-2xl overflow-hidden shadow-md border border-slate-200/50 bg-white p-2">
-                    <img src="{{ asset($store->about_image_path) }}" alt="Tentang Es Teh Jumbo" class="w-full h-auto object-cover rounded-xl">
-                    
-                    {{-- Clean overlay --}}
-                    <div class="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur px-3.5 py-2 rounded-lg border border-white/10 flex items-center gap-2 shadow animate-fade-in">
-                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
-                        <p class="text-[9px] font-bold text-white uppercase tracking-wider">Booth Permata Galaxy, Bekasi</p>
-                    </div>
+         CERITA  ·  bright orange with creative curves
+    ════════════════════════════════════════════════════ --}}
+    <section id="tentang" class="relative overflow-hidden"
+             style="background: linear-gradient(135deg, #ea580c 0%, #f97316 35%, #fb923c 70%, #fdba74 100%);">
+
+        {{-- ═══ Creative decorative curves ═══ --}}
+        {{-- Top-left flowing wave --}}
+        <svg aria-hidden="true" class="absolute top-0 left-0 w-[600px] h-[400px] opacity-[0.12]" viewBox="0 0 600 400" fill="none">
+            <path d="M-50,100 C100,20 200,180 350,80 S500,-20 650,100 L650,0 L-50,0 Z" fill="url(#curveGradYellow)"/>
+            <defs><linearGradient id="curveGradYellow" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#fde68a"/></linearGradient></defs>
+        </svg>
+        {{-- Bottom-right flowing wave --}}
+        <svg aria-hidden="true" class="absolute bottom-0 right-0 w-[700px] h-[350px] opacity-[0.10]" viewBox="0 0 700 350" fill="none">
+            <path d="M750,250 C600,350 450,150 300,280 S100,350 -50,250 L-50,400 L750,400 Z" fill="url(#curveGradRose)"/>
+            <defs><linearGradient id="curveGradRose" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#fb7185"/><stop offset="100%" stop-color="#fda4af"/></linearGradient></defs>
+        </svg>
+        {{-- Middle floating ribbon --}}
+        <svg aria-hidden="true" class="absolute top-1/3 -left-20 w-[900px] h-[250px] opacity-[0.08]" viewBox="0 0 900 250" fill="none">
+            <path d="M-50,180 C150,50 300,220 500,100 S700,30 950,150" stroke="url(#ribbonGrad)" stroke-width="60" stroke-linecap="round"/>
+            <defs><linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#ffffff"/><stop offset="50%" stop-color="#fde68a"/><stop offset="100%" stop-color="#ffffff"/></linearGradient></defs>
+        </svg>
+        {{-- Small accent circle top-right --}}
+        <div aria-hidden="true" class="absolute -top-16 right-[15%] w-72 h-72 rounded-full border-[3px] border-white/[0.08]"></div>
+        <div aria-hidden="true" class="absolute -top-8 right-[12%] w-48 h-48 rounded-full border-[2px] border-yellow-300/[0.10]"></div>
+        {{-- Bottom-left accent blob --}}
+        <div aria-hidden="true" class="absolute -bottom-20 -left-10 w-80 h-80 rounded-full bg-rose-400/[0.08] blur-[80px]"></div>
+
+        {{-- Ambient glows --}}
+        <div aria-hidden="true" class="absolute -top-32 -left-32 w-[30rem] h-[30rem] rounded-full bg-yellow-300/20 blur-[120px]"></div>
+        <div aria-hidden="true" class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-amber-200/15 blur-[100px]"></div>
+        {{-- Dot pattern --}}
+        <div aria-hidden="true" class="absolute inset-0 opacity-[0.06]"
+             style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+
+        <div class="relative max-w-5xl mx-auto px-6 py-24 md:py-28 grid md:grid-cols-12 gap-14 items-center">
+            {{-- Image --}}
+            <div class="md:col-span-5 relative flex items-center justify-center select-none">
+                {{-- ambient glow --}}
+                <div aria-hidden="true" class="absolute inset-4 rounded-[2.5rem] bg-white/10 blur-3xl"></div>
+                
+                {{-- 3D storefront image 2 (no card box border) --}}
+                <div class="relative z-20 w-[95%] md:w-full anim-bob">
+                    <img src="{{ asset($store->about_image_path) }}" alt="Tentang Es Teh Jumbo 3D" class="w-full h-auto object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.25)]">
                 </div>
             </div>
 
-            {{-- Content Column --}}
-            <div class="md:col-span-7 space-y-5 text-left">
-                {{-- Tag Badge --}}
-                <div class="inline-flex items-center gap-1.5 bg-sky-50 border border-sky-100 text-sky-700 text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded-full">
-                    <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
-                    Kisah & Filosofi
-                </div>
-
-                {{-- Section Title & Clean Divider --}}
-                <div class="space-y-3">
-                    <h2 class="font-display font-extrabold text-slate-800 text-3xl md:text-4xl leading-tight tracking-tight">
-                        Mulai dari satu gelas<br class="hidden md:inline"> untuk tetangga sebelah.
-                    </h2>
-                    <div class="w-12 h-1 bg-sky-500 rounded-full"></div>
-                </div>
-
-                {{-- Description --}}
-                <p class="text-slate-500 text-sm md:text-base leading-relaxed font-medium">
+            {{-- Content --}}
+            <div class="md:col-span-7">
+                <span class="inline-flex items-center gap-2 bg-white/15 text-orange-100 text-[11px] font-semibold tracking-[0.18em] uppercase px-4 py-1.5 rounded-full ring-1 ring-white/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse"></span>
+                    Cerita Kami
+                </span>
+                <h2 class="mt-6 font-display font-extrabold text-white text-4xl md:text-5xl leading-[1.1] tracking-tight drop-shadow-sm">
+                    Mulai dari satu gelas<br class="hidden md:inline"> untuk tetangga sebelah.
+                </h2>
+                <p class="mt-6 text-orange-100/80 text-base md:text-lg leading-relaxed max-w-xl">
                     {{ $store->about_text }}
                 </p>
 
-                {{-- Stats Grid (Ultra Clean) --}}
-                <div class="grid grid-cols-3 gap-4 pt-2">
+                {{-- Stats --}}
+                <div class="mt-10 grid grid-cols-3 gap-5 max-w-lg">
                     @php
                         $stats = [
-                            ['val' => '30+', 'label' => 'Varian menu', 'color' => 'text-sky-600', 'bg' => 'bg-sky-50 border-sky-100/60'],
-                            ['val' => '5K+', 'label' => 'Pelanggan setia', 'color' => 'text-sky-600', 'bg' => 'bg-sky-50 border-sky-100/60'],
-                            ['val' => '4.9★', 'label' => 'Rating ulasan', 'color' => 'text-emerald-600', 'bg' => 'bg-emerald-50 border-emerald-100/60'],
+                            ['val' => '30+', 'label' => 'Varian menu'],
+                            ['val' => '5K+', 'label' => 'Pelanggan setia'],
+                            ['val' => '4.9★','label' => 'Rata-rata rating'],
                         ];
                     @endphp
                     @foreach ($stats as $s)
-                        <div class="bg-white rounded-xl p-4 border border-slate-100 text-center shadow-xs">
-                            <p class="font-display font-extrabold text-slate-800 text-2xl md:text-3xl tracking-tight">{{ $s['val'] }}</p>
-                            <span class="inline-block mt-1.5 px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider {{ $s['bg'] }} {{ $s['color'] }} border">
-                                {{ $s['label'] }}
-                            </span>
+                        <div class="relative bg-white/10 backdrop-blur-sm rounded-2xl p-5 ring-1 ring-white/15 text-center hover:bg-white/15 transition-all duration-300 group">
+                            <p class="font-display font-extrabold text-white text-3xl md:text-4xl tracking-tight group-hover:scale-105 transition-transform duration-300">{{ $s['val'] }}</p>
+                            <p class="text-[11px] text-orange-200/70 font-medium mt-2 uppercase tracking-wider">{{ $s['label'] }}</p>
                         </div>
                     @endforeach
                 </div>
