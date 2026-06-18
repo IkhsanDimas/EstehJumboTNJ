@@ -23,7 +23,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans:    ['Inter', 'system-ui', 'sans-serif'],
+                        sans:    ['"{{ $selectedFont }}"', 'Inter', 'system-ui', 'sans-serif'],
                         rounded: ['"{{ $selectedFont }}"', 'system-ui', 'sans-serif'],
                         display: ['"{{ $selectedFont }}"', 'system-ui', 'sans-serif'],
                     },

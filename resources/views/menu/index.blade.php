@@ -160,8 +160,8 @@
             {{-- Content Column --}}
             <div class="md:col-span-7 space-y-6 text-left">
                 {{-- Tag Badge --}}
-                <div class="inline-flex items-center gap-1.5 bg-white/15 text-white text-[10px] font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full ring-1 ring-white/20">
-                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                <div class="inline-flex items-center gap-1.5 bg-white/15 text-white text-[10px] font-semibold tracking-widest uppercase px-3.5 py-1.5 rounded-full ring-1 ring-white/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-300"></span>
                     Kisah & Filosofi
                 </div>
 
@@ -170,11 +170,11 @@
                     <h2 class="font-display font-extrabold text-white text-3xl md:text-[2.5rem] leading-tight tracking-tight">
                         Mulai dari satu gelas<br class="hidden md:inline"> untuk tetangga sebelah.
                     </h2>
-                    <div class="w-12 h-1 bg-white/30 rounded-full"></div>
+                    <div class="w-12 h-1 bg-amber-300 rounded-full"></div>
                 </div>
 
                 {{-- Description --}}
-                <p class="text-orange-50/95 text-sm md:text-base leading-relaxed font-medium">
+                <p class="text-orange-50/95 text-sm md:text-base leading-relaxed font-normal">
                     {{ $store->about_text }}
                 </p>
             </div>
