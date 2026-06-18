@@ -85,15 +85,12 @@
                 </div>
             </div>
 
-            {{-- Hero stage --}}
-            <div class="md:col-span-6 relative min-h-[420px] md:min-h-[560px] flex items-center justify-center select-none">
-                {{-- pedestal glow --}}
-                <div aria-hidden="true" class="absolute bottom-10 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-amber-300/35 blur-3xl"></div>
-                <div aria-hidden="true" class="absolute bottom-16 left-1/2 -translate-x-1/2 w-80 h-14 bg-sky-900/30 rounded-[100%] blur-xl"></div>
-
-                {{-- 3D storefront image (no card box border) --}}
-                <div class="relative z-20 w-[90%] md:w-[95%] lg:w-[102%] lg:-mr-4 anim-bob">
-                    <img src="{{ asset($store->hero_image_path) }}" alt="Kedai Es Teh Jumbo 3D" class="w-full h-auto object-contain drop-shadow-[0_25px_40px_rgba(0,0,0,0.35)]">
+            {{-- Hero stage (Clean framed card, no glow, no float animation) --}}
+            <div class="md:col-span-6 flex items-center justify-center w-full">
+                <div class="relative w-full max-w-md md:max-w-lg rounded-[2.5rem] bg-white/10 backdrop-blur-sm p-3 border border-white/20 shadow-2xl">
+                    <img src="{{ asset($store->hero_image_path) }}" 
+                         alt="Hero Es Teh Jumbo" 
+                         class="w-full h-[280px] sm:h-[360px] md:h-[420px] object-cover rounded-[1.8rem]">
                 </div>
             </div>
         </div>
