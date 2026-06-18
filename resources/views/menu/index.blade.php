@@ -138,63 +138,44 @@
     {{-- ════════════════════════════════════════════════════
          CERITA  ·  bright orange with creative curves
     ════════════════════════════════════════════════════ --}}
-    <section id="tentang" class="relative overflow-hidden"
-             style="background: linear-gradient(135deg, #ea580c 0%, #f97316 35%, #fb923c 70%, #fdba74 100%); border-y: 1px solid rgba(255, 255, 255, 0.08);">
-        
-        <div class="relative max-w-5xl mx-auto px-6 py-20 md:py-24 grid md:grid-cols-12 gap-10 md:gap-12 lg:gap-16 items-center">
+    <section id="tentang" class="relative overflow-hidden bg-sky-50/40 py-20 md:py-24 border-y border-sky-100/50">
+        <div class="relative max-w-5xl mx-auto px-6 grid md:grid-cols-12 gap-10 md:gap-12 lg:gap-16 items-center">
             
             {{-- Image Column (Clean frame with standardized height for custom uploads) --}}
             <div class="md:col-span-5 flex justify-center w-full">
-                <div class="relative w-full max-w-sm md:max-w-none rounded-[2rem] border border-white/10 bg-white p-3 shadow-xl">
+                <div class="relative w-full max-w-sm md:max-w-none rounded-[2rem] border border-sky-100/60 bg-white p-3 shadow-lg">
                     <img src="{{ asset($store->about_image_path) }}" 
                          alt="Tentang Es Teh Jumbo" 
                          class="w-full h-[280px] sm:h-[340px] md:h-[380px] object-cover rounded-[1.5rem]">
                     
                     {{-- Clean overlay badge --}}
                     <div class="absolute bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur-sm px-4 py-2.5 rounded-xl border border-white/10 flex items-center gap-2 shadow-md">
-                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
                         <p class="text-[9px] font-bold text-white uppercase tracking-wider">📍 Lokasi Utama, Permata Galaxy</p>
                     </div>
                 </div>
             </div>
 
             {{-- Content Column --}}
-            <div class="md:col-span-7 space-y-5 text-left">
+            <div class="md:col-span-7 space-y-6 text-left">
                 {{-- Tag Badge --}}
-                <div class="inline-flex items-center gap-1.5 bg-white/15 text-orange-100 text-[10px] font-bold tracking-wider uppercase px-4 py-1.5 rounded-full ring-1 ring-white/20">
-                    <span class="w-1.5 h-1.5 rounded-full bg-amber-300"></span>
-                    Cerita Kami
+                <div class="inline-flex items-center gap-1.5 bg-sky-100/80 border border-sky-200/50 text-sky-800 text-[10px] font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                    Kisah & Filosofi
                 </div>
 
                 {{-- Section Title & Divider --}}
                 <div class="space-y-3">
-                    <h2 class="font-display font-extrabold text-white text-3xl md:text-4xl leading-tight tracking-tight">
+                    <h2 class="font-display font-extrabold text-slate-800 text-3xl md:text-4xl leading-tight tracking-tight">
                         Mulai dari satu gelas<br class="hidden md:inline"> untuk tetangga sebelah.
                     </h2>
-                    <div class="w-12 h-1 bg-white/30 rounded-full"></div>
+                    <div class="w-12 h-1 bg-sky-500 rounded-full"></div>
                 </div>
 
                 {{-- Description --}}
-                <p class="text-orange-100/80 text-sm md:text-base leading-relaxed font-medium">
+                <p class="text-slate-600 text-sm md:text-base leading-relaxed font-medium">
                     {{ $store->about_text }}
                 </p>
-
-                {{-- Stats Grid --}}
-                <div class="grid grid-cols-3 gap-4 pt-2">
-                    @php
-                        $stats = [
-                            ['val' => '30+', 'label' => 'Varian menu'],
-                            ['val' => '5K+', 'label' => 'Pelanggan setia'],
-                            ['val' => '4.9★', 'label' => 'Rating ulasan'],
-                        ];
-                    @endphp
-                    @foreach ($stats as $s)
-                        <div class="bg-white/10 rounded-2xl p-5 ring-1 ring-white/15 text-center">
-                            <p class="font-display font-extrabold text-white text-2xl md:text-3xl tracking-tight">{{ $s['val'] }}</p>
-                            <p class="text-[10px] text-orange-200/70 font-semibold mt-2 uppercase tracking-wider">{{ $s['label'] }}</p>
-                        </div>
-                    @endforeach
-                </div>
             </div>
         </div>
     </section>
