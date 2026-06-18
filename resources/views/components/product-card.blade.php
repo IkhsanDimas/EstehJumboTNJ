@@ -13,7 +13,7 @@
     <div class="relative h-full flex flex-col bg-white rounded-3xl ring-1 ring-slate-100 hover:ring-sky-200 transition-all duration-300 overflow-hidden hover:-translate-y-1.5 shadow-[0_2px_10px_-4px_rgba(15,23,42,0.08)] hover:shadow-[0_24px_45px_-18px_rgba(14,165,233,0.35)]">
 
         {{-- ─── IMAGE STAGE (clickable, square, 3D effect) ─── --}}
-        <a href="{{ $detailUrl }}" class="img-stage block bg-gradient-to-b from-slate-50 via-white to-sky-50/30" style="perspective: 800px;">
+        <a href="{{ $detailUrl }}" class="img-stage block m-3 rounded-2xl bg-gradient-to-br from-slate-50 via-white to-sky-50/20 border border-slate-100/50 overflow-hidden relative" style="perspective: 800px;">
             {{-- soft halo for depth --}}
             <span aria-hidden="true"
                   class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 rounded-full bg-sky-100/60 blur-2xl group-hover:bg-sky-200/70 transition-all duration-500"></span>
@@ -37,7 +37,7 @@
             </button>
 
             {{-- product image: larger + 3D drop-shadow --}}
-            <span class="relative z-10 block w-full h-full p-[10%]">
+            <span class="relative z-10 block w-full h-full p-[8%]">
                 <x-smart-image
                     :src="$product->image_path"
                     :alt="$product->name"
@@ -48,18 +48,18 @@
         </a>
 
         {{-- ─── INFO ─── --}}
-        <div class="flex flex-col flex-1 p-4">
-            <p class="text-[10px] uppercase tracking-[0.14em] text-sky-600 font-semibold">{{ $catName }}</p>
+        <div class="flex flex-col flex-1 px-4 pb-4 pt-1">
+            <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-sky-600/80">{{ $catName }}</p>
             <a href="{{ $detailUrl }}" class="block mt-1">
-                <h3 class="font-display font-semibold text-ink text-[15px] leading-snug truncate group-hover:text-sky-600 transition-colors">
+                <h3 class="font-display font-bold text-slate-800 text-[16px] leading-snug truncate group-hover:text-sky-600 transition-colors">
                     {{ $product->name }}
                 </h3>
             </a>
 
             <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-                <p class="font-display text-ink leading-none">
-                    <span class="text-[11px] font-medium text-slate-400 align-top">Rp</span>
-                    <span class="text-lg font-bold tracking-tight">{{ $priceFormatted }}</span>
+                <p class="font-display text-slate-900 leading-none">
+                    <span class="text-[10px] font-bold text-slate-400 align-middle mr-0.5">Rp</span>
+                    <span class="text-lg font-extrabold tracking-tight text-slate-900">{{ $priceFormatted }}</span>
                 </p>
 
                 @if(\App\Models\StoreSetting::current()->is_open)
@@ -71,7 +71,7 @@
                         <button type="submit"
                                 aria-label="Tambah {{ $product->name }} ke keranjang"
                                 title="Pilih topping dan ukuran"
-                                class="group/btn relative inline-flex items-center gap-1.5 bg-slate-900 hover:bg-sky-500 text-white pl-2.5 pr-2.5 py-2 rounded-full text-xs font-semibold transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-sky-500/30">
+                                class="group/btn relative inline-flex items-center gap-1.5 bg-slate-900 hover:bg-sky-600 text-white pl-2.5 pr-2.5 py-2 rounded-full text-xs font-semibold transition-all duration-300 shadow-sm hover:shadow-md hover:shadow-sky-600/30">
                             <svg class="w-4 h-4 flex-shrink-0 transition-transform duration-300 group-hover/btn:rotate-90"
                                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 5v14M5 12h14"/>
