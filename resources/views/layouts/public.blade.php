@@ -9,12 +9,14 @@
 
     {{-- Fonts --}}
     @php
-        $selectedFont = $store->font_family ?? 'Plus Jakarta Sans';
-        $fontQuery = str_replace(' ', '+', $selectedFont) . ':wght@400;500;600;700;800';
+        $currentStore = $store ?? \App\Models\StoreSetting::current();
+        $selectedFont = $currentStore->font_family ?? 'Plus Jakarta Sans';
+        $isSerif = in_array($selectedFont, ['Playfair Display']);
+        $bodyFont = $isSerif ? 'Plus Jakarta Sans' : $selectedFont;
     @endphp
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family={{ $fontQuery }}&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
     {{-- Tailwind --}}
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,7 +25,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans:    ['"{{ $selectedFont }}"', 'Inter', 'system-ui', 'sans-serif'],
+                        sans:    ['"{{ $bodyFont }}"', '"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
                         rounded: ['"{{ $selectedFont }}"', 'system-ui', 'sans-serif'],
                         display: ['"{{ $selectedFont }}"', 'system-ui', 'sans-serif'],
                     },
@@ -388,21 +390,40 @@
 
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: '{{ $selectedFont }}', 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #475569; }
-        ::selection { background: #bae6fd; color: #0c4a6e; }
+        body { font-family: '{{ $bodyFont }}', 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #475569; }
+        ::selection { background: #bbf7d0; color: #042c16; }
         [x-cloak] { display: none !important; }
 
         /* ──────── Typography system ──────── */
         /* Headings: rounded display face, medium weight, soft deep-slate ink */
-        .font-display { letter-spacing: -0.015em; }
-        .text-ink   { color: #1e293b; }        /* heading ink — softer than pure black */
+        .font-display { font-family: '{{ $selectedFont }}', system-ui, sans-serif; letter-spacing: -0.02em; font-weight: 800; }
+        .text-ink   { color: #0f172a; }        /* heading ink — softer than pure black */
         .text-ink-2 { color: #334155; }
         .eyebrow {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
+            font-family: '{{ $selectedFont }}', 'Plus Jakarta Sans', system-ui, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: #0ea5e9;
+            color: #10b981;
+            display: inline-flex;
+            align-items: center;
+        }
+        .eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 9999px;
+            margin-right: 8px;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
         /* Util used in templates */
