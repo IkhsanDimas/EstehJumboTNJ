@@ -158,7 +158,7 @@
                 <button type="button"
                          @click="$store.customizer.addToCart()"
                          :disabled="$store.customizer.adding"
-                         class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-2.5 rounded-full text-sm transition-all duration-300 shadow-md shadow-amber-500/20 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60">
+                         class="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20b857] text-white font-semibold px-6 py-2.5 rounded-full text-sm transition-all duration-300 shadow-md shadow-emerald-500/10 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60">
                     <svg class="w-4 h-4 animate-spin" x-show="$store.customizer.adding" x-cloak viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <circle cx="12" cy="12" r="9" stroke-opacity="0.25"/>
                         <path d="M21 12a9 9 0 0 0-9-9" stroke-linecap="round"/>

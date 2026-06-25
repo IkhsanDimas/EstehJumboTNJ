@@ -2,8 +2,7 @@
 @section('title', 'Lacak Pesanan — ' . $store->store_name)
 
 @section('content')
-
-
+<section class="relative bg-app py-16 md:py-24 min-h-[85vh]">
     <div class="relative max-w-7xl mx-auto px-6">
         {{-- Header --}}
         <div class="mb-10 text-center md:text-left">

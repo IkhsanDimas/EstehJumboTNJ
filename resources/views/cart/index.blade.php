@@ -2,8 +2,7 @@
 @section('title', 'Keranjang Belanja')
 
 @section('content')
-
-
+<section class="relative bg-app py-16 md:py-24 min-h-[85vh]">
     <div class="relative max-w-6xl mx-auto px-6">
         <div class="mb-10">
             <p class="text-xs font-semibold tracking-[0.18em] uppercase text-emerald-600">Keranjang</p>

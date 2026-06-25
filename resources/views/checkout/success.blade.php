@@ -2,7 +2,10 @@
 @section('title', 'Pesanan Berhasil')
 
 @section('content')
-
+<section class="min-h-[75vh] flex items-center justify-center py-20 px-6 bg-app relative overflow-hidden">
+    {{-- Ambient glowing background circles --}}
+    <div aria-hidden="true" class="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-emerald-100/40 blur-3xl pointer-events-none -z-10"></div>
+    <div aria-hidden="true" class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-emerald-50/20 blur-3xl pointer-events-none -z-10"></div>
 
     <div class="relative max-w-2xl w-full">
         <div class="relative bg-white/85 backdrop-blur-sm rounded-[36px] p-10 md:p-14 shadow-[0_30px_60px_-20px_rgba(16,185,129,0.15)] border border-white text-center overflow-hidden">
