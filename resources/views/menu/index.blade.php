@@ -64,7 +64,7 @@
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </span>
                     </a>
-                    <a href="#menu" class="btn-glass">Lihat Menu</a>
+                    <a href="{{ route('menu') }}" class="btn-glass">Lihat Menu</a>
                 </div>
 
                 <div class="mt-9 flex items-center gap-5 text-sky-50/80 text-xs">
@@ -104,36 +104,6 @@
     </section>
 
 
-
-    {{-- ════════════════════════════════════════════════════
-         MENU FAVORIT  ·  white section
-    ════════════════════════════════════════════════════ --}}
-    <section id="menu" class="max-w-7xl mx-auto px-6 pt-20 pb-16 md:pt-24">
-        <div class="flex items-end justify-between mb-12">
-            <div>
-                <p class="eyebrow">Pilihan Hari Ini</p>
-                <h2 class="mt-3 font-display font-extrabold text-3xl md:text-[2.75rem] text-ink leading-tight tracking-tight">Menu Favorit</h2>
-                <p class="mt-3 text-slate-500 max-w-md text-[15px]">Paling sering dipesan, paling cepat habis. Coba salah satu di bawah ini.</p>
-            </div>
-            <a href="{{ route('menu') }}"
-               class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-sky-600 hover:text-sky-700 transition group">
-                Semua menu
-                <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-6">
-            @foreach ($featuredProducts as $product)
-                <x-product-card :product="$product" />
-            @endforeach
-        </div>
-
-        <div class="mt-10 text-center sm:hidden">
-            <a href="{{ route('menu') }}" class="inline-flex items-center gap-1.5 text-sm font-medium text-sky-600 hover:text-sky-700">
-                Lihat semua menu →
-            </a>
-        </div>
-    </section>
 
     {{-- ════════════════════════════════════════════════════
          CERITA  ·  bright orange with creative curves
@@ -180,83 +150,6 @@
             </div>
         </div>
     </section>
-
-    {{-- ════════════════════════════════════════════════════
-         JELAJAHI KATEGORI  ·  colorful gradient cards
-    ════════════════════════════════════════════════════ --}}
-    @php
-        $catStyles = [
-            ['grad' => 'from-sky-400 to-cyan-500',      'shadow' => 'rgba(14,165,233,.45)'],
-            ['grad' => 'from-rose-400 to-pink-500',     'shadow' => 'rgba(244,63,94,.40)'],
-            ['grad' => 'from-amber-400 to-orange-500',  'shadow' => 'rgba(249,115,22,.40)'],
-            ['grad' => 'from-emerald-400 to-teal-500',  'shadow' => 'rgba(16,185,129,.40)'],
-        ];
-    @endphp
-    <section class="max-w-7xl mx-auto px-6 pt-4 pb-16">
-        <div class="text-center max-w-xl mx-auto mb-12">
-            <p class="eyebrow">Jelajahi</p>
-            <h2 class="mt-3 font-display font-extrabold text-3xl md:text-[2.75rem] text-ink leading-tight tracking-tight">Pilih kategori favoritmu</h2>
-            <p class="mt-3 text-slate-500 text-[15px]">Temukan minuman terbaik sesuai selera kamu.</p>
-        </div>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-            @foreach ($categories->take(4) as $i => $category)
-                @php
-                    $style = $catStyles[$i % 4];
-                    $thumb = $category->products->first();
-                @endphp
-                <a href="#cat-{{ Str::slug($category->name) }}"
-                   class="group relative overflow-hidden rounded-3xl bg-gradient-to-br {{ $style['grad'] }} p-6 min-h-[200px] flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1.5"
-                   style="box-shadow: 0 22px 45px -20px {{ $style['shadow'] }};">
-                    <div aria-hidden="true" class="absolute -top-8 -right-8 w-28 h-28 rounded-full bg-white/20 blur-2xl group-hover:scale-125 transition-transform duration-500"></div>
-                    <div class="relative">
-                        <p class="text-white/80 text-[11px] font-semibold uppercase tracking-wider">{{ $category->products->count() }} menu</p>
-                        <h3 class="mt-1 font-display font-bold text-white text-xl leading-tight drop-shadow-sm">{{ $category->name }}</h3>
-                    </div>
-                    @if ($thumb)
-                        <div class="relative self-end w-28 h-28 -mb-4 -mr-3.5 anim-bob" style="animation-delay:{{ $i * 0.3 }}s">
-                            <x-smart-image :src="$thumb->image_path" :alt="$thumb->name" :transparent="true"
-                                            class="w-full h-full object-contain drop-shadow-[0_15px_22px_rgba(0,0,0,0.28)] group-hover:scale-112 group-hover:rotate-3 transition-transform duration-500" />
-                        </div>
-                    @endif
-                    <span class="absolute bottom-5 left-6 inline-flex items-center gap-1 text-white text-xs font-semibold opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                        Lihat menu
-                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </span>
-                </a>
-            @endforeach
-        </div>
-    </section>
-
-    {{-- ════════════════════════════════════════════════════
-         KATEGORI LENGKAP  ·  white, alternating subtle tint
-    ════════════════════════════════════════════════════ --}}
-    @foreach ($categories as $loopCat => $category)
-        @if ($category->products->isEmpty()) @continue @endif
-        <section id="cat-{{ Str::slug($category->name) }}"
-                 class="{{ $loop->iteration % 2 === 0 ? 'bg-app border-y border-slate-100' : '' }} scroll-mt-24">
-            <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
-                <div class="flex items-end justify-between mb-10">
-                    <div>
-                        <p class="eyebrow">Kategori</p>
-                        <h2 class="mt-2.5 font-display font-extrabold text-2xl md:text-[2rem] text-ink leading-tight tracking-tight">{{ $category->name }}</h2>
-                    </div>
-                    @if ($category->products->count() > 4)
-                        <a href="{{ route('menu', ['category' => $category->id]) }}"
-                           class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-sky-600 hover:text-sky-700 transition group">
-                            Lihat semua
-                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    @endif
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-6">
-                    @foreach ($category->products->take(4) as $product)
-                        <x-product-card :product="$product" :category="$category->name" />
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endforeach
 
     {{-- ════════════════════════════════════════════════════
          TESTIMONI  ·  clean white with vibrant cards
