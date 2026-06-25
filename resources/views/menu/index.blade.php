@@ -220,12 +220,28 @@
     {{-- ════════════════════════════════════════════════════
          TESTIMONI  ·  clean white with vibrant cards
     ════════════════════════════════════════════════════ --}}
-    <section class="relative overflow-hidden">
+    <section class="relative overflow-hidden py-10">
+        {{-- Background decorative shapes for high-end craft branding --}}
+        <div aria-hidden="true" class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[350px] h-[350px] bg-emerald-50/70 rounded-full blur-3xl pointer-events-none -z-10 select-none"></div>
+        <div aria-hidden="true" class="absolute top-1/3 right-1/4 w-[350px] h-[350px] bg-amber-50/50 rounded-full blur-3xl pointer-events-none -z-10 select-none"></div>
+
         <div class="relative max-w-7xl mx-auto px-6 py-20 md:py-28">
-            <div class="text-center max-w-xl mx-auto">
-                <p class="eyebrow">Testimoni</p>
-                <h2 class="mt-3 font-display font-extrabold text-3xl md:text-[2.75rem] text-ink leading-tight tracking-tight">Apa kata pelanggan</h2>
-                <p class="mt-3 text-slate-500 text-[15px]">Cerita nyata dari yang sudah mencoba dan ketagihan.</p>
+            <div class="text-center max-w-xl mx-auto relative mb-16">
+                {{-- Decorative background glow --}}
+                <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-emerald-100/50 rounded-full blur-xl opacity-70"></div>
+                
+                {{-- Creative icon badge --}}
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-150 shadow-sm mb-4 relative z-10 animate-bounce" style="animation-duration: 3s;">
+                    <svg class="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                </div>
+                
+                <p class="eyebrow block">Testimoni</p>
+                <h2 class="mt-3 font-display font-extrabold text-3xl md:text-[2.75rem] text-ink leading-tight tracking-tight">
+                    Apa kata <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-500">tetangga kita</span>
+                </h2>
+                <p class="mt-3 text-slate-500 text-[15px]">Cerita nyata dari mereka yang sudah menikmati kesegaran porsi jumbo.</p>
             </div>
 
             @php
@@ -235,31 +251,41 @@
                     ['n' => 'Budi S.',   'r' => 'Kurir',     't' => 'Pesan, langsung diantar cepat. Harga masuk akal, jadi langganan tiap lewat Galaxy.', 'color' => 'from-emerald-500 to-teal-500'],
                 ];
             @endphp
-            <div class="mt-14 grid md:grid-cols-3 gap-7">
-                @foreach ($testimonials as $t)
-                    <figure class="group relative bg-white rounded-3xl p-8 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.15)] ring-1 ring-slate-100 hover:ring-slate-200 transition-all duration-300 hover:-translate-y-1">
-                        {{-- Color accent top strip --}}
-                        <div class="absolute top-0 left-8 right-8 h-1 rounded-b-full bg-gradient-to-r {{ $t['color'] }} opacity-60 group-hover:opacity-100 transition-opacity"></div>
+            <div class="mt-14 grid md:grid-cols-3 gap-8 items-start md:pb-8">
+                @foreach ($testimonials as $index => $t)
+                    <figure class="group relative bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-[0_12px_40px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_60px_-15px_rgba(16,185,129,0.18)] border border-slate-100 hover:border-emerald-200/60 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between min-h-[280px]
+                                  {{ $index === 1 ? 'md:translate-y-6' : '' }}">
+                        
+                        {{-- Watermark Quote --}}
+                        <span class="absolute top-4 right-8 text-8xl font-serif text-slate-100 group-hover:text-emerald-50 transition-colors select-none font-black leading-none">”</span>
+                        
+                        <div class="relative z-10">
+                            {{-- Stars --}}
+                            <div class="flex gap-1 text-amber-400 group-hover:scale-105 transition-transform duration-300 origin-left">
+                                @for ($s = 0; $s < 5; $s++)
+                                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21.02 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                @endfor
+                            </div>
 
-                        {{-- Stars --}}
-                        <div class="flex gap-0.5 text-amber-400">
-                            @for ($s = 0; $s < 5; $s++)
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21.02 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            @endfor
+                            {{-- Quote Text --}}
+                            <blockquote class="mt-6 text-slate-700 leading-relaxed text-[15px] font-medium">
+                                "{{ $t['t'] }}"
+                            </blockquote>
                         </div>
 
-                        {{-- Quote --}}
-                        <blockquote class="mt-5 text-slate-600 leading-relaxed text-[15px]">
-                            <svg class="w-6 h-6 text-slate-200 mb-2" viewBox="0 0 24 24" fill="currentColor"><path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/></svg>
-                            {{ $t['t'] }}
-                        </blockquote>
-
-                        {{-- Author --}}
-                        <figcaption class="mt-7 flex items-center gap-3 pt-5 border-t border-slate-100">
-                            <span class="w-11 h-11 rounded-full bg-gradient-to-br {{ $t['color'] }} text-white grid place-items-center font-display font-bold text-sm shadow-md">{{ substr($t['n'], 0, 1) }}</span>
-                            <div>
-                                <p class="text-sm font-semibold text-ink">{{ $t['n'] }}</p>
-                                <p class="text-xs text-slate-500">{{ $t['r'] }}</p>
+                        {{-- Author Section --}}
+                        <figcaption class="mt-8 flex items-center gap-3.5 pt-5 border-t border-slate-100 relative z-10">
+                            <span class="w-12 h-12 rounded-2xl bg-gradient-to-br {{ $t['color'] }} text-white flex items-center justify-center font-display font-extrabold text-base shadow-md shadow-emerald-500/10 group-hover:scale-110 transition-transform duration-300">{{ substr($t['n'], 0, 1) }}</span>
+                            <div class="min-w-0">
+                                <div class="flex items-center gap-1.5">
+                                    <p class="text-sm font-bold text-slate-900 truncate">{{ $t['n'] }}</p>
+                                    <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-emerald-500 text-white shrink-0 shadow-xs" title="Verified Customer">
+                                        <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <p class="text-[11px] font-semibold text-slate-400 mt-0.5">{{ $t['r'] }} · Pelanggan</p>
                             </div>
                         </figcaption>
                     </figure>
