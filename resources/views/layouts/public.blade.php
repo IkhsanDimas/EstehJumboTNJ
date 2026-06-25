@@ -390,20 +390,32 @@
 
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: '{{ $bodyFont }}', 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; color: #475569; }
+        body {
+            font-family: '{{ $bodyFont }}', 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #475569;
+            letter-spacing: -0.015em;
+            line-height: 1.625;
+        }
         ::selection { background: #bbf7d0; color: #042c16; }
         [x-cloak] { display: none !important; }
 
         /* ──────── Typography system ──────── */
         /* Headings: rounded display face, medium weight, soft deep-slate ink */
-        .font-display { font-family: '{{ $selectedFont }}', system-ui, sans-serif; letter-spacing: -0.02em; font-weight: 800; }
+        .font-display {
+            font-family: '{{ $selectedFont }}', system-ui, sans-serif;
+            letter-spacing: -0.025em;
+            font-weight: 800;
+            line-height: 1.2;
+        }
         .text-ink   { color: #0f172a; }        /* heading ink — softer than pure black */
         .text-ink-2 { color: #334155; }
         .eyebrow {
             font-family: '{{ $selectedFont }}', 'Plus Jakarta Sans', system-ui, sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 800;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
             color: #10b981;
             display: inline-flex;
