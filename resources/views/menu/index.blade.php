@@ -40,7 +40,7 @@
 
 
 
-        <div class="relative z-10 max-w-5xl mx-auto px-6 grid md:grid-cols-12 gap-8 items-center">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-8 lg:gap-12 items-center">
             {{-- Headline --}}
             <div class="md:col-span-6 text-left">
                 @php
@@ -87,10 +87,10 @@
 
             {{-- Hero stage (Clean framed card, no glow, no float animation) --}}
             <div class="md:col-span-6 flex items-center justify-center w-full">
-                <div class="relative w-full max-w-md md:max-w-lg rounded-[2.5rem] bg-white/10 backdrop-blur-sm p-3 border border-white/20 shadow-2xl">
+                <div class="relative w-full max-w-md md:max-w-xl lg:max-w-2xl rounded-[2.5rem] bg-white/10 backdrop-blur-sm p-3 border border-white/20 shadow-2xl">
                     <img src="{{ asset($store->hero_image_path) }}" 
                          alt="Hero Es Teh Jumbo" 
-                         class="w-full h-[280px] sm:h-[360px] md:h-[420px] object-cover rounded-[1.8rem]">
+                         class="w-full h-[280px] sm:h-[360px] md:h-[450px] lg:h-[520px] object-cover rounded-[1.8rem]">
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
     {{-- ════════════════════════════════════════════════════
          MENU FAVORIT  ·  white section
     ════════════════════════════════════════════════════ --}}
-    <section id="menu" class="max-w-5xl mx-auto px-6 pt-20 pb-16 md:pt-24">
+    <section id="menu" class="max-w-7xl mx-auto px-6 pt-20 pb-16 md:pt-24">
         <div class="flex items-end justify-between mb-12">
             <div>
                 <p class="eyebrow">Pilihan Hari Ini</p>
@@ -122,7 +122,7 @@
             </a>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-6">
             @foreach ($featuredProducts as $product)
                 <x-product-card :product="$product" />
             @endforeach
@@ -140,14 +140,14 @@
     ════════════════════════════════════════════════════ --}}
     <section id="tentang" class="relative overflow-hidden py-20 md:py-24 border-y border-orange-700/20"
              style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);">
-        <div class="relative max-w-5xl mx-auto px-6 grid md:grid-cols-12 gap-10 md:gap-12 lg:gap-16 items-center">
+        <div class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-10 md:gap-12 lg:gap-16 items-center">
             
             {{-- Image Column (Clean frame with standardized height for custom uploads) --}}
             <div class="md:col-span-5 flex justify-center w-full">
                 <div class="relative w-full max-w-sm md:max-w-none rounded-[2.5rem] bg-white/10 backdrop-blur-sm p-3 border border-white/20 shadow-2xl">
                     <img src="{{ asset($store->about_image_path) }}" 
                          alt="Tentang Es Teh Jumbo" 
-                         class="w-full h-[280px] sm:h-[340px] md:h-[380px] object-cover rounded-[1.8rem]">
+                         class="w-full h-[280px] sm:h-[340px] md:h-[420px] lg:h-[480px] object-cover rounded-[1.8rem]">
                     
                     {{-- Clean overlay badge --}}
                     <div class="absolute bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur-sm px-4 py-2.5 rounded-xl border border-white/10 flex items-center gap-2 shadow-md">
@@ -192,13 +192,13 @@
             ['grad' => 'from-emerald-400 to-teal-500',  'shadow' => 'rgba(16,185,129,.40)'],
         ];
     @endphp
-    <section class="max-w-5xl mx-auto px-6 pt-4 pb-16">
+    <section class="max-w-7xl mx-auto px-6 pt-4 pb-16">
         <div class="text-center max-w-xl mx-auto mb-12">
             <p class="eyebrow">Jelajahi</p>
             <h2 class="mt-3 font-display font-extrabold text-3xl md:text-[2.75rem] text-ink leading-tight tracking-tight">Pilih kategori favoritmu</h2>
             <p class="mt-3 text-slate-500 text-[15px]">Temukan minuman terbaik sesuai selera kamu.</p>
         </div>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             @foreach ($categories->take(4) as $i => $category)
                 @php
                     $style = $catStyles[$i % 4];
@@ -234,7 +234,7 @@
         @if ($category->products->isEmpty()) @continue @endif
         <section id="cat-{{ Str::slug($category->name) }}"
                  class="{{ $loop->iteration % 2 === 0 ? 'bg-app border-y border-slate-100' : '' }} scroll-mt-24">
-            <div class="max-w-5xl mx-auto px-6 py-16 md:py-20">
+            <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
                 <div class="flex items-end justify-between mb-10">
                     <div>
                         <p class="eyebrow">Kategori</p>
@@ -249,7 +249,7 @@
                     @endif
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-6">
                     @foreach ($category->products->take(4) as $product)
                         <x-product-card :product="$product" :category="$category->name" />
                     @endforeach
@@ -262,7 +262,7 @@
          TESTIMONI  ·  clean white with vibrant cards
     ════════════════════════════════════════════════════ --}}
     <section class="relative overflow-hidden">
-        <div class="relative max-w-5xl mx-auto px-6 py-20 md:py-28">
+        <div class="relative max-w-7xl mx-auto px-6 py-20 md:py-28">
             <div class="text-center max-w-xl mx-auto">
                 <p class="eyebrow">Testimoni</p>
                 <h2 class="mt-3 font-display font-extrabold text-3xl md:text-[2.75rem] text-ink leading-tight tracking-tight">Apa kata pelanggan</h2>
@@ -312,7 +312,7 @@
     {{-- ════════════════════════════════════════════════════
          CTA AKHIR  ·  blue gradient with polished typography
     ════════════════════════════════════════════════════ --}}
-    <section class="max-w-5xl mx-auto px-6 py-20 md:py-24">
+    <section class="max-w-7xl mx-auto px-6 py-20 md:py-24">
         <div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-sky-500 via-sky-600 to-sky-700 px-8 md:px-14 py-14 md:py-16 text-center">
             <div aria-hidden="true" class="absolute inset-0 opacity-[0.12]" style="background-image:radial-gradient(circle at 20% 20%, white 1px, transparent 1px), radial-gradient(circle at 80% 60%, white 1px, transparent 1px); background-size:60px 60px, 80px 80px;"></div>
             <div aria-hidden="true" class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-white/15 blur-3xl"></div>

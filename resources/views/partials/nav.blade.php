@@ -27,7 +27,7 @@
     :class="scrolled || mobile || {{ $isHome ? 'false' : 'true' }}
                 ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-[0_1px_3px_rgba(0,0,0,0.05)]'
                 : 'bg-white/85 backdrop-blur-md border-b border-slate-200/40 shadow-sm'">
-    <div class="max-w-5xl mx-auto px-6 h-16 md:h-18 flex items-center justify-between gap-6">
+    <div class="max-w-7xl mx-auto px-6 h-16 md:h-18 flex items-center justify-between gap-6">
 
         {{-- Brand --}}
         <a href="{{ route('home') }}" class="flex items-center gap-2 group flex-shrink-0">
@@ -108,7 +108,7 @@
     <div x-show="mobile" x-transition.opacity
          class="md:hidden bg-white border-t border-slate-100"
          style="display: none;">
-        <nav class="max-w-5xl mx-auto px-6 py-3 flex flex-col">
+        <nav class="max-w-7xl mx-auto px-6 py-3 flex flex-col">
             @foreach ($links as $link)
                 <a href="{{ $link['href'] }}"
                    class="px-3 py-3 text-sm font-medium rounded-lg transition

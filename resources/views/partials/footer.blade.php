@@ -9,7 +9,7 @@
     <div aria-hidden="true" class="absolute inset-0 opacity-[0.03]"
          style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 32px 32px;"></div>
 
-    <div class="relative max-w-5xl mx-auto px-6 pt-16 pb-10">
+    <div class="relative max-w-7xl mx-auto px-6 pt-16 pb-10">
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
             {{-- Brand column --}}

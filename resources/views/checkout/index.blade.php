@@ -18,7 +18,7 @@
     <div aria-hidden="true" class="deco-blob deco-blob-amber w-72 h-72 top-1/3 -left-20 opacity-40"></div>
     <div aria-hidden="true" class="deco-blob deco-blob-emerald w-72 h-72 bottom-32 -right-20 opacity-40"></div>
 
-    <div class="relative max-w-5xl mx-auto px-6">
+    <div class="relative max-w-7xl mx-auto px-6">
         {{-- Header --}}
         <div class="mb-10">
             <p class="text-xs font-semibold tracking-[0.18em] uppercase text-sky-600">Checkout</p>

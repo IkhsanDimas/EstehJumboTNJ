@@ -12,7 +12,7 @@
          BREADCRUMB
     ────────────────────────────────────────────── --}}
     <section class="relative bg-gradient-to-b from-sky-50/80 to-transparent border-b border-sky-100/60 pt-24 pb-5">
-        <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-6">
             <nav class="flex items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
                 <a href="{{ route('home') }}" class="hover:text-sky-600 transition">Beranda</a>
                 <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
@@ -35,7 +35,7 @@
             toppings: @js($toppings->map(fn($t) => ['id' => $t->id, 'name' => $t->name, 'price' => (int) $t->price])->values()),
             productId: {{ $product->id }},
         })"
-        class="relative max-w-5xl mx-auto px-6 py-12 md:py-16">
+        class="relative max-w-7xl mx-auto px-6 py-12 md:py-16">
 
         <div class="grid md:grid-cols-12 gap-10 lg:gap-16 items-start">
 
