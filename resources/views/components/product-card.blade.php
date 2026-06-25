@@ -7,20 +7,11 @@
     $catName = $category ?? ($product->category->name ?? 'Menu');
     $priceFormatted = number_format($product->price, 0, ',', '.');
     $detailUrl = route('menu.show', $product);
-    $discountPercent = (($product->id % 3) + 2) * 5; // e.g. 10%, 15%, 20%
-    $originalPrice = round($product->price / (1 - ($discountPercent / 100)));
-    $originalPriceFormatted = number_format($originalPrice, 0, ',', '.');
 @endphp
 
 <article class="group relative h-full bg-white rounded-2xl border border-slate-200/80 hover:border-slate-350/80 transition-all duration-300 flex flex-col overflow-hidden hover:shadow-[0_8px_35px_rgba(0,0,0,0.05)] hover:-translate-y-1"
          x-data="{ qty: 1, wishlisted: false }">
     
-    {{-- ─── Discount Badge (Top-Left) ─── --}}
-    <div class="absolute top-3 left-3 z-20">
-        <span class="bg-orange-500 text-white text-[10px] font-extrabold px-2 py-0.5 rounded shadow-sm">
-            -{{ $discountPercent }}%
-        </span>
-    </div>
 
     {{-- ─── Wishlist Button (Top-Right) ─── --}}
     <button type="button"
@@ -56,13 +47,12 @@
             </h3>
         </a>
 
-        {{-- Price with original price --}}
-        <div class="mt-2 flex items-baseline gap-2">
+        {{-- Price --}}
+        <div class="mt-2 flex items-baseline">
             <p class="font-display text-orange-500 leading-none">
                 <span class="text-[10px] font-bold align-middle mr-0.5">Rp</span>
                 <span class="text-base font-extrabold tracking-tight">{{ $priceFormatted }}</span>
             </p>
-            <p class="text-[11px] text-slate-400 line-through">Rp {{ $originalPriceFormatted }}</p>
         </div>
 
         {{-- Bottom Actions (Friendly Row) --}}
@@ -72,18 +62,18 @@
                 <div class="inline-flex items-center bg-white border border-slate-200 rounded-lg shadow-sm">
                     <button type="button"
                             @click="if (qty > 1) qty--"
-                            class="w-7 h-7 grid place-items-center text-slate-400 hover:text-slate-650 active:bg-slate-50 transition focus:outline-none"
+                            class="w-8 h-8 grid place-items-center text-slate-400 hover:text-slate-650 active:bg-slate-50 transition focus:outline-none"
                             aria-label="Kurangi jumlah">
-                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14"/>
                         </svg>
                     </button>
-                    <span class="w-6 text-center font-display font-extrabold text-xs text-slate-700" x-text="qty"></span>
+                    <span class="w-7 text-center font-display font-extrabold text-xs text-slate-700" x-text="qty"></span>
                     <button type="button"
                             @click="qty++"
-                            class="w-7 h-7 grid place-items-center text-slate-400 hover:text-slate-650 active:bg-slate-50 transition focus:outline-none"
+                            class="w-8 h-8 grid place-items-center text-slate-400 hover:text-slate-650 active:bg-slate-50 transition focus:outline-none"
                             aria-label="Tambah jumlah">
-                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 5v14M5 12h14"/>
                         </svg>
                     </button>
@@ -94,8 +84,8 @@
                         @click="Alpine.store('customizer').show({{ $product->id }}, $el, qty)"
                         aria-label="Tambah {{ $product->name }} ke keranjang"
                         title="Pilih topping dan ukuran"
-                        class="w-8 h-8 rounded-full bg-[#25D366] hover:bg-[#20b857] active:bg-[#1b9e4a] text-white grid place-items-center transition-all duration-300 shadow-sm focus:outline-none">
-                    <svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        class="w-9 h-9 rounded-full bg-[#25D366] hover:bg-[#20b857] active:bg-[#1b9e4a] text-white flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md focus:outline-none hover:scale-105 active:scale-95">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
                         <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
                     </svg>
