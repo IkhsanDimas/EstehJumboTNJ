@@ -31,7 +31,7 @@
 
         {{-- Brand --}}
         <a href="{{ route('home') }}" class="flex items-center gap-2 group flex-shrink-0">
-            <span class="w-9 h-9 rounded-xl grid place-items-center shadow-sm bg-emerald-500 text-white">
+            <span class="w-9 h-9 rounded-xl grid place-items-center shadow-sm bg-green-500 text-white">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.8h-7a2 2 0 0 1-2-1.8L5 8z"/>
                     <path d="M9 8V5a3 3 0 0 1 6 0v3"/>
@@ -54,7 +54,7 @@
             @endphp
             @foreach ($links as $link)
                 <a href="{{ $link['href'] }}"
-                   class="px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-300 {{ $link['active'] ? 'text-emerald-600 bg-emerald-50' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
+                   class="px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-300 {{ $link['active'] ? 'text-green-600 bg-green-50' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
                     {{ $link['label'] }}
                 </a>
             @endforeach
@@ -112,7 +112,7 @@
             @foreach ($links as $link)
                 <a href="{{ $link['href'] }}"
                    class="px-3 py-3 text-sm font-medium rounded-lg transition
-                          {{ $link['active'] ? 'text-emerald-600 bg-emerald-50' : 'text-slate-700 hover:bg-slate-50' }}">
+                          {{ $link['active'] ? 'text-green-600 bg-green-50' : 'text-slate-700 hover:bg-slate-50' }}">
                     {{ $link['label'] }}
                 </a>
             @endforeach
