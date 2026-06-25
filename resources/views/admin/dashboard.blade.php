@@ -31,11 +31,11 @@
                 <span class="text-[10px] font-bold text-slate-450 uppercase tracking-wider">Pendapatan Sebelumnya</span>
                 <h3 class="font-display font-extrabold text-lg text-slate-900 leading-none">Rp {{ number_format($previousSales, 0, ',', '.') }}</h3>
                 <span class="text-[10px] text-slate-400 font-medium flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
                     Total sebelum hari ini
                 </span>
             </div>
-            <span class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shadow-xs">
+            <span class="w-12 h-12 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-600 shadow-xs">
                 <svg class="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -48,11 +48,11 @@
                 <span class="text-[10px] font-bold text-slate-450 uppercase tracking-wider">Total Pesanan</span>
                 <h3 class="font-display font-extrabold text-lg text-slate-900 leading-none">{{ number_format($totalOrdersCount, 0, ',', '.') }}</h3>
                 <span class="text-[10px] text-slate-400 font-medium flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
                     Aktif & Selesai
                 </span>
             </div>
-            <span class="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shadow-xs">
+            <span class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 shadow-xs">
                 <svg class="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
@@ -123,34 +123,34 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
             <div class="flex flex-wrap items-center gap-1.5 bg-slate-100/70 p-1.5 rounded-2xl border border-slate-200/60 max-w-fit">
                 <button @click="statusFilter = 'all'"
-                        :class="statusFilter === 'all' ? 'bg-white text-blue-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
+                        :class="statusFilter === 'all' ? 'bg-white text-emerald-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
                         class="px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition duration-150 flex items-center gap-2 focus:outline-none">
                     Semua Aktif 
-                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="statusFilter === 'all' ? 'bg-blue-50 text-blue-600' : 'bg-slate-200/60 text-slate-500'">{{ $activeOrders->count() }}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="statusFilter === 'all' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-200/60 text-slate-500'">{{ $activeOrders->count() }}</span>
                 </button>
                 <button @click="statusFilter = 'pending'"
-                        :class="statusFilter === 'pending' ? 'bg-white text-blue-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
+                        :class="statusFilter === 'pending' ? 'bg-white text-emerald-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
                         class="px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition duration-150 flex items-center gap-2 focus:outline-none">
                     Menunggu 
-                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="statusFilter === 'pending' ? 'bg-blue-50 text-blue-600' : 'bg-slate-200/60 text-slate-500'">{{ $activeOrders->where('status', 'pending')->count() }}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="statusFilter === 'pending' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-200/60 text-slate-500'">{{ $activeOrders->where('status', 'pending')->count() }}</span>
                 </button>
                 <button @click="statusFilter = 'paid'"
-                        :class="statusFilter === 'paid' ? 'bg-white text-blue-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
+                        :class="statusFilter === 'paid' ? 'bg-white text-emerald-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
                         class="px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition duration-150 flex items-center gap-2 focus:outline-none">
                     Sudah Bayar 
-                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="statusFilter === 'paid' ? 'bg-blue-50 text-blue-600' : 'bg-slate-200/60 text-slate-500'">{{ $activeOrders->where('status', 'paid')->count() }}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="statusFilter === 'paid' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-200/60 text-slate-500'">{{ $activeOrders->where('status', 'paid')->count() }}</span>
                 </button>
                 <button @click="statusFilter = 'preparing'"
-                        :class="statusFilter === 'preparing' ? 'bg-white text-blue-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
+                        :class="statusFilter === 'preparing' ? 'bg-white text-emerald-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
                         class="px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition duration-150 flex items-center gap-2 focus:outline-none">
                     Disiapkan 
-                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="statusFilter === 'preparing' ? 'bg-blue-50 text-blue-600' : 'bg-slate-200/60 text-slate-500'">{{ $activeOrders->where('status', 'preparing')->count() }}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="statusFilter === 'preparing' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-200/60 text-slate-500'">{{ $activeOrders->where('status', 'preparing')->count() }}</span>
                 </button>
                 <button @click="statusFilter = 'ready'"
-                        :class="statusFilter === 'ready' ? 'bg-white text-blue-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
+                        :class="statusFilter === 'ready' ? 'bg-white text-emerald-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
                         class="px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition duration-150 flex items-center gap-2 focus:outline-none">
                     Siap Saji 
-                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="statusFilter === 'ready' ? 'bg-blue-50 text-blue-600' : 'bg-slate-200/60 text-slate-500'">{{ $activeOrders->where('status', 'ready')->count() }}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="statusFilter === 'ready' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-200/60 text-slate-500'">{{ $activeOrders->where('status', 'ready')->count() }}</span>
                 </button>
             </div>
             
@@ -185,7 +185,7 @@
 
                             {{-- Customer Name --}}
                             <div class="hidden lg:flex items-center gap-3 lg:w-[22%]">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-bold grid place-items-center text-xs select-none shadow-sm shadow-blue-500/10">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-bold grid place-items-center text-xs select-none shadow-sm shadow-emerald-500/10">
                                     @php
                                         $initials = '';
                                         $words = explode(' ', $order->customer_name);
@@ -221,7 +221,7 @@
                             {{-- Delivery Type --}}
                             <div class="lg:w-[10%] text-left">
                                 <span class="text-[9px] text-slate-400 block uppercase font-bold tracking-wider leading-none mb-1">Tipe</span>
-                                <span class="text-xs font-bold {{ $order->type === 'online_delivery' ? 'text-blue-600' : 'text-slate-700' }} capitalize">
+                                <span class="text-xs font-bold {{ $order->type === 'online_delivery' ? 'text-emerald-600' : 'text-slate-700' }} capitalize">
                                     {{ $order->type === 'online_delivery' ? 'Antar' : 'Ambil' }}
                                 </span>
                             </div>
@@ -232,8 +232,8 @@
                                 @php
                                     $colorMap = [
                                         'pending'   => 'bg-amber-50 border-amber-200 text-amber-700',
-                                        'paid'      => 'bg-sky-50 border-sky-200 text-sky-700',
-                                        'preparing' => 'bg-indigo-50 border-indigo-200 text-indigo-700',
+                                        'paid'      => 'bg-emerald-50 border-emerald-200 text-emerald-700',
+                                        'preparing' => 'bg-teal-50 border-teal-200 text-teal-700',
                                         'ready'     => 'bg-purple-50 border-purple-200 text-purple-700',
                                         'completed' => 'bg-emerald-50 border-emerald-200 text-emerald-700',
                                         'cancelled' => 'bg-rose-50 border-rose-200 text-rose-700'
@@ -277,7 +277,7 @@
                                             <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="w-full">
                                                 @csrf
                                                 <input type="hidden" name="status" value="preparing">
-                                                <button type="submit" class="w-full text-left text-xs font-bold px-4 py-2.5 hover:bg-white/10 text-sky-400 transition">Terima & Siapkan</button>
+                                                <button type="submit" class="w-full text-left text-xs font-bold px-4 py-2.5 hover:bg-white/10 text-emerald-400 transition">Terima & Siapkan</button>
                                             </form>
                                             <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="w-full" onsubmit="return confirm('Apakah Anda yakin ingin membatalkan pesanan ini?')">
                                                 @csrf
@@ -288,7 +288,7 @@
                                             <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="w-full">
                                                 @csrf
                                                 <input type="hidden" name="status" value="preparing">
-                                                <button type="submit" class="w-full text-left text-xs font-bold px-4 py-2.5 hover:bg-white/10 text-indigo-400 transition">Siapkan Minuman</button>
+                                                <button type="submit" class="w-full text-left text-xs font-bold px-4 py-2.5 hover:bg-white/10 text-teal-400 transition">Siapkan Minuman</button>
                                             </form>
                                             <form action="{{ route('admin.orders.update-status', $order) }}" method="POST" class="w-full" onsubmit="return confirm('Apakah Anda yakin ingin membatalkan pesanan ini?')">
                                                 @csrf
@@ -328,7 +328,7 @@
                             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-1">Rincian Menu:</span>
                             @foreach ($order->items as $item)
                                 <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/60 text-xs font-semibold text-slate-700 shadow-2xs">
-                                    <span class="font-extrabold text-blue-600">{{ $item->quantity }}x</span>
+                                    <span class="font-extrabold text-emerald-600">{{ $item->quantity }}x</span>
                                     <span class="font-bold text-slate-900">{{ $item->product_name_snapshot }}</span>
                                     @if ($item->notes)
                                         <span class="text-[10px] text-slate-400 font-normal">({{ $item->notes }})</span>
@@ -367,7 +367,7 @@
                     <span class="text-slate-400 text-xs px-1.5">s/d</span>
                     <input type="date" name="end_date" value="{{ $endDate }}" class="text-xs font-semibold text-slate-700 bg-transparent focus:outline-none cursor-pointer">
                 </div>
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-display font-bold text-xs tracking-wider uppercase px-5 py-3 rounded-xl shadow-md shadow-blue-500/10 transition">
+                <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-display font-bold text-xs tracking-wider uppercase px-5 py-3 rounded-xl shadow-md shadow-emerald-500/10 transition">
                     Filter
                 </button>
             </form>
@@ -376,27 +376,27 @@
         {{-- Sub-tabs (All Order, Summary, Completed, Cancelled) (Premium Pill Style) --}}
         <div class="flex flex-wrap items-center gap-1.5 bg-slate-100/70 p-1.5 rounded-2xl border border-slate-200/60 max-w-fit mb-6">
             <button @click="historyTab = 'all'"
-                    :class="historyTab === 'all' ? 'bg-white text-blue-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
+                    :class="historyTab === 'all' ? 'bg-white text-emerald-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
                     class="px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition duration-150 flex items-center gap-2 focus:outline-none">
                 Semua Pesanan
-                <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="historyTab === 'all' ? 'bg-blue-50 text-blue-600' : 'bg-slate-200/60 text-slate-500'">{{ $pastOrders->count() }}</span>
+                <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="historyTab === 'all' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-200/60 text-slate-500'">{{ $pastOrders->count() }}</span>
             </button>
             <button @click="historyTab = 'summary'; initCharts()"
-                    :class="historyTab === 'summary' ? 'bg-white text-blue-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
+                    :class="historyTab === 'summary' ? 'bg-white text-emerald-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
                     class="px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition duration-150 flex items-center gap-2 focus:outline-none">
                 Ringkasan Grafik
             </button>
             <button @click="historyTab = 'completed'"
-                    :class="historyTab === 'completed' ? 'bg-white text-blue-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
+                    :class="historyTab === 'completed' ? 'bg-white text-emerald-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
                     class="px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition duration-150 flex items-center gap-2 focus:outline-none">
                 Selesai
-                <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="historyTab === 'completed' ? 'bg-blue-50 text-blue-600' : 'bg-slate-200/60 text-slate-500'">{{ $pastOrders->where('status', 'completed')->count() }}</span>
+                <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="historyTab === 'completed' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-200/60 text-slate-500'">{{ $pastOrders->where('status', 'completed')->count() }}</span>
             </button>
             <button @click="historyTab = 'cancelled'"
-                    :class="historyTab === 'cancelled' ? 'bg-white text-blue-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
+                    :class="historyTab === 'cancelled' ? 'bg-white text-emerald-600 shadow-xs font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-200/30'"
                     class="px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition duration-150 flex items-center gap-2 focus:outline-none">
                 Dibatalkan
-                <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="historyTab === 'cancelled' ? 'bg-blue-50 text-blue-600' : 'bg-slate-200/60 text-slate-500'">{{ $pastOrders->where('status', 'cancelled')->count() }}</span>
+                <span class="px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors" :class="historyTab === 'cancelled' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-200/60 text-slate-500'">{{ $pastOrders->where('status', 'cancelled')->count() }}</span>
             </button>
         </div>
 
@@ -511,7 +511,7 @@
                                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mr-1">Rincian Menu:</span>
                                 @foreach ($order->items as $item)
                                     <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/60 text-xs font-semibold text-slate-700 shadow-2xs">
-                                        <span class="font-extrabold text-blue-600">{{ $item->quantity }}x</span>
+                                        <span class="font-extrabold text-emerald-600">{{ $item->quantity }}x</span>
                                         <span class="font-bold text-slate-900">{{ $item->product_name_snapshot }}</span>
                                         @if ($item->notes)
                                             <span class="text-[10px] text-slate-400 font-normal">({{ $item->notes }})</span>
@@ -806,7 +806,7 @@
                                         {{-- Actions --}}
                                         <td class="px-6 py-4 text-center">
                                             <div class="flex items-center justify-center gap-2">
-                                                <button type="button" @click="openReplenish({{ $ing->id }}, '{{ $ing->name }}', '{{ $ing->unit }}')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-[10px] px-3 py-2 rounded-xl transition border border-transparent uppercase tracking-wide">
+                                                <button type="button" @click="openReplenish({{ $ing->id }}, '{{ $ing->name }}', '{{ $ing->unit }}')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] px-3 py-2 rounded-xl transition border border-transparent uppercase tracking-wide">
                                                     + Stok
                                                 </button>
                                                 
@@ -887,13 +887,13 @@
                     <div>
                         <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Jumlah Ditambah</label>
                         <div class="relative">
-                            <input type="number" name="quantity" step="0.001" required x-model="replenishQty" placeholder="0" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500">
+                            <input type="number" name="quantity" step="0.001" required x-model="replenishQty" placeholder="0" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500">
                             <span class="absolute inset-y-0 right-3.5 flex items-center text-xs font-bold text-slate-400" x-text="selectedUnit"></span>
                         </div>
                     </div>
                     <div class="flex items-center justify-end gap-2 pt-2">
                         <button type="button" @click="replenishOpen = false" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs px-4 py-2.5 rounded-xl transition">Batal</button>
-                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition shadow-md shadow-blue-500/10">Simpan</button>
+                        <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition shadow-md shadow-emerald-500/10">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -916,15 +916,15 @@
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Batas Minimum (Min Stock)</label>
-                        <input type="number" name="min_stock" step="0.001" required x-model="minStock" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500">
+                        <input type="number" name="min_stock" step="0.001" required x-model="minStock" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500">
                     </div>
                     <div>
                         <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Harga Modal / Unit (Rp)</label>
-                        <input type="number" name="cost_per_unit" step="0.01" required x-model="costPerUnit" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500">
+                        <input type="number" name="cost_per_unit" step="0.01" required x-model="costPerUnit" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500">
                     </div>
                     <div class="flex items-center justify-end gap-2 pt-2">
                         <button type="button" @click="editOpen = false" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs px-4 py-2.5 rounded-xl transition">Batal</button>
-                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition shadow-md shadow-blue-500/10">Simpan</button>
+                        <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition shadow-md shadow-emerald-500/10">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -952,15 +952,15 @@
                             datasets: [{
                                 label: 'Penjualan (Rp)',
                                 data: @json($salesValues ?? []),
-                                borderColor: '#3b82f6', // blue
-                                backgroundColor: 'rgba(59, 130, 246, 0.04)',
+                                borderColor: '#10b981', // emerald
+                                backgroundColor: 'rgba(16, 185, 129, 0.04)',
                                 borderWidth: 3,
                                 fill: true,
                                 tension: 0.35,
-                                pointBackgroundColor: '#3b82f6',
+                                pointBackgroundColor: '#10b981',
                                 pointBorderColor: '#fff',
                                 pointHoverRadius: 6,
-                                pointHoverBackgroundColor: '#3b82f6',
+                                pointHoverBackgroundColor: '#10b981',
                                 pointHoverBorderColor: '#fff',
                                 pointHoverBorderWidth: 2,
                                 pointRadius: 4
@@ -996,7 +996,7 @@
                             labels: @json($topLabels ?? []),
                             datasets: [{
                                 data: @json($topValues ?? []),
-                                backgroundColor: ['#f97316', '#38bdf8', '#f43f5e', '#10b981', '#6366f1'],
+                                backgroundColor: ['#10b981', '#f59e0b', '#059669', '#ea580c', '#14b8a6'],
                                 borderWidth: 0,
                                 hoverOffset: 4
                             }]
@@ -1057,14 +1057,14 @@
             const toast = document.createElement('div');
             toast.className = 'fixed top-24 right-6 z-[100] max-w-sm bg-slate-900 border border-slate-800 text-white rounded-2xl p-4 shadow-2xl flex items-start gap-3 transition-all duration-300 transform translate-y-4 opacity-0 scale-95';
             toast.innerHTML = `
-                <span class="w-8 h-8 rounded-xl bg-blue-600 flex-shrink-0 grid place-items-center text-white shadow-sm shadow-blue-500/10">
+                <span class="w-8 h-8 rounded-xl bg-emerald-600 flex-shrink-0 grid place-items-center text-white shadow-sm shadow-emerald-500/10">
                     <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
                 </span>
                 <div class="flex-1">
                     <h4 class="text-xs font-bold text-white leading-tight">Ada Pesanan Baru Masuk!</h4>
                     <p class="text-[10px] text-slate-400 mt-1 leading-snug">Sistem mendeteksi pesanan baru dari pelanggan. Silakan muat ulang halaman untuk memperbarui daftar.</p>
                     <div class="mt-2.5 flex items-center gap-2">
-                        <button onclick="window.location.reload();" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-[9px] px-3.5 py-1.5 rounded-lg uppercase tracking-wider transition">Muat Ulang</button>
+                        <button onclick="window.location.reload();" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[9px] px-3.5 py-1.5 rounded-lg uppercase tracking-wider transition">Muat Ulang</button>
                         <button onclick="this.closest('.fixed').remove();" class="text-slate-400 hover:text-white font-bold text-[9px] px-2 py-1.5 uppercase tracking-wider transition">Tutup</button>
                     </div>
                 </div>

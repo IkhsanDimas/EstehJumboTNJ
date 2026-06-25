@@ -42,7 +42,7 @@
         
         {{-- Name --}}
         <a href="{{ $detailUrl }}" class="block mt-0.5 flex-1">
-            <h3 class="font-display font-bold text-slate-800 text-sm leading-snug line-clamp-2 group-hover:text-sky-600 transition-colors">
+            <h3 class="font-display font-bold text-slate-800 text-sm leading-snug line-clamp-2 group-hover:text-emerald-600 transition-colors">
                 {{ $product->name }}
             </h3>
         </a>

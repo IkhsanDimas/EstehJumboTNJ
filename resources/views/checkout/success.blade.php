@@ -2,17 +2,13 @@
 @section('title', 'Pesanan Berhasil')
 
 @section('content')
-<section class="relative bg-page-soft min-h-screen flex items-center justify-center px-6 py-24 overflow-hidden">
-    {{-- Decorative blobs --}}
-    <div aria-hidden="true" class="deco-blob deco-blob-emerald w-96 h-96 -top-20 -right-20 opacity-50"></div>
-    <div aria-hidden="true" class="deco-blob deco-blob-sky w-96 h-96 -bottom-20 -left-20 opacity-50"></div>
-    <div aria-hidden="true" class="deco-blob deco-blob-amber w-72 h-72 top-1/3 right-1/4 opacity-30"></div>
+
 
     <div class="relative max-w-2xl w-full">
-        <div class="relative bg-white/85 backdrop-blur-sm rounded-[36px] p-10 md:p-14 shadow-[0_30px_60px_-20px_rgba(2,132,199,0.30)] border border-white text-center overflow-hidden">
+        <div class="relative bg-white/85 backdrop-blur-sm rounded-[36px] p-10 md:p-14 shadow-[0_30px_60px_-20px_rgba(16,185,129,0.15)] border border-white text-center overflow-hidden">
             {{-- Inner soft glow --}}
             <div aria-hidden="true" class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-emerald-100 blur-3xl"></div>
-            <div aria-hidden="true" class="absolute -bottom-20 -left-10 w-56 h-56 rounded-full bg-sky-100 blur-3xl"></div>
+            <div aria-hidden="true" class="absolute -bottom-20 -left-10 w-56 h-56 rounded-full bg-emerald-50/30 blur-3xl"></div>
 
             <div class="relative">
                 {{-- Success icon with halo --}}
@@ -30,17 +26,17 @@
                 </h1>
                 <p class="mt-3 text-slate-600 leading-relaxed">
                     Terima kasih sudah memesan di
-                    <span class="font-semibold text-sky-600">{{ $store->store_name }}</span>.
+                    <span class="font-semibold text-emerald-600">{{ $store->store_name }}</span>.
                 </p>
 
                 {{-- Order ID --}}
                 <div>
-                    <div class="mt-7 inline-flex items-center gap-3 bg-sky-50 border border-sky-100 rounded-2xl px-5 py-3">
-                        <span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-sky-700">ID Pesanan</span>
+                    <div class="mt-7 inline-flex items-center gap-3 bg-emerald-50 border border-emerald-100 rounded-2xl px-5 py-3">
+                        <span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-emerald-700">ID Pesanan</span>
                         <span class="font-display font-extrabold text-slate-900 text-lg">{{ $order->order_number }}</span>
                     </div>
                     <div class="mt-2 text-xs">
-                        <a href="{{ route('order.track', ['order_number' => $order->order_number]) }}" class="text-sky-600 hover:text-sky-750 font-bold hover:underline transition">
+                        <a href="{{ route('order.track', ['order_number' => $order->order_number]) }}" class="text-emerald-600 hover:text-emerald-800 font-bold hover:underline transition">
                             Lacak Status Pesanan Real-time →
                         </a>
                     </div>
@@ -57,14 +53,14 @@
 
                 {{-- Redirect notice --}}
                 @if (session('whatsapp_url'))
-                    <div class="mt-9 bg-gradient-to-br from-sky-50 to-emerald-50 border border-sky-100 rounded-2xl p-6">
+                    <div class="mt-9 bg-gradient-to-br from-emerald-50/50 to-emerald-50/10 border border-emerald-100 rounded-2xl p-6">
                         <div class="flex items-center justify-center gap-3">
                             <svg class="w-5 h-5 text-emerald-500" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2z"/>
                             </svg>
                             <p class="font-display font-semibold text-slate-900">Membuka WhatsApp...</p>
                         </div>
-                        <p class="mt-1.5 text-xs text-slate-500">Anda akan diarahkan dalam <span id="countdown" class="font-bold text-sky-600">3</span> detik</p>
+                        <p class="mt-1.5 text-xs text-slate-500">Anda akan diarahkan dalam <span id="countdown" class="font-bold text-emerald-600">3</span> detik</p>
                     </div>
                 @endif
 
@@ -84,7 +80,7 @@
                 </div>
 
                 <div class="mt-5">
-                    <a href="{{ route('home') }}" class="text-sm text-slate-500 hover:text-sky-600 transition">
+                    <a href="{{ route('home') }}" class="text-sm text-slate-500 hover:text-emerald-600 transition">
                         ← Kembali ke Beranda
                     </a>
                 </div>

@@ -2,16 +2,12 @@
 @section('title', 'Lacak Pesanan — ' . $store->store_name)
 
 @section('content')
-<section class="relative bg-page-soft min-h-screen pt-10 pb-24 overflow-hidden">
-    {{-- Decorative blobs --}}
-    <div aria-hidden="true" class="deco-blob deco-blob-sky w-[28rem] h-[28rem] -top-32 -right-32"></div>
-    <div aria-hidden="true" class="deco-blob deco-blob-amber w-72 h-72 top-1/3 -left-20 opacity-40"></div>
-    <div aria-hidden="true" class="deco-blob deco-blob-emerald w-72 h-72 bottom-32 -right-20 opacity-40"></div>
+
 
     <div class="relative max-w-7xl mx-auto px-6">
         {{-- Header --}}
         <div class="mb-10 text-center md:text-left">
-            <p class="text-xs font-semibold tracking-[0.18em] uppercase text-sky-600">Pelacakan Mandiri</p>
+            <p class="text-xs font-semibold tracking-[0.18em] uppercase text-emerald-600">Pelacakan Mandiri</p>
             <h1 class="mt-2 font-display font-semibold text-3xl md:text-4xl text-ink tracking-tight">
                 Lacak Pesanan
             </h1>
@@ -19,7 +15,7 @@
         </div>
 
         {{-- ─── SEARCH FORM CARD ─── --}}
-        <div class="bg-white/85 backdrop-blur-sm rounded-3xl border border-white shadow-[0_20px_40px_-20px_rgba(2,132,199,0.15)] p-6 md:p-8 mb-8">
+        <div class="bg-white/85 backdrop-blur-sm rounded-3xl border border-white shadow-[0_20px_40px_-20px_rgba(16,185,129,0.10)] p-6 md:p-8 mb-8">
             <h2 class="font-display font-bold text-slate-900 text-lg mb-3">Masukkan Nomor Pesanan</h2>
             <form action="{{ route('order.track') }}" method="GET" class="flex flex-col sm:flex-row gap-3">
                 <div class="relative flex-1">
@@ -32,7 +28,7 @@
                            placeholder="Contoh: ETJ-20260531-1234"
                            style="text-transform: uppercase;"
                            oninput="this.value = this.value.toUpperCase()"
-                           class="w-full rounded-2xl border border-slate-200 bg-white/70 pl-11 pr-4 py-3.5 text-sm font-semibold placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400 focus:bg-white transition">
+                           class="w-full rounded-2xl border border-slate-200 bg-white/70 pl-11 pr-4 py-3.5 text-sm font-semibold placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 focus:bg-white transition">
                 </div>
                 <button type="submit" class="bg-slate-900 hover:bg-black text-white font-semibold text-sm px-7 py-3.5 rounded-full transition shadow-lg shadow-slate-900/10 hover:-translate-y-0.5 whitespace-nowrap">
                     Cari Pesanan
@@ -69,7 +65,7 @@
 
             <div class="grid md:grid-cols-3 gap-8">
                 {{-- Left Side: Stepper Progress --}}
-                <div class="md:col-span-1 bg-white/85 backdrop-blur-sm rounded-3xl border border-white shadow-[0_20px_40px_-20px_rgba(2,132,199,0.15)] p-6 md:p-8 flex flex-col">
+                <div class="md:col-span-1 bg-white/85 backdrop-blur-sm rounded-3xl border border-white shadow-[0_20px_40px_-20px_rgba(16,185,129,0.10)] p-6 md:p-8 flex flex-col">
                     <h3 class="font-display font-bold text-slate-900 text-base mb-6 pb-3 border-b border-slate-100">Status Pengiriman</h3>
                     
                     @if ($isCancelled)
@@ -90,7 +86,7 @@
                             <div class="relative">
                                 {{-- Step circle indicator --}}
                                 <span class="absolute -left-8 top-0.5 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300
-                                    {{ $currentStepIndex > 1 ? 'bg-emerald-500 border-emerald-500 text-white' : ($currentStepIndex === 1 ? 'bg-sky-500 border-sky-500 text-white shadow-[0_0_0_4px_rgba(14,165,233,0.25)]' : 'bg-white border-slate-350') }}">
+                                    {{ $currentStepIndex > 1 ? 'bg-emerald-500 border-emerald-500 text-white' : ($currentStepIndex === 1 ? 'bg-emerald-500 border-emerald-500 text-white shadow-[0_0_0_4px_rgba(16,185,129,0.20)]' : 'bg-white border-slate-350') }}">
                                     @if ($currentStepIndex > 1)
                                         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                                     @else
@@ -106,7 +102,7 @@
                             {{-- Step 2 --}}
                             <div class="relative">
                                 <span class="absolute -left-8 top-0.5 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300
-                                    {{ $currentStepIndex > 2 ? 'bg-emerald-500 border-emerald-500 text-white' : ($currentStepIndex === 2 ? 'bg-sky-500 border-sky-500 text-white shadow-[0_0_0_4px_rgba(14,165,233,0.25)]' : 'bg-white border-slate-350') }}">
+                                    {{ $currentStepIndex > 2 ? 'bg-emerald-500 border-emerald-500 text-white' : ($currentStepIndex === 2 ? 'bg-emerald-500 border-emerald-500 text-white shadow-[0_0_0_4px_rgba(16,185,129,0.20)]' : 'bg-white border-slate-350') }}">
                                     @if ($currentStepIndex > 2)
                                         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                                     @else
@@ -122,7 +118,7 @@
                             {{-- Step 3 --}}
                             <div class="relative">
                                 <span class="absolute -left-8 top-0.5 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300
-                                    {{ $currentStepIndex > 3 ? 'bg-emerald-500 border-emerald-500 text-white' : ($currentStepIndex === 3 ? 'bg-sky-500 border-sky-500 text-white shadow-[0_0_0_4px_rgba(14,165,233,0.25)]' : 'bg-white border-slate-350') }}">
+                                    {{ $currentStepIndex > 3 ? 'bg-emerald-500 border-emerald-500 text-white' : ($currentStepIndex === 3 ? 'bg-emerald-500 border-emerald-500 text-white shadow-[0_0_0_4px_rgba(16,185,129,0.20)]' : 'bg-white border-slate-350') }}">
                                     @if ($currentStepIndex > 3)
                                         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                                     @else
@@ -161,7 +157,7 @@
                 {{-- Right Side: Order Summaries and Details --}}
                 <div class="md:col-span-2 space-y-6">
                     {{-- Detail Card --}}
-                    <div class="bg-white/85 backdrop-blur-sm rounded-3xl border border-white shadow-[0_20px_40px_-20px_rgba(2,132,199,0.15)] p-6 md:p-8">
+                    <div class="bg-white/85 backdrop-blur-sm rounded-3xl border border-white shadow-[0_20px_40px_-20px_rgba(16,185,129,0.10)] p-6 md:p-8">
                         <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-100">
                             <div>
                                 <p class="text-xs font-semibold uppercase text-slate-400 tracking-wider">Rincian Transaksi</p>
@@ -169,7 +165,7 @@
                             </div>
                             <div class="text-right">
                                 <p class="text-xs font-semibold uppercase text-slate-400 tracking-wider">Tipe Pengiriman</p>
-                                <p class="font-display font-bold text-sky-700 text-sm mt-1">
+                                <p class="font-display font-bold text-emerald-700 text-sm mt-1">
                                     {{ $order->type === 'online_delivery' ? 'Kirim ke Alamat' : 'Ambil Sendiri' }}
                                 </p>
                             </div>
@@ -224,7 +220,7 @@
                                     <p class="leading-relaxed text-slate-700 bg-slate-50 border border-slate-100 p-2.5 rounded-xl mt-1.5 whitespace-pre-line">{{ $addressText }}</p>
                                     
                                     @if ($pinpointLink)
-                                        <a href="{{ $pinpointLink }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-sky-600 hover:text-sky-700 font-semibold mt-2 transition">
+                                        <a href="{{ $pinpointLink }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-emerald-600 hover:text-emerald-700 font-semibold mt-2 transition">
                                             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
                                             </svg>
@@ -238,7 +234,7 @@
                                 <h4 class="font-bold text-slate-900 uppercase tracking-wider mb-1">Jadwal Waktu</h4>
                                 <p class="font-semibold text-slate-800 text-xs">
                                     @if ($scheduleText)
-                                        <span class="text-sky-700 bg-sky-50 border border-sky-100 px-2.5 py-1 rounded-full text-[10px] font-bold inline-block mb-1">Terjadwal</span><br>
+                                        <span class="text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-full text-[10px] font-bold inline-block mb-1">Terjadwal</span><br>
                                         {{ $scheduleText }}
                                     @else
                                         <span class="text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-full text-[10px] font-bold inline-block mb-1">Instan / Sekarang</span><br>
@@ -298,7 +294,7 @@
                             @endif
                             <div class="flex justify-between pt-2.5 border-t border-slate-200 text-slate-900 font-bold text-sm">
                                 <span>Total Tagihan</span>
-                                <span class="text-sky-600 font-display font-extrabold text-base">Rp {{ number_format($order->grand_total, 0, ',', '.') }}</span>
+                                <span class="text-emerald-600 font-display font-extrabold text-base">Rp {{ number_format($order->grand_total, 0, ',', '.') }}</span>
                             </div>
                         </div>
 

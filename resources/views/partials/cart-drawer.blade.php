@@ -35,7 +35,7 @@
         {{-- Header --}}
         <header class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
             <div class="flex items-center gap-3">
-                <span class="w-9 h-9 rounded-xl bg-sky-50 grid place-items-center text-sky-600">
+                <span class="w-9 h-9 rounded-xl bg-emerald-50 grid place-items-center text-emerald-600">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
                     </svg>
@@ -110,7 +110,7 @@
                                     <span class="w-7 text-center text-sm font-bold text-slate-900" x-text="item.quantity"></span>
                                     <button type="button"
                                             @click="$store.cart.update(item.key || item.id, 'increase')"
-                                            class="w-7 h-7 grid place-items-center text-slate-600 hover:bg-sky-500 hover:text-white transition"
+                                            class="w-7 h-7 grid place-items-center text-slate-600 hover:bg-emerald-650 hover:text-white transition"
                                             aria-label="Tambah">
                                         <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
                                     </button>

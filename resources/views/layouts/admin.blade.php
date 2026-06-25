@@ -33,10 +33,11 @@
     
     <style>
         [x-cloak] { display: none !important; }
+        body {
             background-color: #f8fafc;
             background-image: 
-                radial-gradient(1000px 600px at 90% 0%, rgba(186, 230, 253, 0.15) 0%, transparent 60%),
-                radial-gradient(1000px 600px at 10% 100%, rgba(59, 130, 246, 0.03) 0%, transparent 60%);
+                radial-gradient(1000px 600px at 90% 0%, rgba(167, 243, 208, 0.15) 0%, transparent 60%),
+                radial-gradient(1000px 600px at 10% 100%, rgba(16, 185, 129, 0.03) 0%, transparent 60%);
             background-attachment: fixed;
         }
         /* Custom scrollbar */
@@ -63,14 +64,14 @@
         
         {{-- Logo Brand --}}
         <div class="h-20 px-6 border-b border-slate-800 flex items-center gap-3">
-            <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 grid place-items-center text-white shadow-md shadow-blue-500/10 select-none">
+            <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 grid place-items-center text-white shadow-md shadow-emerald-500/10 select-none">
                 <svg class="w-5.5 h-5.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
             </span>
             <div class="flex flex-col">
                 <span class="font-display font-extrabold text-[15px] tracking-tight text-white leading-none">estehjumbo</span>
-                <span class="font-display font-bold text-[10px] text-blue-400 tracking-wider uppercase mt-1">TNJ</span>
+                <span class="font-display font-bold text-[10px] text-emerald-400 tracking-wider uppercase mt-1">TNJ</span>
             </div>
         </div>
 
@@ -88,8 +89,8 @@
                 
                 {{-- Live Orders --}}
                 <a href="{{ route('admin.dashboard', ['menu' => 'live_orders']) }}" 
-                   class="relative flex items-center gap-3.5 px-6 py-3 text-[13px] font-bold tracking-wide transition-all group {{ $activeMenu === 'live_orders' ? 'text-white bg-blue-600/10 border-l-4 border-blue-500' : 'text-slate-400 hover:text-white hover:bg-slate-800/30' }}">
-                    <span class="w-5 h-5 flex items-center justify-center rounded-lg {{ $activeMenu === 'live_orders' ? 'text-blue-400' : 'text-slate-500 group-hover:text-slate-300' }} transition">
+                   class="relative flex items-center gap-3.5 px-6 py-3 text-[13px] font-bold tracking-wide transition-all group {{ $activeMenu === 'live_orders' ? 'text-white bg-emerald-600/10 border-l-4 border-emerald-500' : 'text-slate-400 hover:text-white hover:bg-slate-800/30' }}">
+                    <span class="w-5 h-5 flex items-center justify-center rounded-lg {{ $activeMenu === 'live_orders' ? 'text-emerald-400' : 'text-slate-500 group-hover:text-slate-300' }} transition">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
                     </span>
                     Pesanan Masuk
@@ -97,8 +98,8 @@
                 
                 {{-- Order History --}}
                 <a href="{{ route('admin.dashboard', ['menu' => 'order_history']) }}" 
-                   class="relative flex items-center gap-3.5 px-6 py-3 text-[13px] font-bold tracking-wide transition-all group {{ $activeMenu === 'order_history' ? 'text-white bg-blue-600/10 border-l-4 border-blue-500' : 'text-slate-400 hover:text-white hover:bg-slate-800/30' }}">
-                    <span class="w-5 h-5 flex items-center justify-center rounded-lg {{ $activeMenu === 'order_history' ? 'text-blue-400' : 'text-slate-500 group-hover:text-slate-300' }} transition">
+                   class="relative flex items-center gap-3.5 px-6 py-3 text-[13px] font-bold tracking-wide transition-all group {{ $activeMenu === 'order_history' ? 'text-white bg-emerald-600/10 border-l-4 border-emerald-500' : 'text-slate-400 hover:text-white hover:bg-slate-800/30' }}">
+                    <span class="w-5 h-5 flex items-center justify-center rounded-lg {{ $activeMenu === 'order_history' ? 'text-emerald-400' : 'text-slate-500 group-hover:text-slate-300' }} transition">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
                     </span>
                     Riwayat Pesanan
@@ -111,8 +112,8 @@
                 
                 {{-- Products CRUD --}}
                 <a href="{{ route('admin.products.index') }}" 
-                   class="relative flex items-center gap-3.5 px-6 py-3 text-[13px] font-bold tracking-wide transition-all group {{ $activeMenu === 'products' ? 'text-white bg-blue-600/10 border-l-4 border-blue-500' : 'text-slate-400 hover:text-white hover:bg-slate-800/30' }}">
-                    <span class="w-5 h-5 flex items-center justify-center rounded-lg {{ $activeMenu === 'products' ? 'text-blue-400' : 'text-slate-500 group-hover:text-slate-300' }} transition">
+                   class="relative flex items-center gap-3.5 px-6 py-3 text-[13px] font-bold tracking-wide transition-all group {{ $activeMenu === 'products' ? 'text-white bg-emerald-600/10 border-l-4 border-emerald-500' : 'text-slate-400 hover:text-white hover:bg-slate-800/30' }}">
+                    <span class="w-5 h-5 flex items-center justify-center rounded-lg {{ $activeMenu === 'products' ? 'text-emerald-400' : 'text-slate-500 group-hover:text-slate-300' }} transition">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.168.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
                     </span>
                     Menu & Produk
@@ -120,8 +121,8 @@
 
                 {{-- Inventory (Stok & Bahan) --}}
                 <a href="{{ route('admin.dashboard', ['menu' => 'inventory']) }}" 
-                   class="relative flex items-center gap-3.5 px-6 py-3 text-[13px] font-bold tracking-wide transition-all group {{ $activeMenu === 'inventory' ? 'text-white bg-blue-600/10 border-l-4 border-blue-500' : 'text-slate-400 hover:text-white hover:bg-slate-800/30' }}">
-                    <span class="w-5 h-5 flex items-center justify-center rounded-lg {{ $activeMenu === 'inventory' ? 'text-blue-400' : 'text-slate-500 group-hover:text-slate-300' }} transition">
+                   class="relative flex items-center gap-3.5 px-6 py-3 text-[13px] font-bold tracking-wide transition-all group {{ $activeMenu === 'inventory' ? 'text-white bg-emerald-600/10 border-l-4 border-emerald-500' : 'text-slate-400 hover:text-white hover:bg-slate-800/30' }}">
+                    <span class="w-5 h-5 flex items-center justify-center rounded-lg {{ $activeMenu === 'inventory' ? 'text-emerald-400' : 'text-slate-500 group-hover:text-slate-300' }} transition">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
                     </span>
                     Inventaris & Stok
@@ -134,8 +135,8 @@
                 
                 {{-- Settings / Tampilan Website --}}
                 <a href="{{ route('admin.dashboard', ['menu' => 'settings']) }}" 
-                   class="relative flex items-center gap-3.5 px-6 py-3 text-[13px] font-bold tracking-wide transition-all group {{ $activeMenu === 'settings' ? 'text-white bg-blue-600/10 border-l-4 border-blue-500' : 'text-slate-400 hover:text-white hover:bg-slate-800/30' }}">
-                    <span class="w-5 h-5 flex items-center justify-center rounded-lg {{ $activeMenu === 'settings' ? 'text-blue-400' : 'text-slate-500 group-hover:text-slate-300' }} transition">
+                   class="relative flex items-center gap-3.5 px-6 py-3 text-[13px] font-bold tracking-wide transition-all group {{ $activeMenu === 'settings' ? 'text-white bg-emerald-600/10 border-l-4 border-emerald-500' : 'text-slate-400 hover:text-white hover:bg-slate-800/30' }}">
+                    <span class="w-5 h-5 flex items-center justify-center rounded-lg {{ $activeMenu === 'settings' ? 'text-emerald-400' : 'text-slate-500 group-hover:text-slate-300' }} transition">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><circle cx="12" cy="12" r="3" /></svg>
                     </span>
                     Pengaturan
@@ -163,7 +164,7 @@
                 {{-- Toggle switch --}}
                 <button type="button" 
                         @click="toggleSetting('busy_mode')"
-                        :class="busyMode ? 'bg-blue-600' : 'bg-slate-700'"
+                        :class="busyMode ? 'bg-emerald-500' : 'bg-slate-700'"
                         class="w-10 h-6 flex items-center rounded-full p-0.5 transition-colors duration-300 focus:outline-none relative">
                     <span :class="busyMode ? 'translate-x-4' : 'translate-x-0'"
                           class="bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-300"></span>
@@ -212,7 +213,7 @@
 
                 {{-- User Avatar Profile --}}
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 font-bold border border-blue-100 grid place-items-center text-sm shadow-xs select-none">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 font-bold border border-emerald-100 grid place-items-center text-sm shadow-xs select-none">
                         @php
                             $user = Auth::user();
                             $words = explode(' ', $user->name);

@@ -31,7 +31,7 @@
 
         {{-- Brand --}}
         <a href="{{ route('home') }}" class="flex items-center gap-2 group flex-shrink-0">
-            <span class="w-9 h-9 rounded-xl grid place-items-center shadow-sm bg-sky-500 text-white">
+            <span class="w-9 h-9 rounded-xl grid place-items-center shadow-sm bg-emerald-500 text-white">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.8h-7a2 2 0 0 1-2-1.8L5 8z"/>
                     <path d="M9 8V5a3 3 0 0 1 6 0v3"/>
@@ -41,7 +41,7 @@
                 Es Teh Jumbo
             </span>
         </a>
-
+ 
         {{-- Desktop nav --}}
         <nav class="hidden md:flex items-center gap-1">
             @php
@@ -54,12 +54,12 @@
             @endphp
             @foreach ($links as $link)
                 <a href="{{ $link['href'] }}"
-                   class="px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-300 {{ $link['active'] ? 'text-sky-600 bg-sky-50' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
+                   class="px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-300 {{ $link['active'] ? 'text-emerald-600 bg-emerald-50' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
                     {{ $link['label'] }}
                 </a>
             @endforeach
         </nav>
-
+ 
         {{-- Right actions --}}
         <div class="flex items-center gap-3">
             {{-- Search shortcut → menu page with focus --}}
@@ -70,7 +70,7 @@
                     <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
                 </svg>
             </a>
-
+ 
             {{-- Cart (opens drawer) --}}
             <button type="button"
                     @click="$store.cart.show()"
@@ -91,7 +91,7 @@
                     <span class="hidden lg:inline" x-text="'Rp ' + $store.cart.format($store.cart.total)"></span>
                 </template>
             </button>
-
+ 
             {{-- Mobile toggle --}}
             <button type="button"
                     @click="mobile = !mobile"
@@ -103,7 +103,7 @@
             </button>
         </div>
     </div>
-
+ 
     {{-- Mobile drawer --}}
     <div x-show="mobile" x-transition.opacity
          class="md:hidden bg-white border-t border-slate-100"
@@ -112,7 +112,7 @@
             @foreach ($links as $link)
                 <a href="{{ $link['href'] }}"
                    class="px-3 py-3 text-sm font-medium rounded-lg transition
-                          {{ $link['active'] ? 'text-sky-600 bg-sky-50' : 'text-slate-700 hover:bg-slate-50' }}">
+                          {{ $link['active'] ? 'text-emerald-600 bg-emerald-50' : 'text-slate-700 hover:bg-slate-50' }}">
                     {{ $link['label'] }}
                 </a>
             @endforeach

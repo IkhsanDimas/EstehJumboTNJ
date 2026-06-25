@@ -30,8 +30,8 @@
         body {
             background-color: #f1f4f8;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(186, 230, 253, 0.4) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(224, 242, 254, 0.6) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(167, 243, 208, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(209, 250, 229, 0.6) 0%, transparent 40%);
             background-attachment: fixed;
         }
     </style>
@@ -54,8 +54,8 @@
         {{-- RIGHT SIDE: Form --}}
         <div class="w-full md:w-[52%] p-8 sm:p-10 md:p-12 flex flex-col justify-center bg-white rounded-[32px]">
             <div class="mb-8">
-                <p class="text-blue-600 font-display font-semibold text-xs tracking-[0.15em] uppercase">Welcome to</p>
-                <h1 class="font-display font-extrabold text-blue-600 text-3xl sm:text-4xl tracking-tight mt-1">estehjumboTNJ</h1>
+                <p class="text-emerald-600 font-display font-semibold text-xs tracking-[0.15em] uppercase">Welcome to</p>
+                <h1 class="font-display font-extrabold text-emerald-600 text-3xl sm:text-4xl tracking-tight mt-1">estehjumboTNJ</h1>
             </div>
 
             {{-- Error validation alerts --}}
@@ -76,20 +76,20 @@
                 <div class="relative">
                     <input type="email" name="email" value="{{ old('email') }}" required autofocus
                            placeholder="Enter Username or Email Address"
-                           class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3.5 text-xs font-semibold text-slate-700 placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition">
+                           class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3.5 text-xs font-semibold text-slate-700 placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition">
                 </div>
 
                 {{-- Password Input --}}
                 <div class="relative">
                     <input type="password" name="password" required
                            placeholder="Enter Password"
-                           class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3.5 text-xs font-semibold text-slate-700 placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition">
+                           class="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3.5 text-xs font-semibold text-slate-700 placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition">
                 </div>
 
                 {{-- Log in button + forgot password --}}
                 <div class="flex items-center justify-between gap-4 pt-3">
                     <button type="submit"
-                            class="bg-blue-600 hover:bg-blue-700 text-white font-display font-bold text-[10px] tracking-wider uppercase px-8 py-3.5 rounded-xl transition shadow-md shadow-blue-500/10 hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap">
+                            class="bg-emerald-600 hover:bg-emerald-700 text-white font-display font-bold text-[10px] tracking-wider uppercase px-8 py-3.5 rounded-xl transition shadow-md shadow-emerald-500/10 hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap">
                         Log In
                     </button>
                     <a href="#" class="text-[11px] text-slate-450 hover:text-slate-700 transition">Forgot password?</a>

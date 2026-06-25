@@ -116,7 +116,7 @@
                 <p class="mt-3 text-slate-500 max-w-md text-[15px]">Paling sering dipesan, paling cepat habis. Coba salah satu di bawah ini.</p>
             </div>
             <a href="{{ route('menu') }}"
-               class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-sky-600 hover:text-sky-700 transition group">
+               class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600 hover:text-emerald-750 transition group">
                 Semua menu
                 <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -129,7 +129,7 @@
         </div>
 
         <div class="mt-10 text-center sm:hidden">
-            <a href="{{ route('menu') }}" class="inline-flex items-center gap-1.5 text-sm font-medium text-sky-600 hover:text-sky-700">
+            <a href="{{ route('menu') }}" class="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600 hover:text-emerald-755">
                 Lihat semua menu →
             </a>
         </div>
@@ -194,7 +194,7 @@
 
             @php
                 $testimonials = [
-                    ['n' => 'Aditya W.', 'r' => 'Mahasiswa', 't' => 'Porsi jumbo, harganya bersahabat. Wajib pesan kalau lagi panas-panasnya.', 'color' => 'from-sky-500 to-cyan-500'],
+                    ['n' => 'Aditya W.', 'r' => 'Mahasiswa', 't' => 'Porsi jumbo, harganya bersahabat. Wajib pesan kalau lagi panas-panasnya.', 'color' => 'from-emerald-500 to-teal-500'],
                     ['n' => 'Siti R.',   'r' => 'Karyawan',  't' => 'Es coklatnya kental, manisnya pas. Es batu tidak berlebihan jadi rasa tetap enak.', 'color' => 'from-amber-500 to-orange-500'],
                     ['n' => 'Budi S.',   'r' => 'Kurir',     't' => 'Pesan, langsung diantar cepat. Harga masuk akal, jadi langganan tiap lewat Galaxy.', 'color' => 'from-emerald-500 to-teal-500'],
                 ];

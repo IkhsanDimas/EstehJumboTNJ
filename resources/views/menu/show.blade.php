@@ -2,23 +2,19 @@
 @section('title', $product->name . ' — ' . $store->store_name)
 
 @section('content')
-<div class="bg-page-soft text-slate-800 relative overflow-hidden">
-    {{-- Page-level decorative blobs (subtle, behind everything) --}}
-    <div aria-hidden="true" class="deco-blob deco-blob-sky w-96 h-96 -top-20 -right-32"></div>
-    <div aria-hidden="true" class="deco-blob deco-blob-rose w-80 h-80 top-[40%] -left-24"></div>
-    <div aria-hidden="true" class="deco-blob deco-blob-amber w-72 h-72 bottom-20 -right-20"></div>
+
 
     {{-- ──────────────────────────────────────────────
          BREADCRUMB
     ────────────────────────────────────────────── --}}
-    <section class="relative bg-gradient-to-b from-sky-50/80 to-transparent border-b border-sky-100/60 pt-24 pb-5">
+    <section class="relative bg-gradient-to-b from-emerald-50/50 to-transparent border-b border-emerald-100/40 pt-24 pb-5">
         <div class="max-w-7xl mx-auto px-6">
             <nav class="flex items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
-                <a href="{{ route('home') }}" class="hover:text-sky-600 transition">Beranda</a>
+                <a href="{{ route('home') }}" class="hover:text-emerald-600 transition">Beranda</a>
                 <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-                <a href="{{ route('menu') }}" class="hover:text-sky-600 transition">Menu</a>
+                <a href="{{ route('menu') }}" class="hover:text-emerald-600 transition">Menu</a>
                 <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-                <a href="{{ route('menu', ['category' => $product->category_id]) }}" class="hover:text-sky-600 transition">{{ $product->category->name }}</a>
+                <a href="{{ route('menu', ['category' => $product->category_id]) }}" class="hover:text-emerald-600 transition">{{ $product->category->name }}</a>
                 <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
                 <span class="text-slate-700 font-medium truncate">{{ $product->name }}</span>
             </nav>
@@ -41,10 +37,10 @@
 
             {{-- LEFT: image stage --}}
             <div class="md:col-span-6">
-                <div class="relative aspect-square rounded-[32px] bg-gradient-to-br from-sky-100 via-white to-rose-50 overflow-hidden border border-white shadow-[0_30px_60px_-30px_rgba(14,165,233,0.35)]">
+                <div class="relative aspect-square rounded-[32px] bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 overflow-hidden border border-white shadow-[0_30px_60px_-30px_rgba(16,185,129,0.20)]">
                     {{-- decorative blobs --}}
-                    <div aria-hidden="true" class="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-sky-200 blur-3xl opacity-70"></div>
-                    <div aria-hidden="true" class="absolute -bottom-20 -left-10 w-56 h-56 rounded-full bg-rose-200/60 blur-3xl"></div>
+                    <div aria-hidden="true" class="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-emerald-100 blur-3xl opacity-70"></div>
+                    <div aria-hidden="true" class="absolute -bottom-20 -left-10 w-56 h-56 rounded-full bg-emerald-50/40 blur-3xl"></div>
 
                     {{-- ground shadow --}}
                     <div aria-hidden="true" class="absolute bottom-10 left-1/2 -translate-x-1/2 w-3/5 h-5 bg-slate-900/15 rounded-full blur-lg"></div>
@@ -64,19 +60,19 @@
                     {{-- floating dot pattern --}}
                     <div aria-hidden="true" class="absolute bottom-6 right-6 grid grid-cols-3 gap-1.5 opacity-50">
                         @for ($i = 0; $i < 9; $i++)
-                            <span class="w-1.5 h-1.5 rounded-full bg-sky-300"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
                         @endfor
                     </div>
                 </div>
 
                 {{-- ingredients (if any) --}}
                 @if ($product->ingredients->isNotEmpty())
-                    <div class="mt-6 bg-white/70 backdrop-blur rounded-2xl p-5 border border-sky-100 shadow-sm">
-                        <p class="text-[10px] uppercase tracking-[0.18em] text-sky-600 font-semibold mb-3">Komposisi</p>
+                    <div class="mt-6 bg-white/70 backdrop-blur rounded-2xl p-5 border border-emerald-100 shadow-sm">
+                        <p class="text-[10px] uppercase tracking-[0.18em] text-emerald-600 font-semibold mb-3">Komposisi</p>
                         <div class="flex flex-wrap gap-2">
                             @foreach ($product->ingredients as $ing)
-                                <span class="inline-flex items-center gap-1.5 bg-white border border-sky-100 rounded-full px-3 py-1.5 text-xs text-slate-600">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                                <span class="inline-flex items-center gap-1.5 bg-white border border-emerald-100 rounded-full px-3 py-1.5 text-xs text-slate-600">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                                     {{ $ing->name }}
                                 </span>
                             @endforeach
@@ -87,8 +83,8 @@
 
             {{-- RIGHT: options panel (now in a soft card) --}}
             <div class="md:col-span-6">
-                <div class="relative bg-white/80 backdrop-blur-sm rounded-[28px] p-7 md:p-8 border border-white shadow-[0_20px_50px_-20px_rgba(2,132,199,0.20)]">
-                <p class="text-[11px] uppercase tracking-[0.2em] text-sky-600 font-semibold">{{ $product->category->name }}</p>
+                <div class="relative bg-white/80 backdrop-blur-sm rounded-[28px] p-7 md:p-8 border border-white shadow-[0_20px_50px_-20px_rgba(16,185,129,0.12)]">
+                <p class="text-[11px] uppercase tracking-[0.2em] text-emerald-600 font-semibold">{{ $product->category->name }}</p>
                 <h1 class="mt-2 font-display font-semibold text-ink text-3xl md:text-4xl tracking-tight leading-tight">{{ $product->name }}</h1>
 
                 {{-- rating hint --}}
@@ -131,7 +127,7 @@
                             <label class="cursor-pointer">
                                 <input type="radio" name="size" value="{{ $size['key'] }}" x-model="size" class="sr-only peer">
                                 <div class="relative rounded-2xl border-2 px-4 py-3.5 transition-all
-                                            peer-checked:border-sky-500 peer-checked:bg-sky-50/60
+                                            peer-checked:border-emerald-500 peer-checked:bg-emerald-50/60
                                             border-slate-200 hover:border-slate-300">
                                     <div class="flex items-center justify-between">
                                         <div>
@@ -139,11 +135,11 @@
                                             <p class="text-xs text-slate-500 mt-0.5">{{ $size['volume'] }}</p>
                                         </div>
                                         <p class="font-display font-bold text-sm
-                                                  {{ $size['modifier'] > 0 ? 'text-sky-600' : 'text-slate-400' }}">
+                                                  {{ $size['modifier'] > 0 ? 'text-emerald-600' : 'text-slate-400' }}">
                                             {{ $size['modifier'] > 0 ? '+' . number_format($size['modifier'], 0, ',', '.') : 'Standar' }}
                                         </p>
                                     </div>
-                                    <span class="absolute top-2 right-2 w-4 h-4 rounded-full border-2 border-slate-300 peer-checked:border-sky-500 peer-checked:bg-sky-500 peer-checked:after:content-['✓'] after:text-white after:text-[10px] after:font-bold after:flex after:items-center after:justify-center after:w-full after:h-full hidden peer-checked:block"></span>
+                                    <span class="absolute top-2 right-2 w-4 h-4 rounded-full border-2 border-slate-300 peer-checked:border-emerald-500 peer-checked:bg-emerald-500 peer-checked:after:content-['✓'] after:text-white after:text-[10px] after:font-bold after:flex after:items-center after:justify-center after:w-full after:h-full hidden peer-checked:block"></span>
                                 </div>
                             </label>
                         @endforeach
@@ -207,14 +203,14 @@
                                     <input type="checkbox" value="{{ $topping->id }}" x-model="toppingIds" class="sr-only peer">
                                     <div class="relative flex items-center gap-3 rounded-2xl border-2 px-3 py-3 transition
                                                 border-slate-200 hover:border-slate-300
-                                                peer-checked:border-sky-500 peer-checked:bg-sky-50/60">
+                                                peer-checked:border-emerald-500 peer-checked:bg-emerald-50/60">
                                         <div class="w-12 h-12 rounded-xl bg-slate-50 grid place-items-center flex-shrink-0 p-1">
                                             <x-smart-image :src="$topping->image_path" :alt="$topping->name" :transparent="true"
                                                             class="w-full h-full object-contain" />
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="font-display font-bold text-slate-900 text-sm truncate">{{ $topping->name }}</p>
-                                            <p class="text-xs text-sky-600 font-semibold mt-0.5">+Rp {{ number_format($topping->price, 0, ',', '.') }}</p>
+                                            <p class="text-xs text-emerald-600 font-semibold mt-0.5">+Rp {{ number_format($topping->price, 0, ',', '.') }}</p>
                                         </div>
                                     </div>
                                 </label>
@@ -235,7 +231,7 @@
                         maxlength="200"
                         rows="2"
                         placeholder="Contoh: tolong jangan terlalu manis, minum di tempat..."
-                        class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400 focus:bg-white transition resize-none"></textarea>
+                        class="w-full rounded-2xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 focus:bg-white transition resize-none"></textarea>
                 </div>
 
                 {{-- ─── QUANTITY + ADD ─── --}}
@@ -252,7 +248,7 @@
                         <span class="w-10 text-center font-display font-bold text-slate-900" x-text="quantity"></span>
                         <button type="button"
                                 @click="increment()"
-                                class="w-11 h-11 grid place-items-center text-slate-600 hover:bg-sky-500 hover:text-white transition"
+                                class="w-11 h-11 grid place-items-center text-slate-600 hover:bg-emerald-600 hover:text-white transition"
                                 aria-label="Tambah jumlah">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
                         </button>
@@ -291,14 +287,14 @@
              RELATED PRODUCTS
         ────────────────────────────────────────────── --}}
         @if ($related->isNotEmpty())
-            <div class="mt-20 pt-14 border-t border-sky-100/80">
+            <div class="mt-20 pt-14 border-t border-slate-200/60">
                 <div class="flex items-end justify-between mb-8">
                     <div>
-                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-sky-600">Sering Dipesan Bersama</p>
+                        <p class="text-xs font-semibold tracking-[0.18em] uppercase text-emerald-600">Sering Dipesan Bersama</p>
                         <h2 class="mt-2 font-display font-semibold text-2xl md:text-3xl text-ink tracking-tight">Mungkin Anda suka</h2>
                     </div>
                     <a href="{{ route('menu', ['category' => $product->category_id]) }}"
-                       class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-sky-600 transition">
+                       class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-emerald-600 transition">
                         Lihat semua →
                     </a>
                 </div>
@@ -306,8 +302,8 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
                     @foreach ($related as $rel)
                         <a href="{{ route('menu.show', $rel) }}" class="group block">
-                            <div class="relative aspect-square rounded-2xl bg-gradient-to-br from-sky-50 via-white to-sky-50/40 overflow-hidden border border-slate-150 group-hover:border-sky-200 group-hover:-translate-y-1 transition-all duration-300">
-                                <div aria-hidden="true" class="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-sky-100/70 blur-2xl"></div>
+                            <div class="relative aspect-square rounded-2xl bg-gradient-to-br from-emerald-50/30 via-white to-emerald-50/10 overflow-hidden border border-slate-150 group-hover:border-emerald-200 group-hover:-translate-y-1 transition-all duration-300">
+                                <div aria-hidden="true" class="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-emerald-100/30 blur-2xl"></div>
                                 <div aria-hidden="true" class="absolute bottom-4 left-1/2 -translate-x-1/2 w-2/3 h-3 bg-slate-900/15 rounded-full blur-md"></div>
                                 <div class="absolute inset-0 flex items-center justify-center p-6">
                                     <x-smart-image :src="$rel->image_path" :alt="$rel->name" :transparent="true"

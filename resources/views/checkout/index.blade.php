@@ -12,16 +12,12 @@
     }
 </style>
 
-<section class="relative bg-page-soft min-h-screen pt-10 pb-24 overflow-hidden">
-    {{-- Decorative blobs --}}
-    <div aria-hidden="true" class="deco-blob deco-blob-sky w-[28rem] h-[28rem] -top-32 -right-32"></div>
-    <div aria-hidden="true" class="deco-blob deco-blob-amber w-72 h-72 top-1/3 -left-20 opacity-40"></div>
-    <div aria-hidden="true" class="deco-blob deco-blob-emerald w-72 h-72 bottom-32 -right-20 opacity-40"></div>
+
 
     <div class="relative max-w-7xl mx-auto px-6">
         {{-- Header --}}
         <div class="mb-10">
-            <p class="text-xs font-semibold tracking-[0.18em] uppercase text-sky-600">Checkout</p>
+            <p class="text-xs font-semibold tracking-[0.18em] uppercase text-emerald-600">Checkout</p>
             <h1 class="mt-2 font-display font-semibold text-3xl md:text-4xl text-ink tracking-tight">
                 Selesaikan Pesanan
             </h1>
@@ -122,7 +118,7 @@
                     this.marker = L.marker([centerLat, centerLng], {
                         draggable: true,
                         icon: L.icon({
-                            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+                            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
                             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
                             iconSize: [25, 41],
                             iconAnchor: [12, 41],
@@ -288,14 +284,14 @@
             <div class="lg:col-span-2">
                 <form action="{{ route('checkout.store') }}" method="POST"
                       @submit="if (!validateForm($event)) return; if (isSubmitting) { $event.preventDefault(); return; } isSubmitting = true; saveProfile()"
-                      class="bg-white/85 backdrop-blur-sm rounded-3xl border border-white shadow-[0_20px_40px_-20px_rgba(2,132,199,0.20)] p-7 md:p-8">
+                      class="bg-white/85 backdrop-blur-sm rounded-3xl border border-white shadow-[0_20px_40px_-20px_rgba(16,185,129,0.12)] p-7 md:p-8">
                     @csrf
                     <input type="hidden" name="latitude" x-model="latitude">
                     <input type="hidden" name="longitude" x-model="longitude">
 
                     {{-- ─── DELIVERY METHOD ─── --}}
                     <div class="flex items-center gap-3 mb-6">
-                        <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-100 to-sky-50 text-sky-600 grid place-items-center">
+                        <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50 text-emerald-600 grid place-items-center">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="m18 14-1-3" />
                                 <path d="m3 9 6 2a2 2 0 0 1 2-2h2a2 2 0 0 1 1.99 1.81" />
@@ -315,7 +311,7 @@
                         <label class="cursor-pointer">
                             <input type="radio" name="delivery_type" value="pickup" x-model="deliveryType" class="sr-only">
                             <div class="relative rounded-2xl border-2 px-4 py-4 transition-all duration-300"
-                                 :class="deliveryType === 'pickup' ? 'border-sky-500 bg-sky-50/60' : 'border-slate-200 bg-white/70 hover:border-slate-300'">
+                                 :class="deliveryType === 'pickup' ? 'border-emerald-500 bg-emerald-50/60' : 'border-slate-200 bg-white/70 hover:border-slate-300'">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <p class="font-display font-bold text-slate-900 text-sm">Ambil Sendiri</p>
@@ -323,7 +319,7 @@
                                     </div>
                                 </div>
                                 <span class="absolute top-2.5 right-2.5 w-4.5 h-4.5 rounded-full border border-slate-300 flex items-center justify-center transition-colors"
-                                      :class="deliveryType === 'pickup' ? 'border-sky-500 bg-sky-500 text-white' : ''">
+                                      :class="deliveryType === 'pickup' ? 'border-emerald-500 bg-emerald-500 text-white' : ''">
                                     <template x-if="deliveryType === 'pickup'">
                                         <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                                     </template>
@@ -335,7 +331,7 @@
                         <label class="relative block" :class="!isEligible() ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'" @click="if (isEligible()) { selectDelivery(); }">
                             <input type="radio" name="delivery_type" value="delivery" x-model="deliveryType" :disabled="!isEligible()" class="sr-only">
                             <div class="relative rounded-2xl border-2 px-4 py-4 transition-all duration-300"
-                                 :class="deliveryType === 'delivery' ? 'border-sky-500 bg-sky-50/60' : 'border-slate-200 bg-white/70 hover:border-slate-300'">
+                                 :class="deliveryType === 'delivery' ? 'border-emerald-500 bg-emerald-50/60' : 'border-slate-200 bg-white/70 hover:border-slate-300'">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <p class="font-display font-bold text-slate-900 text-sm">Kirim ke Alamat</p>
@@ -343,7 +339,7 @@
                                     </div>
                                 </div>
                                 <span class="absolute top-2.5 right-2.5 w-4.5 h-4.5 rounded-full border border-slate-300 flex items-center justify-center transition-colors"
-                                      :class="deliveryType === 'delivery' ? 'border-sky-500 bg-sky-500 text-white' : ''">
+                                      :class="deliveryType === 'delivery' ? 'border-emerald-500 bg-emerald-500 text-white' : ''">
                                     <template x-if="deliveryType === 'delivery'">
                                         <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                                     </template>
@@ -372,14 +368,14 @@
                             <label class="cursor-pointer">
                                 <input type="radio" name="schedule_type" value="now" x-model="scheduleType" class="sr-only">
                                 <div class="rounded-2xl border-2 px-4 py-3.5 text-center transition text-xs font-bold"
-                                     :class="scheduleType === 'now' ? 'border-sky-500 bg-sky-50/60 text-sky-700 ring-1 ring-sky-500' : 'border-slate-200 bg-white/70 text-slate-600 hover:border-slate-300'">
+                                     :class="scheduleType === 'now' ? 'border-emerald-500 bg-emerald-50/60 text-emerald-700 ring-1 ring-emerald-500' : 'border-slate-200 bg-white/70 text-slate-600 hover:border-slate-300'">
                                     <span x-text="deliveryType === 'delivery' ? 'Kirim Sekarang (Instan)' : 'Ambil Sekarang (Instan)'"></span>
                                 </div>
                             </label>
                             <label class="cursor-pointer">
                                 <input type="radio" name="schedule_type" value="later" x-model="scheduleType" class="sr-only">
                                 <div class="rounded-2xl border-2 px-4 py-3.5 text-center transition text-xs font-bold"
-                                     :class="scheduleType === 'later' ? 'border-sky-500 bg-sky-50/60 text-sky-700 ring-1 ring-sky-500' : 'border-slate-200 bg-white/70 text-slate-600 hover:border-slate-300'">
+                                     :class="scheduleType === 'later' ? 'border-emerald-500 bg-emerald-50/60 text-emerald-700 ring-1 ring-emerald-500' : 'border-slate-200 bg-white/70 text-slate-600 hover:border-slate-300'">
                                     <span>Jadwalkan Waktu</span>
                                 </div>
                             </label>
@@ -391,13 +387,13 @@
                                 <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">Tanggal</label>
                                 <input type="date" name="schedule_date" x-model="scheduleDate" :required="scheduleType === 'later'"
                                        :min="new Date().toISOString().split('T')[0]"
-                                       class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400">
+                                       class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 focus:bg-white transition">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">Jam Operasional (09.00 - 22.00)</label>
                                 <input type="time" name="schedule_time" x-model="scheduleTime" :required="scheduleType === 'later'"
                                        min="09:00" max="22:00"
-                                       class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400">
+                                       class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 focus:bg-white transition">
                             </div>
                         </div>
                     </div>
@@ -405,7 +401,7 @@
                     <hr class="border-slate-100 my-6">
 
                     <div class="flex items-center gap-3 mb-6">
-                        <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-100 to-sky-50 text-sky-600 grid place-items-center">
+                        <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50 text-emerald-600 grid place-items-center">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
                             </svg>
@@ -422,7 +418,7 @@
                             <label class="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Nama</label>
                             <input type="text" name="customer_name" required x-model="customerName"
                                    placeholder="Nama lengkap"
-                                   class="w-full rounded-2xl border border-slate-200 bg-white/70 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400 focus:bg-white transition">
+                                   class="w-full rounded-2xl border border-slate-200 bg-white/70 px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 focus:bg-white transition">
                         </div>
 
 
@@ -435,8 +431,8 @@
                                     <textarea name="address" :required="deliveryType === 'delivery'" x-model="address" rows="3"
                                               :placeholder="addressLoading ? 'Sedang mendeteksi alamat Anda dari koordinat peta...' : 'Masukkan alamat pengiriman lengkap (Nama jalan, RT/RW, nomor rumah, kelurahan, kecamatan, patokan)...'"
                                               :disabled="addressLoading"
-                                              class="w-full rounded-2xl border border-slate-200 bg-white/70 px-4 py-3.5 pr-32 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400 focus:bg-white transition resize-none disabled:opacity-75 disabled:cursor-not-allowed"></textarea>
-                                    <div x-show="addressLoading" x-cloak class="absolute top-3.5 right-3.5 flex items-center gap-1.5 text-xs font-semibold text-sky-600 bg-white/90 px-2.5 py-1 rounded-xl border border-sky-100 shadow-sm transition">
+                                              class="w-full rounded-2xl border border-slate-200 bg-white/70 px-4 py-3.5 pr-32 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 focus:bg-white transition resize-none disabled:opacity-75 disabled:cursor-not-allowed"></textarea>
+                                    <div x-show="addressLoading" x-cloak class="absolute top-3.5 right-3.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-600 bg-white/90 px-2.5 py-1 rounded-xl border border-emerald-100 shadow-sm transition">
                                         <svg class="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                             <circle cx="12" cy="12" r="9" stroke-opacity="0.25"/>
                                             <path d="M21 12a9 9 0 0 0-9-9" stroke-linecap="round"/>
@@ -446,27 +442,26 @@
                                 </div>
                             </div>
                             
-                            <!-- Leaflet Map Container & Geolocation -->
                             <div class="mt-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider">Tandai Lokasi Rumah di Peta</label>
-                                     <button type="button" @click="getCurrentLocation(false)" class="text-xs text-sky-600 hover:text-sky-700 font-semibold flex items-center gap-1 transition">
+                                     <button type="button" @click="getCurrentLocation(false)" class="text-xs text-emerald-600 hover:text-emerald-700 font-semibold flex items-center gap-1 transition">
                                         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                             <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
                                         </svg>
                                         Gunakan Lokasi Saya
-                                    </button>
+                                     </button>
                                 </div>
                                 <div id="checkout-map" 
                                      class="w-full rounded-2xl border border-slate-200 shadow-inner z-10 transition-all duration-300"
                                      :class="mapExpanded ? 'h-[280px]' : 'h-[140px]'"
                                      x-ref="mapContainer"></div>
                                 <div class="flex items-center justify-end">
-                                    <button type="button" @click="toggleMapSize()" class="md:hidden text-[10px] text-slate-500 hover:text-sky-600 font-semibold flex items-center gap-1 transition mt-1 bg-slate-100 hover:bg-sky-50 px-2 py-1.5 rounded-xl border border-slate-200/60">
+                                    <button type="button" @click="toggleMapSize()" class="md:hidden text-[10px] text-slate-500 hover:text-emerald-600 font-semibold flex items-center gap-1 transition mt-1 bg-slate-100 hover:bg-emerald-50 px-2 py-1.5 rounded-xl border border-slate-200/60">
                                         <span x-text="mapExpanded ? 'Sembunyikan Peta (Minimize)' : 'Tampilkan Peta (Maximize)'"></span>
                                         <svg class="w-3 h-3 transition-transform duration-300" :class="mapExpanded ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
                                     </button>
-                                </div>
+                                </div>                                </div>
                                 
                                 <div class="flex items-center justify-between text-xs p-3 rounded-xl bg-slate-50 border border-slate-100 mt-2">
                                     <div class="flex items-center gap-2">
@@ -485,13 +480,11 @@
                                         <p class="mt-0.5">Jarak pengantaran melebihi batas maksimal <span x-text="maxRadius"></span> km dari outlet kami. Silakan pilih opsi Ambil Sendiri.</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        {{-- ─── PAYMENT METHOD ─── --}}
+                            
+                            {{-- ─── PAYMENT METHOD ─── --}}
                         <div class="space-y-4 pt-4 border-t border-slate-100">
                             <div class="flex items-center gap-3">
-                                <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-100 to-sky-50 text-sky-600 grid place-items-center">
+                                <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50 text-emerald-600 grid place-items-center">
                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                         <rect x="2" y="4" width="20" height="16" rx="2"/>
                                         <line x1="12" y1="4" x2="12" y2="20"/>
@@ -506,13 +499,13 @@
 
                             {{-- COD only — auto-selected --}}
                             <input type="hidden" name="payment_method" value="cash">
-                            <div class="rounded-2xl border-2 border-sky-500 bg-sky-50/60 ring-1 ring-sky-500 px-4 py-4">
+                            <div class="rounded-2xl border-2 border-emerald-500 bg-emerald-50/60 ring-1 ring-emerald-500 px-4 py-4">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <p class="font-display font-bold text-slate-900 text-sm">Bayar di Tempat (COD)</p>
                                         <p class="text-[10px] text-slate-500 mt-1">Bayar tunai saat pesanan diterima</p>
                                     </div>
-                                    <span class="w-4.5 h-4.5 rounded-full border border-sky-500 bg-sky-500 text-white flex items-center justify-center">
+                                    <span class="w-4.5 h-4.5 rounded-full border border-emerald-500 bg-emerald-500 text-white flex items-center justify-center">
                                         <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                                     </span>
                                 </div>
@@ -524,7 +517,7 @@
                             <label class="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wider">Catatan Pesanan <span class="text-slate-400 normal-case">(opsional)</span></label>
                             <textarea name="notes" rows="3"
                                       placeholder="Contoh: titip ke pos satpam, minta plastik tambahan, dll..."
-                                      class="w-full rounded-2xl border border-slate-200 bg-white/70 px-4 py-3.5 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400 focus:bg-white transition resize-none"></textarea>
+                                      class="w-full rounded-2xl border border-slate-200 bg-white/70 px-4 py-3.5 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 focus:bg-white transition resize-none"></textarea>
                         </div>
                     </div>
 
@@ -554,14 +547,14 @@
 
             {{-- ─── ORDER SUMMARY ─── --}}
             <aside>
-                <div class="sticky top-24 relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-sky-600 to-sky-700 text-white p-7 shadow-[0_25px_50px_-15px_rgba(2,132,199,0.45)]">
+                <div class="sticky top-24 relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-500 via-emerald-600 to-emerald-800 text-white p-7 shadow-[0_25px_50px_-15px_rgba(16,185,129,0.45)]">
                     {{-- Pattern --}}
                     <div aria-hidden="true" class="absolute inset-0 opacity-15"
                          style="background-image: radial-gradient(circle at 20% 20%, white 1px, transparent 1px), radial-gradient(circle at 80% 60%, white 1px, transparent 1px); background-size: 50px 50px, 70px 70px;"></div>
                     <div aria-hidden="true" class="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-white/15 blur-2xl"></div>
 
                     <div class="relative">
-                        <p class="text-[10px] font-semibold tracking-[0.22em] uppercase text-sky-100/80">Pesanan Anda</p>
+                        <p class="text-[10px] font-semibold tracking-[0.22em] uppercase text-emerald-100/80">Pesanan Anda</p>
                         <h2 class="mt-2 font-display font-extrabold text-2xl">Ringkasan</h2>
 
                         <ul class="mt-6 space-y-4">
@@ -571,12 +564,12 @@
                                     <div class="min-w-0">
                                         <p class="font-semibold leading-tight truncate">{{ $item['name'] }}</p>
                                         @if (! empty($item['options_summary']))
-                                            <p class="text-[11px] text-sky-100/80 mt-0.5 truncate">{{ $item['options_summary'] }}</p>
+                                            <p class="text-[11px] text-emerald-100/80 mt-0.5 truncate">{{ $item['options_summary'] }}</p>
                                         @endif
                                         @if (! empty($item['notes']))
                                             <p class="text-[11px] text-amber-200 mt-0.5 truncate italic font-medium">« {{ $item['notes'] }} »</p>
                                         @endif
-                                        <p class="text-[11px] text-sky-100/70 mt-0.5">{{ $item['quantity'] }} × Rp {{ number_format($unit, 0, ',', '.') }}</p>
+                                        <p class="text-[11px] text-emerald-100/70 mt-0.5">{{ $item['quantity'] }} × Rp {{ number_format($unit, 0, ',', '.') }}</p>
                                     </div>
                                     <p class="font-display font-bold whitespace-nowrap">
                                         Rp {{ number_format($unit * (int) $item['quantity'], 0, ',', '.') }}
@@ -586,21 +579,21 @@
                         </ul>
 
                         <div class="mt-6 space-y-3 pt-5 border-t border-white/20 text-sm">
-                            <div class="flex justify-between text-sky-100/90">
+                            <div class="flex justify-between text-emerald-100/90">
                                 <span>Subtotal</span>
-                                <span class="font-semibold" x-text="'Rp ' + format(subtotal)"></span>
+                                <span>Rp <span x-text="format(subtotal)"></span></span>
                             </div>
-                            <div class="flex justify-between text-sky-100/90" x-show="deliveryType === 'delivery'" x-cloak>
+                            <div class="flex justify-between text-emerald-100/90" x-show="deliveryType === 'delivery'" x-cloak>
                                 <span>Biaya Pengiriman (<span x-text="distanceText()"></span>)</span>
-                                <span class="font-semibold" x-text="'Rp ' + format(getDeliveryFare())"></span>
+                                <span>Rp <span x-text="format(getDeliveryFare())"></span></span>
                             </div>
-                            <div class="flex justify-between text-sky-100/90" x-show="deliveryType === 'pickup'" x-cloak>
+                            <div class="flex justify-between text-emerald-100/90" x-show="deliveryType === 'pickup'" x-cloak>
                                 <span>Biaya Pengiriman</span>
                                 <span class="font-semibold text-emerald-200">Gratis (Pickup)</span>
                             </div>
                             <div class="flex justify-between pt-3 border-t border-white/20 text-white">
                                 <span class="font-semibold">Total Tagihan</span>
-                                <span class="font-display font-extrabold text-2xl" x-text="'Rp ' + format(getGrandTotal())"></span>
+                                <span class="font-display font-extrabold text-2xl">Rp <span x-text="format(getGrandTotal())"></span></span>
                             </div>
                         </div>
                     </div>

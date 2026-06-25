@@ -5,12 +5,12 @@
     {{-- Page Header --}}
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
-            <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-blue-600">Manajemen Produk</span>
+            <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-emerald-600">Manajemen Produk</span>
             <h1 class="font-display font-extrabold text-2xl md:text-3xl text-slate-900 mt-1">Kelola Menu Minuman</h1>
             <p class="text-xs text-slate-450 mt-1">Kelola data menu, harga, ketersediaan, serta gambar minuman.</p>
         </div>
         
-        <a href="{{ route('admin.products.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-display font-bold text-xs tracking-wider uppercase px-6 py-3.5 rounded-xl transition shadow-md shadow-blue-500/10 hover:-translate-y-0.5 inline-flex items-center gap-2 w-fit">
+        <a href="{{ route('admin.products.create') }}" class="bg-emerald-600 hover:bg-emerald-700 text-white font-display font-bold text-xs tracking-wider uppercase px-6 py-3.5 rounded-xl transition shadow-md shadow-emerald-500/10 hover:-translate-y-0.5 inline-flex items-center gap-2 w-fit">
             <svg class="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg> Tambah Menu
         </a>
     </div>
@@ -22,11 +22,11 @@
                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </span>
-                <input type="text" name="search" value="{{ $filters['search'] ?? '' }}" placeholder="Cari nama menu..." class="w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-4 py-2.5 text-xs font-semibold placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition">
+                <input type="text" name="search" value="{{ $filters['search'] ?? '' }}" placeholder="Cari nama menu..." class="w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-4 py-2.5 text-xs font-semibold placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition">
             </div>
 
             <div class="w-full sm:w-48">
-                <select name="category_id" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-semibold text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition">
+                <select name="category_id" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-semibold text-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition">
                     <option value="">Semua Kategori</option>
                     @foreach ($categories as $cat)
                         <option value="{{ $cat->id }}" {{ (isset($filters['category_id']) && $filters['category_id'] == $cat->id) ? 'selected' : '' }}>{{ $cat->name }}</option>
@@ -106,7 +106,7 @@
                                 {{-- Actions --}}
                                 <td class="px-6 py-3 text-center">
                                     <div class="flex items-center justify-center gap-2">
-                                        <a href="{{ route('admin.products.edit', $product) }}" class="bg-blue-50 hover:bg-blue-100 text-blue-700 font-bold text-[10px] px-3.5 py-2 rounded-xl transition border border-blue-100 uppercase tracking-wide">
+                                        <a href="{{ route('admin.products.edit', $product) }}" class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold text-[10px] px-3.5 py-2 rounded-xl transition border border-emerald-100 uppercase tracking-wide">
                                             Edit
                                         </a>
                                         
