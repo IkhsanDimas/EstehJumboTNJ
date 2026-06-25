@@ -460,7 +460,7 @@
                                 {{-- Delivery Type --}}
                                 <div class="lg:w-[10%] text-left">
                                     <span class="text-[9px] text-slate-400 block uppercase font-bold tracking-wider leading-none mb-1">Tipe</span>
-                                    <span class="text-xs font-bold {{ $order->type === 'online_delivery' ? 'text-blue-600' : 'text-slate-700' }} capitalize">
+                                    <span class="text-xs font-bold {{ $order->type === 'online_delivery' ? 'text-emerald-600' : 'text-slate-700' }} capitalize">
                                         {{ $order->type === 'online_delivery' ? 'Antar' : 'Ambil' }}
                                     </span>
                                 </div>
@@ -583,7 +583,7 @@
                         {{-- Font --}}
                         <div class="space-y-2">
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Font Utama Website</label>
-                            <select name="font_family" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-755 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition">
+                            <select name="font_family" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-755 focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition">
                                 <option value="Plus Jakarta Sans" {{ $store->font_family === 'Plus Jakarta Sans' ? 'selected' : '' }}>Plus Jakarta Sans (Default - Modern Bulat)</option>
                                 <option value="Inter" {{ $store->font_family === 'Inter' ? 'selected' : '' }}>Inter (Sleek Minimalis)</option>
                                 <option value="Outfit" {{ $store->font_family === 'Outfit' ? 'selected' : '' }}>Outfit (Geometris Premium)</option>
@@ -597,26 +597,26 @@
                         {{-- Hero Title --}}
                         <div class="space-y-2">
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Judul Utama Promosi (Hero Title)</label>
-                            <textarea name="hero_title" rows="3" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition" placeholder="Judul hero...">{{ $store->hero_title }}</textarea>
+                            <textarea name="hero_title" rows="3" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition" placeholder="Judul hero...">{{ $store->hero_title }}</textarea>
                             <p class="text-[10px] text-slate-400 leading-normal">Mendukung tag HTML. Gunakan <code>&lt;br&gt;</code> untuk baris baru, atau <code>&lt;span class="text-amber-300"&gt;kata&lt;/span&gt;</code> untuk sorotan warna kuning.</p>
                         </div>
 
                         {{-- Hero Subtitle --}}
                         <div class="space-y-2">
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Subjudul Promosi (Hero Subtitle)</label>
-                            <textarea name="hero_subtitle" rows="3" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition" placeholder="Deskripsi pendek...">{{ $store->hero_subtitle }}</textarea>
+                            <textarea name="hero_subtitle" rows="3" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition" placeholder="Deskripsi pendek...">{{ $store->hero_subtitle }}</textarea>
                         </div>
 
                         {{-- About Text --}}
                         <div class="space-y-2">
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Cerita Toko (About Us Text)</label>
-                            <textarea name="about_text" rows="4" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition" placeholder="Teks cerita tentang kami...">{{ $store->about_text }}</textarea>
+                            <textarea name="about_text" rows="4" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition" placeholder="Teks cerita tentang kami...">{{ $store->about_text }}</textarea>
                         </div>
 
                         {{-- Promo Banner Text --}}
                         <div class="space-y-2">
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Teks Banner Promosi (Promo Banner Text)</label>
-                            <textarea name="promo_banner_text" rows="3" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition" placeholder="Isi teks promosi untuk banner di halaman depan...">{{ $store->promo_banner_text }}</textarea>
+                            <textarea name="promo_banner_text" rows="3" required class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition" placeholder="Isi teks promosi untuk banner di halaman depan...">{{ $store->promo_banner_text }}</textarea>
                             <p class="text-[10px] text-slate-400">Pesan promosi ini akan ditampilkan pada banner oranye di paling atas website ketika status "Banner Promosi" diaktifkan.</p>
                         </div>
                     </div>
@@ -631,7 +631,7 @@
                                     <img src="{{ asset($store->hero_image_path) }}" alt="Preview Hero" class="max-w-full max-h-full object-contain">
                                 </div>
                                 <div>
-                                    <input type="file" name="hero_image" class="block w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition cursor-pointer">
+                                    <input type="file" name="hero_image" class="block w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 transition cursor-pointer">
                                     <p class="text-[10px] text-slate-455 mt-2">PNG, JPG, JPEG atau WEBP. Maks 2MB. Rekomendasi PNG transparan.</p>
                                 </div>
                             </div>
@@ -645,7 +645,7 @@
                                     <img src="{{ asset($store->about_image_path) }}" alt="Preview About" class="max-w-full max-h-full object-contain">
                                 </div>
                                 <div>
-                                    <input type="file" name="about_image" class="block w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition cursor-pointer">
+                                    <input type="file" name="about_image" class="block w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 transition cursor-pointer">
                                     <p class="text-[10px] text-slate-455 mt-2">PNG, JPG, JPEG atau WEBP. Maks 2MB. Rekomendasi PNG transparan.</p>
                                 </div>
                             </div>
@@ -655,7 +655,7 @@
 
                 {{-- Submit --}}
                 <div class="pt-4 border-t border-slate-150 flex justify-end">
-                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-display font-bold text-xs tracking-wider uppercase px-8 py-3.5 rounded-xl transition shadow-md shadow-blue-500/10 hover:-translate-y-0.5 active:translate-y-0">
+                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-display font-bold text-xs tracking-wider uppercase px-8 py-3.5 rounded-xl transition shadow-md shadow-emerald-500/10 hover:-translate-y-0.5 active:translate-y-0">
                         Simpan Pengaturan Tampilan
                     </button>
                 </div>
@@ -677,7 +677,7 @@
                     <div class="space-y-2">
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Password Saat Ini</label>
                         <input type="password" name="current_password" required 
-                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition"
+                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition"
                                placeholder="••••••••">
                         @error('current_password')
                             <p class="text-[10px] text-rose-500 mt-1.5 font-semibold">{{ $message }}</p>
@@ -688,7 +688,7 @@
                     <div class="space-y-2">
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Password Baru</label>
                         <input type="password" name="new_password" required 
-                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition"
+                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition"
                                placeholder="••••••••">
                         @error('new_password')
                             <p class="text-[10px] text-rose-500 mt-1.5 font-semibold">{{ $message }}</p>
@@ -699,7 +699,7 @@
                     <div class="space-y-2">
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Konfirmasi Password Baru</label>
                         <input type="password" name="new_password_confirmation" required 
-                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500 focus:bg-white transition"
+                               class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-500 focus:bg-white transition"
                                placeholder="••••••••">
                     </div>
                 </div>
