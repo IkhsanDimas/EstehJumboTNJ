@@ -17,7 +17,7 @@
 
     $featuredProducts = $allProducts
         ->sortBy(fn($p) => $catSortMap[$p->category_id] ?? 99)
-        ->take(8);
+        ->take(4);
 @endphp
 
 
@@ -104,6 +104,36 @@
     </section>
 
 
+
+    {{-- ════════════════════════════════════════════════════
+         MENU FAVORIT  ·  white section
+    ════════════════════════════════════════════════════ --}}
+    <section id="menu" class="max-w-7xl mx-auto px-6 pt-20 pb-16 md:pt-24">
+        <div class="flex items-end justify-between mb-12">
+            <div>
+                <p class="eyebrow">Pilihan Hari Ini</p>
+                <h2 class="mt-3 font-display font-extrabold text-3xl md:text-[2.75rem] text-ink leading-tight tracking-tight">Menu Favorit</h2>
+                <p class="mt-3 text-slate-500 max-w-md text-[15px]">Paling sering dipesan, paling cepat habis. Coba salah satu di bawah ini.</p>
+            </div>
+            <a href="{{ route('menu') }}"
+               class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-sky-600 hover:text-sky-700 transition group">
+                Semua menu
+                <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-6">
+            @foreach ($featuredProducts as $product)
+                <x-product-card :product="$product" />
+            @endforeach
+        </div>
+
+        <div class="mt-10 text-center sm:hidden">
+            <a href="{{ route('menu') }}" class="inline-flex items-center gap-1.5 text-sm font-medium text-sky-600 hover:text-sky-700">
+                Lihat semua menu →
+            </a>
+        </div>
+    </section>
 
     {{-- ════════════════════════════════════════════════════
          CERITA  ·  bright orange with creative curves
