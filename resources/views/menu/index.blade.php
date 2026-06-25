@@ -136,47 +136,83 @@
     </section>
 
     {{-- ════════════════════════════════════════════════════
-         CERITA  ·  bright orange with creative curves
-    ════════════════════════════════════════════════════ --}}
-    <section id="tentang" class="relative overflow-hidden py-20 md:py-24 border-y border-orange-700/20"
-             style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);">
-        <div class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-10 md:gap-12 lg:gap-16 items-center">
+         CERITA  ·  Premium Soft Sand & Organic Emerald Accent
+     ════════════════════════════════════════════════════ --}}
+    <section id="tentang" class="relative overflow-hidden py-24 md:py-28 bg-[#FAF9F5] border-y border-slate-200/60">
+        {{-- Background decorative shapes for high-end craft branding --}}
+        <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-50/45 rounded-full blur-3xl pointer-events-none -mr-48 -mt-48 select-none"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-50/45 rounded-full blur-3xl pointer-events-none -ml-48 -mb-48 select-none"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 md:gap-14 lg:gap-20 items-center">
             
-            {{-- Image Column (Clean frame with standardized height for custom uploads) --}}
-            <div class="md:col-span-5 flex justify-center w-full">
-                <div class="relative w-full max-w-sm md:max-w-none rounded-[2.5rem] bg-white/10 backdrop-blur-sm p-3 border border-white/20 shadow-2xl">
+            {{-- Image Column (Dual-layered frame with warm offset cards) --}}
+            <div class="md:col-span-5 flex justify-center w-full relative">
+                {{-- Decorative background offset shape --}}
+                <div class="absolute inset-0 bg-emerald-950/5 rounded-[2.5rem] translate-x-4 translate-y-4 md:translate-x-6 md:translate-y-6"></div>
+                
+                <div class="relative w-full max-w-sm md:max-w-none rounded-[2.5rem] bg-white p-3.5 border border-slate-200/80 shadow-xl z-10">
                     <img src="{{ asset($store->about_image_path) }}" 
                          alt="Tentang Es Teh Jumbo" 
-                         class="w-full h-[280px] sm:h-[340px] md:h-[420px] lg:h-[480px] object-cover rounded-[1.8rem]">
+                         class="w-full h-[300px] sm:h-[360px] md:h-[440px] lg:h-[500px] object-cover rounded-[1.8rem]">
                     
-                    {{-- Clean overlay badge --}}
-                    <div class="absolute bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur-sm px-4 py-2.5 rounded-xl border border-white/10 flex items-center gap-2 shadow-md">
-                        <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-                        <p class="text-[9px] font-bold text-white uppercase tracking-wider">📍 Lokasi Utama, Permata Galaxy</p>
+                    {{-- Clean glassmorphism location badge --}}
+                    <div class="absolute bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-white/10 flex items-center gap-2.5 shadow-lg">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <p class="text-[10px] font-extrabold text-white uppercase tracking-wider">📍 Lokasi Utama, Permata Galaxy</p>
                     </div>
                 </div>
             </div>
 
             {{-- Content Column --}}
-            <div class="md:col-span-7 space-y-6 text-left">
-                {{-- Tag Badge --}}
-                <div class="inline-flex items-center gap-1.5 bg-white/15 text-white text-[10px] font-semibold tracking-widest uppercase px-3.5 py-1.5 rounded-full ring-1 ring-white/20">
-                    <span class="w-1.5 h-1.5 rounded-full bg-amber-300"></span>
+            <div class="md:col-span-7 space-y-7 text-left z-10">
+                {{-- Premium Tag Badge --}}
+                <div class="inline-flex items-center gap-2 bg-emerald-50/80 text-emerald-800 text-[10px] font-extrabold tracking-widest uppercase px-4 py-2 rounded-full ring-1 ring-emerald-100/80 shadow-2xs">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     Kisah & Filosofi
                 </div>
 
-                {{-- Section Title & Divider --}}
-                <div class="space-y-3">
-                    <h2 class="font-display font-extrabold text-white text-3xl md:text-[2.5rem] leading-tight tracking-tight">
-                        Mulai dari satu gelas<br class="hidden md:inline"> untuk tetangga sebelah.
+                {{-- Section Title & Subheading --}}
+                <div class="space-y-4">
+                    <h2 class="font-display font-black text-slate-900 text-3xl md:text-[2.75rem] leading-tight tracking-tight">
+                        Mulai dari satu gelas<br class="hidden md:inline"> untuk <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-700">tetangga sebelah.</span>
                     </h2>
-                    <div class="w-12 h-1 bg-amber-300 rounded-full"></div>
+                    <div class="w-16 h-1 bg-emerald-500 rounded-full"></div>
                 </div>
 
                 {{-- Description --}}
-                <p class="text-orange-50/95 text-sm md:text-base leading-relaxed font-normal">
+                <p class="text-slate-600 text-[15px] md:text-[16px] leading-relaxed font-normal">
                     {{ $store->about_text }}
                 </p>
+
+                {{-- Grid of Core Highlights (Added for premium depth) --}}
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-slate-200/60">
+                    <div class="flex gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Bahan Alami & Segar</h4>
+                            <p class="text-[11px] text-slate-400 mt-0.5">Seduhan daun teh murni alami berkualitas.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-amber-50/80 flex items-center justify-center text-amber-600 shrink-0">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">Harga Super Hemat</h4>
+                            <p class="text-[11px] text-slate-400 mt-0.5">Porsi jumbo nikmat yang hemat di kantong.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
