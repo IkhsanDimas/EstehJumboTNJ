@@ -37,7 +37,7 @@ class AdminProductCRUDTest extends TestCase
     public function test_admin_can_view_products_index(): void
     {
         $response = $this->actingAs($this->owner)
-            ->get(route('admin.products.index'));
+            ->get(route('admin.products.index', ['search' => 'Teh Jumbo']));
 
         $response->assertStatus(200);
         $response->assertSee('Kelola Menu Minuman');

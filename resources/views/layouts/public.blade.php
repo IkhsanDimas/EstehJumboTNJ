@@ -219,7 +219,7 @@
                     none: 'Tanpa gula'
                 },
 
-                async show(productId, triggerEl) {
+                async show(productId, triggerEl, initialQty = 1) {
                     this.sourceEl = triggerEl;
                     this.open = true;
                     this.loading = true;
@@ -230,7 +230,7 @@
                     this.ice = 'normal';
                     this.sugar = 'normal';
                     this.toppingIds = [];
-                    this.quantity = 1;
+                    this.quantity = initialQty;
                     this.notes = '';
                     document.body.classList.add('overflow-hidden');
 
