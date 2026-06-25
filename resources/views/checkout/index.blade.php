@@ -12,8 +12,7 @@
     }
 </style>
 
-
-
+<section class="relative bg-app py-16 md:py-24 min-h-[85vh]">
     <div class="relative max-w-7xl mx-auto px-6">
         {{-- Header --}}
         <div class="mb-10">
@@ -480,6 +479,7 @@
                                         <p class="mt-0.5">Jarak pengantaran melebihi batas maksimal <span x-text="maxRadius"></span> km dari outlet kami. Silakan pilih opsi Ambil Sendiri.</p>
                                     </div>
                                 </div>
+                        </div>
                             
                             {{-- ─── PAYMENT METHOD ─── --}}
                         <div class="space-y-4 pt-4 border-t border-slate-100">
