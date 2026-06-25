@@ -15,7 +15,7 @@
             {{-- Brand column --}}
             <div class="md:col-span-5">
                 <a href="{{ route('home') }}" class="flex items-center gap-2">
-                    <span class="w-9 h-9 rounded-xl bg-emerald-650 grid place-items-center text-white shadow-sm">
+                    <span class="w-9 h-9 rounded-xl bg-emerald-600 grid place-items-center text-white shadow-sm">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 8h14l-1.5 11a2 2 0 0 1-2 1.8h-7a2 2 0 0 1-2-1.8L5 8z"/>
                             <path d="M9 8V5a3 3 0 0 1 6 0v3"/>
@@ -56,15 +56,15 @@
                 <h4 class="text-sm font-display font-bold text-white mb-4 uppercase tracking-wider text-[11px]">Hubungi Kami</h4>
                 <ul class="space-y-3 text-sm text-slate-400">
                     <li class="flex items-start gap-3">
-                        <svg class="w-4 h-4 mt-0.5 text-emerald-450 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <svg class="w-4 h-4 mt-0.5 text-emerald-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         <span class="leading-relaxed">Perumahan Permata Galaxy, Bekasi</span>
                     </li>
                     <li class="flex items-center gap-3">
-                        <svg class="w-4 h-4 text-emerald-450 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68a2 2 0 0 1 1.72 2.03z"/></svg>
+                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68a2 2 0 0 1 1.72 2.03z"/></svg>
                         <a href="https://wa.me/{{ config('services.whatsapp.number') }}" class="hover:text-white transition">{{ config('services.whatsapp.formatted') }}</a>
                     </li>
                     <li class="flex items-center gap-3">
-                        <svg class="w-4 h-4 text-emerald-450 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
                         <a href="mailto:halo@estehjumbo.test" class="hover:text-white transition">halo@estehjumbo.test</a>
                     </li>
                     <li class="flex items-center gap-3">
@@ -72,7 +72,7 @@
                             $hour = now()->timezone('Asia/Jakarta')->hour;
                             $isOpen = $hour >= 9 && $hour < 22;
                         @endphp
-                        <svg class="w-4 h-4 text-emerald-450 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                         <span>Buka 09.00 – 22.00 WIB <span class="ml-2.5 px-2 py-0.5 rounded text-[10px] font-bold tracking-wider {{ $isOpen ? 'bg-emerald-500/15 text-emerald-400' : 'bg-rose-500/15 text-rose-400' }}">{{ $isOpen ? 'BUKA' : 'TUTUP' }}</span></span>
                     </li>
                 </ul>

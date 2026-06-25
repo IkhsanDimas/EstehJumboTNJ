@@ -110,7 +110,7 @@
                                     <span class="w-7 text-center text-sm font-bold text-slate-900" x-text="item.quantity"></span>
                                     <button type="button"
                                             @click="$store.cart.update(item.key || item.id, 'increase')"
-                                            class="w-7 h-7 grid place-items-center text-slate-600 hover:bg-emerald-650 hover:text-white transition"
+                                            class="w-7 h-7 grid place-items-center text-slate-600 hover:bg-emerald-600 hover:text-white transition"
                                             aria-label="Tambah">
                                         <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12h14"/></svg>
                                     </button>

@@ -42,7 +42,7 @@
                             <img :src="$store.cart.imageUrl($store.customizer.product.image_path)" :alt="$store.customizer.product.name" class="w-full h-full object-contain drop-shadow-[0_12px_20px_rgba(0,0,0,0.12)]">
                         </div>
                         <h4 class="font-display font-bold text-slate-900 dark:text-white text-lg mt-3" x-text="$store.customizer.product.name"></h4>
-                        <p class="text-xs text-emerald-650 dark:text-emerald-400 font-semibold mt-1" x-text="$store.customizer.product.category.name"></p>
+                        <p class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1" x-text="$store.customizer.product.category.name"></p>
                         <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 line-clamp-3 text-left w-full px-2" x-text="$store.customizer.product.description"></p>
                     </div>
 
@@ -59,7 +59,7 @@
                                         <input type="radio" name="modal_size" :value="sz.key" x-model="$store.customizer.size" class="sr-only">
                                         <div class="flex flex-col">
                                             <span class="text-sm font-bold" x-text="sz.label"></span>
-                                            <span class="text-[10px] mt-0.5" :class="$store.customizer.size === sz.key ? 'text-emerald-750 dark:text-emerald-400/80' : 'text-slate-400 dark:text-slate-500'" x-text="sz.volume || '500 ml'"></span>
+                                            <span class="text-[10px] mt-0.5" :class="$store.customizer.size === sz.key ? 'text-emerald-600 dark:text-emerald-400/80' : 'text-slate-400 dark:text-slate-500'" x-text="sz.volume || '500 ml'"></span>
                                         </div>
                                         <span class="text-xs font-bold" :class="$store.customizer.size === sz.key ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400 dark:text-slate-500'" x-text="sz.modifier > 0 ? '+Rp ' + $store.customizer.format(sz.modifier) : 'Standar'"></span>
                                     </label>
@@ -137,7 +137,7 @@
             <div class="flex flex-col">
                 <span class="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-semibold tracking-wider">Total Harga</span>
                 <p class="font-display text-slate-900 dark:text-white leading-none mt-1">
-                    <span class="text-[11px] font-semibold text-emerald-650 dark:text-emerald-400 align-top">Rp</span>
+                    <span class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 align-top">Rp</span>
                     <span class="text-xl font-bold tracking-tight" x-text="$store.customizer.format($store.customizer.totalPrice() * $store.customizer.quantity)"></span>
                 </p>
             </div>
