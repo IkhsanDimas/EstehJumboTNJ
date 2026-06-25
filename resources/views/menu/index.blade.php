@@ -17,7 +17,7 @@
 
     $featuredProducts = $allProducts
         ->sortBy(fn($p) => $catSortMap[$p->category_id] ?? 99)
-        ->take(5);
+        ->take(6);
 @endphp
 
 
@@ -122,7 +122,7 @@
             </a>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-5">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-5">
             @foreach ($featuredProducts as $product)
                 <x-product-card :product="$product" />
             @endforeach
