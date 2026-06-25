@@ -117,7 +117,7 @@
     ════════════════════════════════════════════════════ --}}
     <section class="relative max-w-7xl mx-auto px-6 py-16">
         @if ($filteredProducts->count() > 0)
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5" id="product-grid">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-5" id="product-grid">
                 @foreach ($filteredProducts as $product)
                     <div class="product-cell"
                          data-name="{{ Str::lower($product->name) }}"
