@@ -29,13 +29,13 @@
     ════════════════════════════════════════════════════ --}}
     <section class="relative w-full overflow-hidden pt-28 pb-32 md:pt-32 md:pb-44"
              style="background:
-                    radial-gradient(1200px 600px at 85% -5%, #38bdf8 0%, transparent 55%),
-                    radial-gradient(900px 600px at 5% 110%, #0369a1 0%, transparent 55%),
-                    linear-gradient(135deg, #0ea5e9 0%, #0284c7 55%, #075985 100%);">
+                    radial-gradient(1200px 600px at 85% -5%, #34d399 0%, transparent 55%),
+                    radial-gradient(900px 600px at 5% 110%, #047857 0%, transparent 55%),
+                    linear-gradient(135deg, #10b981 0%, #059669 55%, #064e3b 100%);">
 
         {{-- ambient glows --}}
-        <div aria-hidden="true" class="absolute -top-24 right-1/4 w-[28rem] h-[28rem] rounded-full bg-cyan-300/30 blur-[120px]"></div>
-        <div aria-hidden="true" class="absolute bottom-0 left-1/3 w-96 h-96 rounded-full bg-sky-400/30 blur-[100px]"></div>
+        <div aria-hidden="true" class="absolute -top-24 right-1/4 w-[28rem] h-[28rem] rounded-full bg-emerald-300/30 blur-[120px]"></div>
+        <div aria-hidden="true" class="absolute bottom-0 left-1/3 w-96 h-96 rounded-full bg-green-400/30 blur-[100px]"></div>
 
 
 
@@ -54,7 +54,7 @@
                 <h1 class="mt-6 font-display font-extrabold text-white leading-[0.95] tracking-tight text-5xl md:text-6xl lg:text-[72px] drop-shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
                     {!! $store->hero_title !!}
                 </h1>
-                <p class="mt-6 text-sky-50/90 text-base md:text-lg leading-relaxed max-w-md">
+                <p class="mt-6 text-emerald-50/90 text-base md:text-lg leading-relaxed max-w-md">
                     {{ $store->hero_subtitle }}
                 </p>
                 <div class="mt-8 flex flex-wrap items-center gap-4">
@@ -67,7 +67,7 @@
                     <a href="{{ route('menu') }}" class="btn-glass">Lihat Menu</a>
                 </div>
 
-                <div class="mt-9 flex items-center gap-5 text-sky-50/80 text-xs">
+                <div class="mt-9 flex items-center gap-5 text-emerald-50/80 text-xs">
                     <span class="inline-flex items-center gap-1.5">
                         <svg class="w-4 h-4 text-amber-300" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21.02 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                         <strong class="font-semibold text-white">4.9</strong> rating
@@ -79,7 +79,7 @@
                     </span>
                     <span class="w-px h-3 bg-white/30"></span>
                     <span class="inline-flex items-center gap-1.5">
-                        <svg class="w-4 h-4 text-sky-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <svg class="w-4 h-4 text-emerald-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         antar <strong class="font-semibold text-white">cepat</strong>
                     </span>
                 </div>
@@ -236,23 +236,23 @@
          CTA AKHIR  ·  blue gradient with polished typography
     ════════════════════════════════════════════════════ --}}
     <section class="max-w-7xl mx-auto px-6 py-20 md:py-24">
-        <div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-sky-500 via-sky-600 to-sky-700 px-8 md:px-14 py-14 md:py-16 text-center">
+        <div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-emerald-500 via-emerald-600 to-emerald-800 px-8 md:px-14 py-14 md:py-16 text-center shadow-xl shadow-emerald-950/10">
             <div aria-hidden="true" class="absolute inset-0 opacity-[0.12]" style="background-image:radial-gradient(circle at 20% 20%, white 1px, transparent 1px), radial-gradient(circle at 80% 60%, white 1px, transparent 1px); background-size:60px 60px, 80px 80px;"></div>
             <div aria-hidden="true" class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-white/15 blur-3xl"></div>
-            <div aria-hidden="true" class="absolute -bottom-20 -left-10 w-48 h-48 rounded-full bg-cyan-300/20 blur-3xl"></div>
+            <div aria-hidden="true" class="absolute -bottom-20 -left-10 w-48 h-48 rounded-full bg-emerald-300/20 blur-3xl"></div>
             <div class="relative">
                 <span class="inline-flex items-center gap-2 bg-white/15 text-white/90 text-[11px] font-semibold tracking-[0.18em] uppercase px-4 py-1.5 rounded-full ring-1 ring-white/20 mb-6">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>
                     Siap Antar
                 </span>
                 <h2 class="font-display font-extrabold text-white text-3xl md:text-[2.75rem] tracking-tight max-w-xl mx-auto leading-tight">
                     Lagi haus? Tinggal sebut alamat.
                 </h2>
-                <p class="mt-4 text-sky-100/80 max-w-md mx-auto text-[15px] leading-relaxed">
+                <p class="mt-4 text-emerald-100/90 max-w-md mx-auto text-[15px] leading-relaxed">
                     Mau pesan banyak untuk acara, atau satu untuk sore-sore — kami siap. Pilih menu di sini, atau langsung WhatsApp.
                 </p>
                 <div class="mt-9 flex flex-wrap gap-3 justify-center">
-                    <a href="{{ route('menu') }}" class="inline-flex items-center gap-2 bg-white text-sky-700 hover:bg-sky-50 text-sm font-bold px-8 py-4 rounded-full transition shadow-lg shadow-sky-900/20 hover:-translate-y-0.5">
+                    <a href="{{ route('menu') }}" class="inline-flex items-center gap-2 bg-white text-emerald-700 hover:bg-emerald-50 text-sm font-bold px-8 py-4 rounded-full transition shadow-lg shadow-emerald-900/10 hover:-translate-y-0.5">
                         Pesan Lewat Web
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
