@@ -9,7 +9,7 @@
     $detailUrl = route('menu.show', $product);
 @endphp
 
-<article class="group relative h-full bg-white rounded-xl border border-slate-200/80 hover:border-slate-350/80 transition-all duration-300 flex flex-col overflow-hidden hover:shadow-[0_8px_35px_rgba(0,0,0,0.05)] hover:-translate-y-1"
+<article class="group relative h-full w-full max-w-[225px] mx-auto bg-white rounded-xl border border-slate-200/80 hover:border-slate-350/80 transition-all duration-300 flex flex-col overflow-hidden hover:shadow-[0_8px_35px_rgba(0,0,0,0.05)] hover:-translate-y-1"
          x-data="{ qty: 1, wishlisted: false }">
     
 

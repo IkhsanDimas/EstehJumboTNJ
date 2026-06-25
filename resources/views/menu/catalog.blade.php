@@ -17,10 +17,6 @@
 
 @section('content')
 <div x-data="menuFilter({{ $filteredProducts->count() }})" class="bg-page-soft text-slate-800 relative overflow-hidden">
-    {{-- Decorative blobs --}}
-    <div aria-hidden="true" class="deco-blob deco-blob-sky w-[28rem] h-[28rem] -top-32 -right-32"></div>
-    <div aria-hidden="true" class="deco-blob deco-blob-amber w-80 h-80 top-1/3 -left-24 opacity-40"></div>
-    <div aria-hidden="true" class="deco-blob deco-blob-rose w-72 h-72 bottom-32 -right-16 opacity-40"></div>
 
     {{-- ════════════════════════════════════════════════════
          PAGE HEADER  ·  with search bar
@@ -117,7 +113,7 @@
     ════════════════════════════════════════════════════ --}}
     <section class="relative max-w-7xl mx-auto px-6 py-16">
         @if ($filteredProducts->count() > 0)
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-5" id="product-grid">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-5" id="product-grid">
                 @foreach ($filteredProducts as $product)
                     <div class="product-cell"
                          data-name="{{ Str::lower($product->name) }}"

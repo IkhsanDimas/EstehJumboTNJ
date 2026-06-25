@@ -413,22 +413,18 @@
         /* ──────── Page backgrounds ──────── */
         /* Ambient tint that stays visible across the whole viewport (fixed wash) */
         .bg-app {
-            background-color: #eef4fb;
+            background-color: #f8fafc;
             background-image:
-                radial-gradient(1100px 650px at 100% -8%, rgba(125, 211, 252, 0.22), transparent 58%),
-                radial-gradient(950px 650px at -12% 112%, rgba(186, 230, 253, 0.24), transparent 55%),
-                radial-gradient(circle at 1px 1px, rgba(30, 41, 59, 0.04) 1px, transparent 0);
-            background-size: auto, auto, 30px 30px;
-            background-attachment: fixed, fixed, scroll;
+                radial-gradient(1100px 650px at 100% -8%, rgba(14, 165, 233, 0.08), transparent 50%),
+                radial-gradient(950px 650px at -12% 112%, rgba(14, 165, 233, 0.05), transparent 50%);
+            background-attachment: fixed, fixed;
         }
         .bg-page-soft {
-            background-color: #ecf3fb;
+            background-color: #f8fafc;
             background-image:
-                radial-gradient(950px 600px at 96% 0%, rgba(125, 211, 252, 0.26), transparent 55%),
-                radial-gradient(850px 600px at 0% 100%, rgba(254, 205, 211, 0.20), transparent 55%),
-                radial-gradient(circle at 1px 1px, rgba(30, 41, 59, 0.035) 1px, transparent 0);
-            background-size: auto, auto, 30px 30px;
-            background-attachment: fixed, fixed, scroll;
+                radial-gradient(950px 600px at 96% 0%, rgba(14, 165, 233, 0.08), transparent 50%),
+                radial-gradient(850px 600px at 0% 100%, rgba(14, 165, 233, 0.05), transparent 50%);
+            background-attachment: fixed, fixed;
         }
         .bg-page-cream {
             background-color: #fdfaf4;
